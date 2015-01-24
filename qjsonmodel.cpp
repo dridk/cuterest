@@ -145,6 +145,15 @@ QModelIndex QJsonModel::parent(const QModelIndex &index) const
     return createIndex(parentItem->row(), 0, parentItem);
 }
 
+Qt::ItemFlags QJsonModel::flags(const QModelIndex &index) const
+{
+    if (index.column() == 1)
+        return Qt::ItemIsSelectable|Qt::ItemIsEditable|Qt::ItemIsEnabled;
+    else
+        return Qt::ItemIsSelectable|Qt::ItemIsEnabled;
+
+}
+
 int QJsonModel::rowCount(const QModelIndex &parent) const
 {
     QJsonTreeItem *parentItem;

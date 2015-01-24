@@ -11,3 +11,13 @@ Request::~Request()
 
 }
 
+const QString &Request::verb() const
+{
+    return  mVerb;
+}
+
+void Request::setVerb(const QString &verb)
+{
+    mVerb = verb;
+}
+

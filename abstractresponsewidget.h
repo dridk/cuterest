@@ -2,6 +2,7 @@
 #define ABSTRACTRESPONSEWIDGET_H
 
 #include <QtWidgets>
+#include "response.h"
 class AbstractResponseWidget : public QWidget
 {
     Q_OBJECT
@@ -11,6 +12,12 @@ public:
 
     void setWidget(QWidget * widget);
 
+public slots:
+    virtual void setResponse(const Response& rep) = 0;
+
+
+private:
+    Response mRep;
 
 };
 

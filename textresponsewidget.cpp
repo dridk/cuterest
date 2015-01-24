@@ -28,3 +28,11 @@ TextResponseWidget::~TextResponseWidget()
 
 }
 
+void TextResponseWidget::setResponse(const Response &rep)
+{
+
+    mEdit->setText(rep.body());
+
+
+}
+

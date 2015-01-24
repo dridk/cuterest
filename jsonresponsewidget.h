@@ -11,6 +11,8 @@ public:
     JsonResponseWidget(QWidget * parent = 0);
     ~JsonResponseWidget();
 
+public slots:
+    void setResponse(const Response& rep);
 
 private:
     QTreeView * mView;

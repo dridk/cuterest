@@ -23,6 +23,21 @@ void ResponseTabWidget::addResponseWidget(AbstractResponseWidget *widget)
 
 
     addTab(widget, widget->windowTitle());
+    mList.append(widget);
+
+
+
+}
+
+void ResponseTabWidget::setResponse(const Response &rep)
+{
+
+
+    foreach (AbstractResponseWidget * w, mList) {
+
+        w->setResponse(rep);
+
+    }
 
 
 

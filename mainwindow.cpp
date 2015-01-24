@@ -20,6 +20,10 @@ MainWindow::MainWindow(QWidget *parent) :
     addDockWidget(Qt::LeftDockWidgetArea,mFavoriteDock);
 
 
+
+    connect(mSearchBar,SIGNAL(triggerRequest(Request)),mManager,SLOT(sendRequest(Request)));
+    connect(mManager,SIGNAL(received(Response)),mResponseWidget, SLOT(setResponse(Response)));
+
     resize(1024,640);
 }
 

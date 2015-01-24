@@ -11,6 +11,7 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
 
+
     mModel->load("/home/sacha/test.json");
 
     setWidget(mView);
@@ -18,6 +19,14 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
 
 JsonResponseWidget::~JsonResponseWidget()
 {
+
+}
+
+void JsonResponseWidget::setResponse(const Response &rep)
+{
+
+    mModel->loadJson(rep.body());
+
 
 }
 

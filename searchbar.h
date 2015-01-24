@@ -1,6 +1,7 @@
 #ifndef SEARCHBAR_H
 #define SEARCHBAR_H
 #include <QtWidgets>
+#include "request.h"
 class SearchBar : public QToolBar
 {
     Q_OBJECT
@@ -9,8 +10,15 @@ public:
     ~SearchBar();
 
 
+signals:
+    void triggerRequest(const Request& request);
+
 protected:
     void setVerbs(const QStringList& list);
+
+protected slots:
+    void createRequest();
+
 
 
 private:

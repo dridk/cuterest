@@ -33,6 +33,9 @@ SearchBar::SearchBar(QWidget * parent):
     verbs<<"GET"<<"POST"<<"PUT"<<"DELETE";
     setVerbs(verbs);
 
+    connect(mSearchButton,SIGNAL(clicked()),this,SLOT(createRequest()));
+    connect(mLineEdit,SIGNAL(returnPressed()),this,SLOT(createRequest()));
+
 
 }
 
@@ -51,6 +54,18 @@ void SearchBar::setVerbs(const QStringList &list)
     }
 
 
+
+
+}
+
+void SearchBar::createRequest()
+{
+
+Request request;
+request.setUrl(mLineEdit->text());
+request.setVerb(mVerbCombo->currentText());
+
+emit triggerRequest(request);
 
 
 }

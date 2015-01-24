@@ -18,7 +18,6 @@ SOURCES += main.cpp\
     responsetabwidget.cpp \
     abstractresponsewidget.cpp \
     request.cpp \
-    reponse.cpp \
     manager.cpp \
     textresponsewidget.cpp \
     jsonresponsewidget.cpp \
@@ -27,14 +26,14 @@ SOURCES += main.cpp\
     searchbar.cpp \
     qjsonmodel.cpp \
     qjsonitem.cpp \
-    jsonsyntaxhighlighter.cpp
+    jsonsyntaxhighlighter.cpp \
+    response.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
     responsetabwidget.h \
     abstractresponsewidget.h \
     request.h \
-    reponse.h \
     manager.h \
     textresponsewidget.h \
     jsonresponsewidget.h \
@@ -43,7 +42,8 @@ HEADERS  += mainwindow.h \
     searchbar.h \
     qjsonmodel.h \
     qjsonitem.h \
-    jsonsyntaxhighlighter.h
+    jsonsyntaxhighlighter.h \
+    response.h
 
 FORMS    += mainwindow.ui
 

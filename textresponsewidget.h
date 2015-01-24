@@ -10,6 +10,11 @@ public:
     TextResponseWidget(QWidget * parent=0);
     ~TextResponseWidget();
 
+public slots:
+    void setResponse(const Response& rep);
+
+
+
 private:
     QTextEdit * mEdit;
     JsonSyntaxHighlighter * mHighlighter;
