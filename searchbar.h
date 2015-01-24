@@ -9,6 +9,8 @@ public:
     SearchBar(QWidget * parent=0);
     ~SearchBar();
 
+public slots:
+    void setRequest(const Request& request);
 
 signals:
     void triggerRequest(const Request& request);
@@ -29,6 +31,7 @@ private:
 
     QPushButton * mSearchButton;
     QWidget * mMainWidget;
+    Request mRequest;
 };
 
 #endif // SEARCHBAR_H

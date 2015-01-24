@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "requestserializer.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -24,8 +24,16 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mSearchBar,SIGNAL(triggerRequest(Request)),mManager,SLOT(sendRequest(Request)));
     connect(mManager,SIGNAL(received(Response)),mResponseWidget, SLOT(setResponse(Response)));
     connect(mManager,SIGNAL(received(Response)),mHistoryDock,SLOT(append(Response)));
+    connect(mFavoriteDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));
 
     resize(1024,640);
+
+
+
+
+
+
+
 }
 
 MainWindow::~MainWindow()

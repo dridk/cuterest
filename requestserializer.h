@@ -5,10 +5,18 @@
 class RequestSerializer
 {
 public:
-    static Request fromJson(const QByteArray& json);
-    static QByteArray toJson(const Request& request);
+    static QList<Request> fromJson(const QByteArray& json);
 
- private:
+    static QByteArray toJson(const Request& request);
+    static QByteArray toJson(const QList<Request>& list);
+
+
+protected:
+    static Request fromJsonObject(const QJsonObject& obj);
+    static QJsonObject toJsonObject(const Request& request);
+
+
+private:
     RequestSerializer(){}
 
 };

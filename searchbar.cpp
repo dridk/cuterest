@@ -52,6 +52,17 @@ SearchBar::~SearchBar()
 
 }
 
+void SearchBar::setRequest(const Request &request)
+{
+
+    mRequest = request;
+    mLineEdit->setText(mRequest.url().toString());
+    emit triggerRequest(mRequest);
+
+
+
+}
+
 void SearchBar::setVerbs(const QStringList &list)
 {
 

@@ -21,7 +21,7 @@ QWidget
 
 QWidget:item:selected
 {
-    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+    background-color:  #ffa02f;
 }
 
 QMenuBar::item
@@ -76,6 +76,20 @@ QAbstractItemView
 {
     /*background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #4d4d4d, stop: 0.1 #646464, stop: 1 #5d5d5d);*/
 }
+
+
+
+QTableView::item:alternate {
+     background:#1a1a1a;
+}
+
+ QTableView::item:selected {
+    background: #ffa02f;
+ }
+
+ QTreeView::branch:selected {
+    background: #ffa02f;
+ }
 
 QWidget:focus
 {

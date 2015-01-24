@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     jsonsyntaxhighlighter.cpp \
     response.cpp \
     historymodel.cpp \
-    requestserializer.cpp
+    requestserializer.cpp \
+    favoritemodel.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -47,7 +48,8 @@ HEADERS  += mainwindow.h \
     jsonsyntaxhighlighter.h \
     response.h \
     historymodel.h \
-    requestserializer.h
+    requestserializer.h \
+    favoritemodel.h
 
 FORMS    += mainwindow.ui
 

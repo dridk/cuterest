@@ -12,7 +12,8 @@ HistoryDockWidget::HistoryDockWidget(QWidget * parent)
     mView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     mView->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Stretch);
     mView->setSelectionBehavior(QAbstractItemView::SelectRows);
-//    mView->setAlternatingRowColors(true);
+    mView->verticalHeader()->hide();
+    mView->setAlternatingRowColors(true);
 
 }
 
