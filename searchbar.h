@@ -13,13 +13,16 @@ public slots:
     void setRequest(const Request& request);
 
 signals:
-    void triggerRequest(const Request& request);
+    void requestTrigger(const Request& request);
+    void favoriteTrigger(const Request& request);
 
 protected:
     void setVerbs(const QStringList& list);
+    Request createRequest();
 
 protected slots:
-    void createRequest();
+    void sendRequest();
+    void sendFavorite();
 
 
 

@@ -1,11 +1,20 @@
 #ifndef FAVORITEMODEL_H
 #define FAVORITEMODEL_H
+#include <QAbstractItemModel>
 #include <QStandardItemModel>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QtCore>
 #include "requestserializer.h"
+#include "favoriteitem.h"
+
+
+
+
+
+
+
 class FavoriteModel : public QStandardItemModel
 {
     Q_OBJECT
@@ -13,15 +22,20 @@ public:
     FavoriteModel(QObject * parent = 0);
     ~FavoriteModel();
 
-     Request request(const QModelIndex& index);
+   Request request(const QModelIndex& index) const;
 
 public slots:
-    void load(const QString& filename);
-
+    void append(const Request& request);
+    bool remove(const QModelIndex& index);
+    bool save(const QString& fileName);
+    bool load(const QString& fileName);
+    QString path();
 
 
 private:
-    QHash<QString, QList<Request> > mData;
+
+
+    QHash<QStandardItem*, Request> mData;
 
 
 };

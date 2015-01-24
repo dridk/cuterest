@@ -29,6 +29,7 @@ SearchBar::SearchBar(QWidget * parent):
     mToolButton->setIcon(QIcon(":gear.png"));
     mFavButton->setIcon(QIcon(":fav_on.png"));
 
+
     //temp test
     mLineEdit->setText("http://wingo.labsquare.org/config");
 
@@ -41,8 +42,9 @@ SearchBar::SearchBar(QWidget * parent):
     verbs<<"GET"<<"POST"<<"PUT"<<"DELETE";
     setVerbs(verbs);
 
-    connect(mSearchButton,SIGNAL(clicked()),this,SLOT(createRequest()));
-    connect(mLineEdit,SIGNAL(returnPressed()),this,SLOT(createRequest()));
+    connect(mSearchButton,SIGNAL(clicked()),this,SLOT(sendRequest()));
+    connect(mLineEdit,SIGNAL(returnPressed()),this,SLOT(sendRequest()));
+    connect(mFavButton,SIGNAL(clicked()),this,SLOT(sendFavorite()));
 
 
 }
@@ -57,7 +59,7 @@ void SearchBar::setRequest(const Request &request)
 
     mRequest = request;
     mLineEdit->setText(mRequest.url().toString());
-    emit triggerRequest(mRequest);
+    emit requestTrigger(mRequest);
 
 
 
@@ -77,16 +79,23 @@ void SearchBar::setVerbs(const QStringList &list)
 
 }
 
-void SearchBar::createRequest()
+Request SearchBar::createRequest()
 {
-
     Request request;
     request.setUrl(mLineEdit->text());
     request.setVerb(mVerbCombo->currentText());
 
-    emit triggerRequest(request);
+    return request;
+}
 
+void SearchBar::sendRequest()
+{
+    emit requestTrigger(createRequest());
+}
 
+void SearchBar::sendFavorite()
+{
+    emit favoriteTrigger(createRequest());
 }
 
 

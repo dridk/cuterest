@@ -7,6 +7,7 @@ class Request : public QNetworkRequest
 public:
 
     Request(const QUrl & url = QUrl());
+    Request(const Request& other);
     Request(const QNetworkRequest& other);
     ~Request();
 

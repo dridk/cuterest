@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     response.cpp \
     historymodel.cpp \
     requestserializer.cpp \
-    favoritemodel.cpp
+    favoritemodel.cpp \
+    favoriteitem.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -49,7 +50,8 @@ HEADERS  += mainwindow.h \
     response.h \
     historymodel.h \
     requestserializer.h \
-    favoritemodel.h
+    favoritemodel.h \
+    favoriteitem.h
 
 FORMS    += mainwindow.ui
 

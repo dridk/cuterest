@@ -21,7 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
-    connect(mSearchBar,SIGNAL(triggerRequest(Request)),mManager,SLOT(sendRequest(Request)));
+    connect(mSearchBar,SIGNAL(requestTrigger(Request)),mManager,SLOT(sendRequest(Request)));
+    connect(mSearchBar,SIGNAL(favoriteTrigger(Request)),mFavoriteDock,SLOT(append(Request)));
     connect(mManager,SIGNAL(received(Response)),mResponseWidget, SLOT(setResponse(Response)));
     connect(mManager,SIGNAL(received(Response)),mHistoryDock,SLOT(append(Response)));
     connect(mFavoriteDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));

@@ -11,6 +11,10 @@ public:
     ~FavoriteDockWidget();
 
 
+public slots:
+    void append(const Request& request);
+
+
 protected slots:
     void doubleClickedReceived(const QModelIndex& index);
 

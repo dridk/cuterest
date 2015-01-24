@@ -6,11 +6,18 @@ Request::Request(const QUrl & url)
 
 }
 
-Request::Request(const QNetworkRequest &other)
+Request::Request(const Request &other)
     :QNetworkRequest(other)
 {
 
+setVerb(other.verb());
 
+
+}
+
+Request::Request(const QNetworkRequest &other)
+    :QNetworkRequest(other)
+{
 
 }
 
@@ -18,6 +25,7 @@ Request::~Request()
 {
 
 }
+
 
 const QString &Request::verb() const
 {
