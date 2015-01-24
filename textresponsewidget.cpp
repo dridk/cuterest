@@ -7,8 +7,19 @@ TextResponseWidget::TextResponseWidget(QWidget * parent)
     setWindowTitle("Text");
 
     mEdit = new QTextEdit;
-
+    mEdit->setAcceptRichText(true);
     setWidget(mEdit);
+
+
+
+mHighlighter = new JsonSyntaxHighlighter(mEdit->document());
+
+
+
+
+
+
+
 
 }
 

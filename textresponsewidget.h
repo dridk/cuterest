@@ -2,6 +2,7 @@
 #define TEXTRESPONSEWIDGET_H
 #include "abstractresponsewidget.h"
 #include <QTextEdit>
+#include "jsonsyntaxhighlighter.h"
 
 class TextResponseWidget : public AbstractResponseWidget
 {
@@ -11,6 +12,7 @@ public:
 
 private:
     QTextEdit * mEdit;
+    JsonSyntaxHighlighter * mHighlighter;
 };
 
 #endif // TEXTRESPONSEWIDGET_H
