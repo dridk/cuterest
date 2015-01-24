@@ -6,6 +6,7 @@ SearchBar::SearchBar(QWidget * parent):
     mLineEdit = new QLineEdit;
     mVerbCombo = new QComboBox;
     mToolButton = new QToolButton;
+    mFavButton= new QToolButton;
     mSearchButton = new QPushButton(tr("Search"));
     mMainWidget = new QWidget;
 
@@ -14,6 +15,8 @@ SearchBar::SearchBar(QWidget * parent):
     layout->addWidget(mVerbCombo);
     layout->addWidget(mLineEdit);
     layout->addWidget(mToolButton);
+    layout->addWidget(mFavButton);
+
     layout->addWidget(mSearchButton);
 
     mMainWidget->setLayout(layout);
@@ -24,6 +27,11 @@ SearchBar::SearchBar(QWidget * parent):
 
     mVerbCombo->setMinimumWidth(80);
     mToolButton->setIcon(QIcon(":gear.png"));
+    mFavButton->setIcon(QIcon(":fav_on.png"));
+
+    //temp test
+    mLineEdit->setText("http://wingo.labsquare.org/config");
+
 
 
 
@@ -61,11 +69,11 @@ void SearchBar::setVerbs(const QStringList &list)
 void SearchBar::createRequest()
 {
 
-Request request;
-request.setUrl(mLineEdit->text());
-request.setVerb(mVerbCombo->currentText());
+    Request request;
+    request.setUrl(mLineEdit->text());
+    request.setVerb(mVerbCombo->currentText());
 
-emit triggerRequest(request);
+    emit triggerRequest(request);
 
 
 }

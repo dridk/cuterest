@@ -25,6 +25,8 @@ private:
     QLineEdit * mLineEdit;
     QComboBox * mVerbCombo;
     QToolButton * mToolButton;
+    QToolButton * mFavButton;
+
     QPushButton * mSearchButton;
     QWidget * mMainWidget;
 };

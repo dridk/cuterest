@@ -18,8 +18,12 @@ public slots:
    protected slots:
     void parse();
 
+
 signals:
     void received(const Response& response);
+
+protected:
+    Response createResponse(QNetworkReply * reply) const;
 
 
 private:

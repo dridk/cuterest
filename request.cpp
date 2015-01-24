@@ -6,6 +6,14 @@ Request::Request(const QUrl & url)
 
 }
 
+Request::Request(const QNetworkRequest &other)
+    :QNetworkRequest(other)
+{
+
+
+
+}
+
 Request::~Request()
 {
 

@@ -27,20 +27,10 @@ connect(reply,SIGNAL(finished()),this,SLOT(parse()));
 
 void Manager::parse()
 {
-
     QNetworkReply * reply = qobject_cast<QNetworkReply*>(sender());
-
     if (reply) {
-
-
-        Response rep;
-        rep.setBody(reply->readAll());
-        rep.setElapsed(mTimer.elapsed());
-
-
+        Response rep = createResponse(reply);
         emit received(rep);
-
-
 
 
     }
@@ -48,6 +38,19 @@ void Manager::parse()
 
 
 
+
+}
+
+Response Manager::createResponse(QNetworkReply *reply) const
+{
+
+    Response rep;
+    rep.setBody(reply->readAll());
+    rep.setElapsed(mTimer.elapsed());
+    rep.setRequest(Request(reply->request()));
+    rep.setStatusCode(reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt());
+
+    return rep;
 
 }
 

@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>gear.png</file>
+        <file>fav_on.png</file>
+        <file>fav_off.png</file>
     </qresource>
 </RCC>

@@ -27,7 +27,9 @@ SOURCES += main.cpp\
     qjsonmodel.cpp \
     qjsonitem.cpp \
     jsonsyntaxhighlighter.cpp \
-    response.cpp
+    response.cpp \
+    historymodel.cpp \
+    requestserializer.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -43,7 +45,9 @@ HEADERS  += mainwindow.h \
     qjsonmodel.h \
     qjsonitem.h \
     jsonsyntaxhighlighter.h \
-    response.h
+    response.h \
+    historymodel.h \
+    requestserializer.h
 
 FORMS    += mainwindow.ui
 
