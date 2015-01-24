@@ -14,6 +14,16 @@ public:
 public slots:
     void append(const Response& rep);
 
+signals:
+    void doubleClicked(const Request& request);
+
+
+protected slots:
+    void doubleClickedReceived(const QModelIndex& index);
+
+
+
+
 private:
     HistoryModel * mModel;
     QTableView *mView;

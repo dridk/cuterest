@@ -48,13 +48,12 @@ QVariant HistoryModel::data(const QModelIndex &index, int role) const
             return rep.statusCode();
 
         if (index.column() == 3)
-            return rep.time();
-
+            return rep.time().toString(Qt::DefaultLocaleShortDate);
         if (index.column() == 4)
-            return rep.size();
+            return QString("%1 b").arg(rep.size());
 
         if (index.column() == 5)
-            return rep.elapsed();
+            return QString("%1 ms").arg(rep.elapsed());
 
 
     }
@@ -70,6 +69,11 @@ QVariant HistoryModel::headerData(int section, Qt::Orientation orientation, int 
 {
 
     return QVariant();
+}
+
+Response HistoryModel::response(const QModelIndex &index)
+{
+    return mData.at(index.row());
 }
 
 void HistoryModel::append(const Response &reponse)

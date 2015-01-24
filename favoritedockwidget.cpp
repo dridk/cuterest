@@ -12,8 +12,7 @@ FavoriteDockWidget::FavoriteDockWidget(QWidget * parent)
 
     mView->header()->hide();
 
-
-    //   mModel->load("/home/sacha/favorite.json");
+    setFeatures(QDockWidget::NoDockWidgetFeatures);
 
     connect(mView,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(doubleClickedReceived(QModelIndex)));
 }

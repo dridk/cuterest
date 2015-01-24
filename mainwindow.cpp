@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mManager,SIGNAL(received(Response)),mResponseWidget, SLOT(setResponse(Response)));
     connect(mManager,SIGNAL(received(Response)),mHistoryDock,SLOT(append(Response)));
     connect(mFavoriteDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));
+    connect(mHistoryDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));
 
     resize(1024,640);
 

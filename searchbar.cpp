@@ -10,19 +10,22 @@ SearchBar::SearchBar(QWidget * parent):
     mSearchButton = new QPushButton(tr("Search"));
     mMainWidget = new QWidget;
 
-    QHBoxLayout * layout = new QHBoxLayout;
+    QHBoxLayout * wLayout = new QHBoxLayout;
 
-    layout->addWidget(mVerbCombo);
-    layout->addWidget(mLineEdit);
-    layout->addWidget(mToolButton);
-    layout->addWidget(mFavButton);
+    wLayout->addWidget(mVerbCombo);
+    wLayout->addWidget(mLineEdit);
+    wLayout->addWidget(mToolButton);
+    wLayout->addWidget(mFavButton);
 
-    layout->addWidget(mSearchButton);
+    wLayout->addWidget(mSearchButton);
 
-    mMainWidget->setLayout(layout);
-    layout->setContentsMargins(0,0,0,0);
+    mMainWidget->setLayout(wLayout);
+    wLayout->setContentsMargins(0,0,0,0);
 
     addWidget(mMainWidget);
+
+    setFloatable(false);
+    setMovable(false);
 
 
     mVerbCombo->setMinimumWidth(80);
@@ -59,6 +62,7 @@ void SearchBar::setRequest(const Request &request)
 
     mRequest = request;
     mLineEdit->setText(mRequest.url().toString());
+    mVerbCombo->setCurrentText(mRequest.verb());
     emit requestTrigger(mRequest);
 
 

@@ -19,7 +19,6 @@ protected slots:
     void doubleClickedReceived(const QModelIndex& index);
 
 signals:
-    void clicked(const Request& request);
     void doubleClicked(const Request& request);
 
 

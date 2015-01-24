@@ -114,7 +114,7 @@ void FavoriteModel::append(const Request &request)
     // apppend request
 
     QStandardItem * item = new QStandardItem;
-    item->setText(request.url().path());
+    item->setText(QString("%1 %2").arg(request.verb()).arg(request.url().path()));
     item->setEditable(false);
     mData.insert(item, request);
     root->appendRow(item);

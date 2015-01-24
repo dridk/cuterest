@@ -8,12 +8,19 @@ HistoryDockWidget::HistoryDockWidget(QWidget * parent)
     mView->setModel(mModel);
     setWidget(mView);
 
+    setFeatures(QDockWidget::NoDockWidgetFeatures);
+
+
+
+    mView->verticalHeader()->setDefaultSectionSize(26);
     mView->horizontalHeader()->hide();
     mView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
     mView->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Stretch);
     mView->setSelectionBehavior(QAbstractItemView::SelectRows);
     mView->verticalHeader()->hide();
     mView->setAlternatingRowColors(true);
+
+    connect(mView,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(doubleClickedReceived(QModelIndex)));
 
 }
 
@@ -24,8 +31,15 @@ HistoryDockWidget::~HistoryDockWidget()
 
 void HistoryDockWidget::append(const Response &rep)
 {
+    mModel->append(rep);
+}
+
+void HistoryDockWidget::doubleClickedReceived(const QModelIndex &index)
+{
 
 
-  mModel->append(rep);
+    emit doubleClicked(mModel->response(index).request());
+
+
 }
 

@@ -340,10 +340,13 @@ QMainWindow::separator:hover
     spacing: 0px; /* spacing between items in the tool bar */
 }
 
-QToolBar::handle
-{
-     spacing: 3px; /* spacing between items in the tool bar */
-     background: url(:/images/handle.png);
+
+QToolBar {
+background : black;
+padding: 0px;
+
+
+
 }
 
 QMenu::separator
@@ -380,6 +383,7 @@ QTabBar::tab {
     padding-top: 3px;
     padding-bottom: 2px;
     margin-right: -1px;
+    width : 100px;
 }
 
 QTabWidget::pane {
@@ -422,7 +426,7 @@ QTabBar::tab:!selected:hover
     padding-bottom: 3px;*/
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:0.4 #343434, stop:0.2 #343434, stop:0.1 #ffaa00);
+    /*background-color: QLinearGradient(x1:0, y1:0, x2:0, y2:1, stop:1 #212121, stop:0.4 #343434, stop:0.2 #343434, stop:0.1 #ffaa00);*/
 }
 
 QRadioButton::indicator:checked, QRadioButton::indicator:unchecked{

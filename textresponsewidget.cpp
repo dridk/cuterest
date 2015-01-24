@@ -8,6 +8,7 @@ TextResponseWidget::TextResponseWidget(QWidget * parent)
 
     mEdit = new QTextEdit;
     mEdit->setAcceptRichText(true);
+    mEdit->setReadOnly(true);
     setWidget(mEdit);
 
 
