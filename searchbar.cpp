@@ -4,7 +4,7 @@ SearchBar::SearchBar(QWidget * parent):
     QToolBar(parent)
 {
     mLineEdit = new QLineEdit;
-    mVerbCombo = new QComboBox;
+    mVerbCombo = new VerbComboBox;
     mToolButton = new QToolButton;
     mFavButton= new QToolButton;
     mSearchButton = new QPushButton(tr("Search"));
@@ -34,20 +34,17 @@ SearchBar::SearchBar(QWidget * parent):
 
 
     //temp test
-    mLineEdit->setText("http://wingo.labsquare.org/config");
+
+    setRequest(Request(QUrl("http://wingo.labsquare.org/config")));
 
 
 
 
-    // Set verbs
-
-    QStringList verbs;
-    verbs<<"GET"<<"POST"<<"PUT"<<"DELETE";
-    setVerbs(verbs);
 
     connect(mSearchButton,SIGNAL(clicked()),this,SLOT(sendRequest()));
     connect(mLineEdit,SIGNAL(returnPressed()),this,SLOT(sendRequest()));
     connect(mFavButton,SIGNAL(clicked()),this,SLOT(sendFavorite()));
+    connect(mToolButton,SIGNAL(clicked()),this,SLOT(showRequestDialog()));
 
 
 }
@@ -69,19 +66,6 @@ void SearchBar::setRequest(const Request &request)
 
 }
 
-void SearchBar::setVerbs(const QStringList &list)
-{
-
-    foreach (QString verb, list){
-
-        mVerbCombo->addItem(verb);
-
-    }
-
-
-
-
-}
 
 Request SearchBar::createRequest()
 {
@@ -100,6 +84,13 @@ void SearchBar::sendRequest()
 void SearchBar::sendFavorite()
 {
     emit favoriteTrigger(createRequest());
+}
+
+void SearchBar::showRequestDialog()
+{
+    RequestDialog dialog(mRequest,this);
+    dialog.exec();
+    setRequest(dialog.request());
 }
 
 

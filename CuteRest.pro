@@ -31,7 +31,14 @@ SOURCES += main.cpp\
     historymodel.cpp \
     requestserializer.cpp \
     favoritemodel.cpp \
-    favoriteitem.cpp
+    favoriteitem.cpp \
+    requestdialog.cpp \
+    paramrequestwidget.cpp \
+    headerrequestwidget.cpp \
+    abstractrequestwidget.cpp \
+    dicteditorwidget.cpp \
+    verbcombobox.cpp \
+    dicteditormodel.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -51,7 +58,14 @@ HEADERS  += mainwindow.h \
     historymodel.h \
     requestserializer.h \
     favoritemodel.h \
-    favoriteitem.h
+    favoriteitem.h \
+    requestdialog.h \
+    paramrequestwidget.h \
+    headerrequestwidget.h \
+    abstractrequestwidget.h \
+    dicteditorwidget.h \
+    verbcombobox.h \
+    dicteditormodel.h
 
 FORMS    += mainwindow.ui
 

@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     styleFile.open( QFile::ReadOnly );
 
     QString style( styleFile.readAll() );
-    a.setStyleSheet( style );
+//    a.setStyleSheet( style );
 
 
     MainWindow w;

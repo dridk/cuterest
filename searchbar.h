@@ -2,6 +2,8 @@
 #define SEARCHBAR_H
 #include <QtWidgets>
 #include "request.h"
+#include "requestdialog.h"
+#include "verbcombobox.h"
 class SearchBar : public QToolBar
 {
     Q_OBJECT
@@ -17,18 +19,18 @@ signals:
     void favoriteTrigger(const Request& request);
 
 protected:
-    void setVerbs(const QStringList& list);
     Request createRequest();
 
 protected slots:
     void sendRequest();
     void sendFavorite();
+    void showRequestDialog();
 
 
 
 private:
     QLineEdit * mLineEdit;
-    QComboBox * mVerbCombo;
+    VerbComboBox * mVerbCombo;
     QToolButton * mToolButton;
     QToolButton * mFavButton;
 

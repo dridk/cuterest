@@ -4,6 +4,8 @@ Request::Request(const QUrl & url)
     :QNetworkRequest(url)
 {
 
+    setRawHeader("User-Agent", "CuteRest");
+
 }
 
 Request::Request(const Request &other)
@@ -36,4 +38,16 @@ void Request::setVerb(const QString &verb)
 {
     mVerb = verb;
 }
+
+
+const QUrlQuery &Request::query() const
+{
+    return mQuery;
+}
+
+void Request::setQuery(const QUrlQuery &query)
+{
+    mQuery = query;
+}
+
 

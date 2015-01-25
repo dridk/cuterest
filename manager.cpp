@@ -45,6 +45,7 @@ Response Manager::createResponse(QNetworkReply *reply) const
 {
 
     Response rep;
+    qDebug()<<reply->request().rawHeaderList();
     rep.setBody(reply->readAll());
     rep.setElapsed(mTimer.elapsed());
     rep.setRequest(Request(reply->request()));
