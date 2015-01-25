@@ -1,4 +1,4 @@
-#include "favoritemodel.h"
+#include "favoritemodel.h"api.duckduckgo.com
 #include <QFile>
 #include <QDebug>
 #include <QStandardPaths>

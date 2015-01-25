@@ -35,7 +35,7 @@ SearchBar::SearchBar(QWidget * parent):
 
     //temp test
 
-    setRequest(Request(QUrl("http://wingo.labsquare.org/config")));
+    setRequest(Request(QUrl("http://api.duckduckgo.com")));
 
 
 
@@ -69,11 +69,11 @@ void SearchBar::setRequest(const Request &request)
 
 Request SearchBar::createRequest()
 {
-    Request request;
-    request.setUrl(mLineEdit->text());
-    request.setVerb(mVerbCombo->currentText());
 
-    return request;
+    mRequest.setUrl(mLineEdit->text());
+    mRequest.setVerb(mVerbCombo->currentText());
+
+    return mRequest;
 }
 
 void SearchBar::sendRequest()
@@ -88,9 +88,11 @@ void SearchBar::sendFavorite()
 
 void SearchBar::showRequestDialog()
 {
-    RequestDialog dialog(mRequest,this);
-    dialog.exec();
-    setRequest(dialog.request());
+
+    RequestDialog dialog(createRequest(),this);
+    if (dialog.exec())
+        setRequest(dialog.request());
+
 }
 
 

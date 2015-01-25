@@ -15,6 +15,8 @@ FavoriteDockWidget::FavoriteDockWidget(QWidget * parent)
     setFeatures(QDockWidget::NoDockWidgetFeatures);
 
     connect(mView,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(doubleClickedReceived(QModelIndex)));
+
+
 }
 
 FavoriteDockWidget::~FavoriteDockWidget()

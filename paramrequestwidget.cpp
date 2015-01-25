@@ -9,7 +9,6 @@ ParamRequestWidget::ParamRequestWidget(QWidget * parent)
     mainLayout->addWidget(mEditor);
 
     setLayout(mainLayout);
-
     setWindowTitle("Parameters");
 
 }
@@ -21,12 +20,10 @@ ParamRequestWidget::~ParamRequestWidget()
 
 void ParamRequestWidget::load(Request &request)
 {
-
     mEditor->clear();
-    QPair<QString, QString> q;
 
-    foreach (q, request.query().queryItems()) {
-       mEditor->insert(q.first,q.second);
+    foreach (QString key, request.params().keys()) {
+       mEditor->insert(key, request.param(key));
     }
 
 
@@ -34,14 +31,7 @@ void ParamRequestWidget::load(Request &request)
 
 void ParamRequestWidget::save(Request &request)
 {
-    QUrlQuery query;
-
     for (int row=0; row < mEditor->count(); row++)
-        query.addQueryItem(mEditor->key(row), mEditor->value(row).toString());
-
-
-    request.setQuery(query);
-
-
+       request.insertParam(mEditor->key(row), mEditor->value(row));
 }
 

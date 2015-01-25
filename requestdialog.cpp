@@ -55,8 +55,10 @@ const Request& RequestDialog::request() const
 
 void RequestDialog::setRequest(const Request &request)
 {
+
     mRequest = request;
     mEdit->setText(mRequest.url().toString());
+    mVerbCombo->setCurrentText(mRequest.verb());
     load();
 }
 

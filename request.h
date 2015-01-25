@@ -14,12 +14,14 @@ public:
     const QString &verb() const;
     void setVerb(const QString& verb);
 
-    const QUrlQuery& query() const;
-    void setQuery(const QUrlQuery &query);
+    const QHash<QString, QVariant> &params() const;
+    QVariant param(const QString& key) const;
+    void insertParam(const QString& key, const QVariant& value);
+    void setParams(const  QHash<QString,QVariant>& params);
 
 private:
     QString mVerb;
-    QUrlQuery mQuery;
+    QHash<QString,QVariant> mParams;
 };
 
 #endif // REQUEST_H

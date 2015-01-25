@@ -15,19 +15,27 @@ public slots:
     void sendRequest(const Request& request);
 
 
-   protected slots:
+protected slots:
     void parse();
+    QNetworkReply* getRequest(const Request& request);
+    QNetworkReply* postRequest(const Request& request);
+    QNetworkReply* putRequest(const Request& request);
+    QNetworkReply* deleteRequest(const Request& request);
 
 
 signals:
     void received(const Response& response);
+    void error(const QString& message);
+
 
 protected:
-    Response createResponse(QNetworkReply * reply) const;
+    Response createResponse(QNetworkReply * reply) ;
 
 
 private:
     QElapsedTimer mTimer;
+    QHash<QNetworkReply*, Request> mRequests;
+
 
 };
 
