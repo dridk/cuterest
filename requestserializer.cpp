@@ -53,6 +53,26 @@ Request RequestSerializer::fromJsonObject(const QJsonObject &obj)
     request.setVerb(obj.value("verb").toString());
     request.setUrl(obj.value("url").toString());
 
+    // Unserialize parameters
+    if (obj.contains("params")){
+        QJsonObject param = obj.value("params").toObject();
+
+        foreach (QString key , param.keys()){
+            request.insertParam(key, param.value(key).toVariant());
+        }
+    }
+
+    // Unserialize headers
+    if (obj.contains("headers")){
+        QJsonObject param = obj.value("headers").toObject();
+
+        foreach (QString key , param.keys()){
+            request.setRawHeader(key.toUtf8(), param.value(key).toVariant().toByteArray());
+        }
+    }
+
+
+
     return request;
 
 }
@@ -65,6 +85,26 @@ QJsonObject RequestSerializer::toJsonObject(const Request &request)
 
     obj.insert("url",request.url().toString());
     obj.insert("verb", request.verb());
+
+    // Serialize parameters...
+    QJsonObject param;
+
+    foreach (QString key, request.params().keys()){
+        param.insert(key, QJsonValue::fromVariant(request.param(key)));
+    }
+
+    obj.insert("params", param);
+
+    //Serialize headers
+    QJsonObject header;
+
+    foreach (QByteArray key, request.rawHeaderList()){
+        header.insert(key, QJsonValue::fromVariant(request.rawHeader(key)));
+    }
+
+    obj.insert("headers", header);
+
+
 
     return obj;
 
