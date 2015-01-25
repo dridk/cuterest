@@ -31,6 +31,16 @@ void FavoriteDockWidget::append(const Request &request)
     mModel->append(request);
 }
 
+void FavoriteDockWidget::importFavorite(const QString &path)
+{
+    mModel->load(path);
+}
+
+void FavoriteDockWidget::exportFavorite(const QString &path)
+{
+    mModel->save(path);
+}
+
 
 
 void FavoriteDockWidget::doubleClickedReceived(const QModelIndex &index)

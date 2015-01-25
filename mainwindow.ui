@@ -27,9 +27,21 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionExport"/>
+    <addaction name="actionImport"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
+  <action name="actionExport">
+   <property name="text">
+    <string>Export ...</string>
+   </property>
+  </action>
+  <action name="actionImport">
+   <property name="text">
+    <string>Import ...</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

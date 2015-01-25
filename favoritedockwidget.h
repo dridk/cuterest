@@ -13,6 +13,8 @@ public:
 
 public slots:
     void append(const Request& request);
+    void importFavorite(const QString& path);
+    void exportFavorite(const QString& path);
 
 
 protected slots:

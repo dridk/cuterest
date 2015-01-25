@@ -1,6 +1,8 @@
+#include <QFileDialog>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "requestserializer.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -28,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mFavoriteDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));
     connect(mHistoryDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));
 
+    connect(ui->actionExport,SIGNAL(triggered()),this,SLOT(exportFavorite()));
+    connect(ui->actionImport,SIGNAL(triggered()),this,SLOT(importFavorite()));
+
     resize(1024,640);
 
 
@@ -41,4 +46,18 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::exportFavorite()
+{
+    QString filename = QFileDialog::getSaveFileName(this,tr("Export favorite"),"",tr("Json file (*.json)"));
+    mFavoriteDock->exportFavorite(filename);
+
+
+}
+
+void MainWindow::importFavorite()
+{
+    QString filename = QFileDialog::getOpenFileName(this,"Import favorite","",tr("Json file (*.json)"));
+    mFavoriteDock->exportFavorite(filename);
 }

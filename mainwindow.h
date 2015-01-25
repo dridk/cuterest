@@ -21,12 +21,15 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+    void exportFavorite();
+    void importFavorite();
+
 private:
     Ui::MainWindow *ui;
 
     Manager * mManager;
     ResponseTabWidget * mResponseWidget;
-
     FavoriteDockWidget * mFavoriteDock;
     HistoryDockWidget * mHistoryDock;
     SearchBar * mSearchBar;

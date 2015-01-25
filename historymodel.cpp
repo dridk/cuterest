@@ -1,5 +1,5 @@
 #include "historymodel.h"
-
+#include <QFont>
 HistoryModel::HistoryModel(QObject * parent )
     :QAbstractTableModel(parent)
 {
@@ -56,6 +56,15 @@ QVariant HistoryModel::data(const QModelIndex &index, int role) const
             return QString("%1 ms").arg(rep.elapsed());
 
 
+    }
+
+    if (role == Qt::FontRole) {
+        if (index.column() == 0)
+        {
+            QFont font;
+            font.setBold(true);
+            return font;
+        }
     }
 
 
