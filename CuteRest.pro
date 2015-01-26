@@ -74,3 +74,7 @@ FORMS    += mainwindow.ui
 RESOURCES += \
     resource.qrc \
     icons/icons.qrc
+
+
+   include(QtAwesome/QtAwesome.pri)
+

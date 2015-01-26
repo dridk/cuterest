@@ -61,3 +61,20 @@ void MainWindow::importFavorite()
     QString filename = QFileDialog::getOpenFileName(this,"Import favorite","",tr("Json file (*.json)"));
     mFavoriteDock->exportFavorite(filename);
 }
+
+void MainWindow::setStyle()
+{
+
+    QFile styleFile( ":/style.qss" );
+    styleFile.open( QFile::ReadOnly );
+
+    QString style( styleFile.readAll() );
+    qApp->setStyleSheet(style);
+
+
+
+
+
+
+
+}

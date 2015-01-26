@@ -25,6 +25,8 @@ public slots:
     void exportFavorite();
     void importFavorite();
 
+    void setStyle();
+
 private:
     Ui::MainWindow *ui;
 

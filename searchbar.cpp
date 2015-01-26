@@ -1,5 +1,5 @@
 #include "searchbar.h"
-
+#include "QtAwesome/QtAwesome.h"
 SearchBar::SearchBar(QWidget * parent):
     QToolBar(parent)
 {
@@ -29,8 +29,8 @@ SearchBar::SearchBar(QWidget * parent):
 
 
     mVerbCombo->setMinimumWidth(80);
-    mToolButton->setIcon(QIcon(":gear.png"));
-    mFavButton->setIcon(QIcon(":fav_on.png"));
+    mToolButton->setIcon(QtAwesome::instance()->icon("coffee"));
+    mFavButton->setIcon((QtAwesome::instance()->icon("coffee")));
 
 
     //temp test

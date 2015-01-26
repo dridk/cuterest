@@ -79,6 +79,7 @@ void HeaderRequestWidget::save(Request &request)
     for (int row=0; row < mEditor->count(); row++){
 
         qDebug()<<mEditor->key(row);
+
         request.setRawHeader(mEditor->key(row).toUtf8(), mEditor->value(row).toByteArray());
     }
 

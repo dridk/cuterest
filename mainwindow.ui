@@ -30,7 +30,14 @@
     <addaction name="actionExport"/>
     <addaction name="actionImport"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionSet_style"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
   </widget>
   <action name="actionExport">
    <property name="text">
@@ -40,6 +47,11 @@
   <action name="actionImport">
    <property name="text">
     <string>Import ...</string>
+   </property>
+  </action>
+  <action name="actionSet_style">
+   <property name="text">
+    <string>set style</string>
    </property>
   </action>
  </widget>
