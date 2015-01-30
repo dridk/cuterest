@@ -96,7 +96,10 @@ QString FavoriteModel::path()
 
 QIcon FavoriteModel::iconFromVerb(const QString &verb)
 {
-    return QtAwesome::instance()->icon("arrow-right");
+    QVariantMap params;
+    params.insert("color",QColor("#0098FF"));
+
+    return QtAwesome::instance()->icon(0xf18e);
 }
 
 void FavoriteModel::append(const Request &request)

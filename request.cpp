@@ -4,16 +4,16 @@ Request::Request(const QUrl & url)
     :QNetworkRequest(url)
 {
 
-setRawHeader("Content-Type","application/json;charset=UTF-8");
+    setRawHeader("Content-Type","application/json;charset=UTF-8");
 }
 
 Request::Request(const Request &other)
     :QNetworkRequest(other)
 {
 
-setVerb(other.verb());
-setParams(other.params());
-setName(other.name());
+    setVerb(other.verb());
+    setParams(other.params());
+    setName(other.name());
 
 }
 
@@ -46,9 +46,9 @@ const QHash<QString, QVariant> &Request::params() const
 
 }
 
- QVariant Request::param(const QString &key) const
+QVariant Request::param(const QString &key) const
 {
-        return mParams.value(key);
+    return mParams.value(key);
 }
 
 void Request::insertParam(const QString &key, const QVariant &value)
