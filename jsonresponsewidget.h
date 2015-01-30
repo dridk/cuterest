@@ -3,6 +3,7 @@
 
 #include <QtWidgets>
 #include <QKeyEvent>
+#include "treesortfilterproxymodel.h"
 #include "qjsonmodel.h"
 #include "abstractresponsewidget.h"
 #include "request.h"
@@ -30,6 +31,7 @@ signals:
 private:
     QTreeView * mView;
     QJsonModel * mModel;
+    TreeSortFilterProxyModel * mProxyModel;
     QLineEdit * mSearchEdit;
 };
 

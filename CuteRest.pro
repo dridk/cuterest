@@ -39,7 +39,8 @@ SOURCES += main.cpp\
     dicteditorwidget.cpp \
     verbcombobox.cpp \
     dicteditormodel.cpp \
-    inforesponsewidget.cpp
+    inforesponsewidget.cpp \
+    treesortfilterproxymodel.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -67,7 +68,8 @@ HEADERS  += mainwindow.h \
     dicteditorwidget.h \
     verbcombobox.h \
     dicteditormodel.h \
-    inforesponsewidget.h
+    inforesponsewidget.h \
+    treesortfilterproxymodel.h
 
 FORMS    += mainwindow.ui
 

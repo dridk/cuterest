@@ -10,6 +10,9 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     mView = new QTreeView;
     mModel = new QJsonModel;
     mSearchEdit = new QLineEdit;
+    mProxyModel = new TreeSortFilterProxyModel;
+
+    mProxyModel->setSourceModel(mModel);
 
     QVBoxLayout * mainLayout = new QVBoxLayout;
 
@@ -21,7 +24,7 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     //For stylesheet
     mView->setObjectName("Json");
     mView->header()->hide();
-    mView->setModel(mModel);
+    mView->setModel(mProxyModel);
     mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
 
@@ -35,6 +38,7 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
 
     //double click.. for link ... !
     connect(mView,SIGNAL(doubleClicked(QModelIndex)), this,SLOT(doubleClicked(QModelIndex)));
+    connect(mSearchEdit,SIGNAL(textChanged(QString)),mProxyModel,SLOT(setFilterFixedString(QString)));
 
 }
 
@@ -56,12 +60,12 @@ void JsonResponseWidget::doubleClicked(const QModelIndex &index)
     // This methods allow to send new request from endpoint clicked from view..
     // That's mean all url "http://" and relative url..
 
-    QString path = mModel->index(index.row(),1, index.parent()).data().toString();
+    QString path = mModel->index(mProxyModel->mapToSource(index).row(),1, mProxyModel->mapToSource(index).parent()).data().toString();
     QRegularExpression regExp("^(https?://)?[\da-z\.-]+");
     if (path.contains(regExp)){
 
         Request request = response().request();
-               qDebug()<<response().request().url();
+        qDebug()<<response().request().url();
 
         if (path.contains(QRegularExpression("^https?://")))
             request.setUrl(QUrl(path));
@@ -70,28 +74,11 @@ void JsonResponseWidget::doubleClicked(const QModelIndex &index)
             QUrl url;
             url.setAuthority(request.url().authority());
             url.setPath(path);
-
             request.setUrl(url);
-
-
         }
 
         emit requestTrigger(request);
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
 }
 
 
@@ -104,6 +91,10 @@ void JsonResponseWidget::keyPressEvent(QKeyEvent *event)
             mSearchEdit->setFocus();
         else
             setFocus();
+
+        //remove search when pannel is hide
+        if (mSearchEdit->isHidden())
+            mProxyModel->setFilterFixedString(QString());
     }
 
 
@@ -121,8 +112,7 @@ void JsonResponseWidget::setResponse(const Response &rep)
 void JsonResponseWidget::copy()
 {
     if (mView->selectionModel()->selectedRows().count() > 0) {
-        int row = mView->currentIndex().row();
-
+        int row = mProxyModel->mapToSource(mView->currentIndex()).row();
         QString value = mModel->index(row,1,mView->currentIndex().parent()).data().toString();
         qApp->clipboard()->setText(value);
 
