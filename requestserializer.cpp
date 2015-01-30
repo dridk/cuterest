@@ -52,6 +52,7 @@ Request RequestSerializer::fromJsonObject(const QJsonObject &obj)
     Request request;
     request.setVerb(obj.value("verb").toString());
     request.setUrl(obj.value("url").toString());
+    request.setName(obj.value("name").toString());
 
     // Unserialize parameters
     if (obj.contains("params")){
@@ -85,6 +86,7 @@ QJsonObject RequestSerializer::toJsonObject(const Request &request)
 
     obj.insert("url",request.url().toString());
     obj.insert("verb", request.verb());
+    obj.insert("name",request.name());
 
     // Serialize parameters...
     QJsonObject param;

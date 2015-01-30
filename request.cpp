@@ -13,6 +13,7 @@ Request::Request(const Request &other)
 
 setVerb(other.verb());
 setParams(other.params());
+setName(other.name());
 
 }
 
@@ -59,6 +60,16 @@ void Request::setParams(const QHash<QString, QVariant> &params)
 {
     mParams = params;
 }
+QString Request::name() const
+{
+    return mName;
+}
+
+void Request::setName(const QString &name)
+{
+    mName = name;
+}
+
 
 
 

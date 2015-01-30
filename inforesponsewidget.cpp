@@ -10,6 +10,8 @@ InfoResponseWidget::InfoResponseWidget(QWidget * widget)
     mTableWidget->setColumnCount(2);
     mTableWidget->setAlternatingRowColors(true);
 
+    mTableWidget->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+
 
 }
 

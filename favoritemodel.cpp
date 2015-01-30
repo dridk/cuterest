@@ -1,8 +1,8 @@
-#include "favoritemodel.h"api.duckduckgo.com
+#include "favoritemodel.h"
 #include <QFile>
 #include <QDebug>
 #include <QStandardPaths>
-
+#include "QtAwesome/QtAwesome.h"
 FavoriteModel::FavoriteModel(QObject * parent)
     :QStandardItemModel(parent)
 {
@@ -94,6 +94,11 @@ QString FavoriteModel::path()
     return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QDir::separator() + "favorite.json";
 }
 
+QIcon FavoriteModel::iconFromVerb(const QString &verb)
+{
+    return QtAwesome::instance()->icon("arrow-right");
+}
+
 void FavoriteModel::append(const Request &request)
 {
     QString key = request.url().host();
@@ -114,10 +119,13 @@ void FavoriteModel::append(const Request &request)
     // apppend request
 
     QStandardItem * item = new QStandardItem;
-    item->setText(QString("%1 %2").arg(request.verb()).arg(request.url().path()));
+    item->setText(request.name());
     item->setEditable(false);
     mData.insert(item, request);
+    item->setIcon(iconFromVerb(request.verb()));
     root->appendRow(item);
+
+
 
 
 

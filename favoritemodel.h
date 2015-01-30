@@ -32,6 +32,10 @@ public slots:
     QString path();
 
 
+protected:
+    QIcon iconFromVerb(const QString& verb);
+
+
 private:
 
 

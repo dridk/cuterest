@@ -19,9 +19,13 @@ public:
     void insertParam(const QString& key, const QVariant& value);
     void setParams(const  QHash<QString,QVariant>& params);
 
+    QString name() const;
+    void setName(const QString &name);
+
 private:
     QString mVerb;
     QHash<QString,QVariant> mParams;
+    QString mName;
 };
 
 #endif // REQUEST_H

@@ -1,5 +1,6 @@
 #include "searchbar.h"
 #include "QtAwesome/QtAwesome.h"
+#include <QInputDialog>
 SearchBar::SearchBar(QWidget * parent):
     QToolBar(parent)
 {
@@ -85,7 +86,11 @@ void SearchBar::sendRequest()
 
 void SearchBar::sendFavorite()
 {
-    emit favoriteTrigger(createRequest());
+    QString name = QInputDialog::getText(this,"enter name", "name");
+    Request r = createRequest();
+    r.setName(name);
+
+    emit favoriteTrigger(r);
 }
 
 void SearchBar::showRequestDialog()

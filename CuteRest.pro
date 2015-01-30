@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network webkit
+QT       += core gui network webkitwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -40,7 +40,8 @@ SOURCES += main.cpp\
     verbcombobox.cpp \
     dicteditormodel.cpp \
     inforesponsewidget.cpp \
-    treesortfilterproxymodel.cpp
+    treesortfilterproxymodel.cpp \
+    webresponsewidget.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -69,7 +70,8 @@ HEADERS  += mainwindow.h \
     verbcombobox.h \
     dicteditormodel.h \
     inforesponsewidget.h \
-    treesortfilterproxymodel.h
+    treesortfilterproxymodel.h \
+    webresponsewidget.h
 
 FORMS    += mainwindow.ui
 
