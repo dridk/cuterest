@@ -40,6 +40,8 @@ private:
 
 
     QHash<QStandardItem*, Request> mData;
+    // colors and font code icon
+    QHash<QString, QPair<QString, int> >mDecorations;
 
 
 };

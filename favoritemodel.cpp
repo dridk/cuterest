@@ -3,9 +3,17 @@
 #include <QDebug>
 #include <QStandardPaths>
 #include "QtAwesome/QtAwesome.h"
+
 FavoriteModel::FavoriteModel(QObject * parent)
     :QStandardItemModel(parent)
 {
+
+
+    // init decoration
+    mDecorations.insert("GET", qMakePair(QString("#0098ff"),0xf18e));
+    mDecorations.insert("POST", qMakePair(QString("#17CA65"),0xf190));
+    mDecorations.insert("DELETE", qMakePair(QString("#FFAA2C"),0xf014));
+    mDecorations.insert("PUT", qMakePair(QString("#CC0000"),0xf190));
 
     QDir dir;
     // make path to save
@@ -96,10 +104,17 @@ QString FavoriteModel::path()
 
 QIcon FavoriteModel::iconFromVerb(const QString &verb)
 {
-    QVariantMap params;
-    params.insert("color",QColor("#0098FF"));
+    if (!mDecorations.keys().contains(verb))
+        return QIcon();
 
-    return QtAwesome::instance()->icon(0xf18e);
+    qDebug()<<mDecorations[verb].first;
+
+    QVariantMap params;
+    params.insert("color", QColor(mDecorations[verb].first));
+
+    qDebug()<<"COLOR"<<mDecorations[verb].first;
+
+    return QtAwesome::instance()->icon(mDecorations[verb].second, params);
 }
 
 void FavoriteModel::append(const Request &request)
