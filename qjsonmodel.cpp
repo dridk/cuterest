@@ -147,10 +147,8 @@ QModelIndex QJsonModel::parent(const QModelIndex &index) const
 
 Qt::ItemFlags QJsonModel::flags(const QModelIndex &index) const
 {
-    if (index.column() == 1)
-        return Qt::ItemIsSelectable|Qt::ItemIsEditable|Qt::ItemIsEnabled;
-    else
         return Qt::ItemIsSelectable|Qt::ItemIsEnabled;
+
 
 }
 

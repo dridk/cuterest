@@ -58,7 +58,7 @@ SearchBar::~SearchBar()
 
 void SearchBar::setRequest(const Request &request)
 {
-
+    qDebug()<<"set URL"<<request.url();
     mRequest = request;
     mLineEdit->setText(mRequest.url().toString());
     mVerbCombo->setCurrentText(mRequest.verb());

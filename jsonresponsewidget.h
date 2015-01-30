@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include "qjsonmodel.h"
 #include "abstractresponsewidget.h"
+#include "request.h"
 
 class JsonResponseWidget : public AbstractResponseWidget
 {
@@ -19,9 +20,13 @@ public slots:
     void setResponse(const Response& rep);
     void copy();
 
-protected:
+protected slots:
     void createActions();
+    void doubleClicked(const QModelIndex& index);
 
+
+signals:
+    void requestTrigger(const Request& request);
 private:
     QTreeView * mView;
     QJsonModel * mModel;

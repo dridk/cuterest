@@ -11,6 +11,7 @@ public:
     ~AbstractResponseWidget();
 
     void setWidget(QWidget * widget);
+    const Response &response() const;
 
 public slots:
     virtual void setResponse(const Response& rep) = 0;

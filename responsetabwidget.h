@@ -15,6 +15,9 @@ public:
 public slots:
     void setResponse(const Response& rep);
 
+signals:
+    void requestTrigger(const Request& request);
+
 
 private:
     QList<AbstractResponseWidget*> mList;

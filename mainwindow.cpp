@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mManager,SIGNAL(received(Response)),mHistoryDock,SLOT(append(Response)));
     connect(mFavoriteDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));
     connect(mHistoryDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));
+    connect(mResponseWidget,SIGNAL(requestTrigger(Request)),mSearchBar,SLOT(setRequest(Request)));
 
     connect(ui->actionExport,SIGNAL(triggered()),this,SLOT(exportFavorite()));
     connect(ui->actionImport,SIGNAL(triggered()),this,SLOT(importFavorite()));

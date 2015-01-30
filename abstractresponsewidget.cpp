@@ -23,3 +23,9 @@ void AbstractResponseWidget::setWidget(QWidget *widget)
 
 }
 
+const Response &AbstractResponseWidget::response() const
+{
+    return mRep;
+
+}
+

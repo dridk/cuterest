@@ -6,9 +6,17 @@ ResponseTabWidget::ResponseTabWidget(QWidget * parent)
     :QTabWidget(parent)
 {
 
-    addResponseWidget(new TextResponseWidget());
-    addResponseWidget(new JsonResponseWidget());
-    addResponseWidget(new InfoResponseWidget());
+    TextResponseWidget* textWidget = new TextResponseWidget();
+    JsonResponseWidget* jsonWidget = new JsonResponseWidget();
+    InfoResponseWidget *infoWidget = new InfoResponseWidget();
+
+
+    addResponseWidget(textWidget);
+    addResponseWidget(jsonWidget);
+    addResponseWidget(infoWidget);
+
+    connect(jsonWidget,SIGNAL(requestTrigger(Request)),this,SIGNAL(requestTrigger(Request)));
+
 
 
 }
