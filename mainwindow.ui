@@ -53,6 +53,9 @@
    <property name="text">
     <string>set style</string>
    </property>
+   <property name="shortcut">
+    <string>F12</string>
+   </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

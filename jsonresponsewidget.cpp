@@ -16,6 +16,9 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
 
     mainLayout->setContentsMargins(0,0,0,0);
 
+    //For stylesheet
+    mView->setObjectName("Json");
+    mView->header()->hide();
     mView->setModel(mModel);
     mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 

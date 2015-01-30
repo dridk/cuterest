@@ -2,7 +2,7 @@
 #include <QHeaderView>
 #include <QStandardPaths>
 FavoriteDockWidget::FavoriteDockWidget(QWidget * parent)
-    :QDockWidget(parent)
+    :QDockWidget(parent, Qt::Window | Qt::CustomizeWindowHint )
 {
 
     mModel = new FavoriteModel;
@@ -11,8 +11,13 @@ FavoriteDockWidget::FavoriteDockWidget(QWidget * parent)
     setWidget(mView);
 
     mView->header()->hide();
+    //For stylesheet
+    mView->setObjectName("Favorite");
 
     setFeatures(QDockWidget::NoDockWidgetFeatures);
+
+    //hide titleBar
+    setTitleBarWidget(new QWidget());
 
     connect(mView,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(doubleClickedReceived(QModelIndex)));
 

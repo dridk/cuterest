@@ -21,6 +21,7 @@ SearchBar::SearchBar(QWidget * parent):
 
     mMainWidget->setLayout(wLayout);
     wLayout->setContentsMargins(0,0,0,0);
+    wLayout->setSpacing(0);
 
     addWidget(mMainWidget);
 
@@ -29,9 +30,10 @@ SearchBar::SearchBar(QWidget * parent):
 
 
     mVerbCombo->setMinimumWidth(80);
-    mToolButton->setIcon(QtAwesome::instance()->icon("coffee"));
-    mFavButton->setIcon((QtAwesome::instance()->icon("coffee")));
+    mToolButton->setIcon(QtAwesome::instance()->icon("cogs"));
+    mFavButton->setIcon((QtAwesome::instance()->icon("bookmark")));
 
+    layout()->setContentsMargins(0,0,0,0);
 
     //temp test
 

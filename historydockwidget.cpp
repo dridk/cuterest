@@ -10,7 +10,11 @@ HistoryDockWidget::HistoryDockWidget(QWidget * parent)
 
     setFeatures(QDockWidget::NoDockWidgetFeatures);
 
+    //For stylesheet
+    mView->setObjectName("History");
 
+    //hide titleBar
+    setTitleBarWidget(new QWidget());
 
     mView->verticalHeader()->setDefaultSectionSize(26);
     mView->horizontalHeader()->hide();

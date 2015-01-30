@@ -36,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
     resize(1024,640);
 
 
-
+    connect(ui->actionSet_style,SIGNAL(triggered()),this,SLOT(setStyle()));
 
 
 
@@ -65,7 +65,7 @@ void MainWindow::importFavorite()
 void MainWindow::setStyle()
 {
 
-    QFile styleFile( ":/style.qss" );
+    QFile styleFile( "/home/sacha/darkdesign/style.qss" );
     styleFile.open( QFile::ReadOnly );
 
     QString style( styleFile.readAll() );
