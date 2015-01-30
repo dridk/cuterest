@@ -66,7 +66,7 @@ void QJsonTreeItem::setKey(const QString &key)
     mKey = key;
 }
 
-void QJsonTreeItem::setValue(const QString &value)
+void QJsonTreeItem::setValue(const QVariant &value)
 {
     mValue = value;
 }
@@ -81,7 +81,7 @@ QString QJsonTreeItem::key() const
     return mKey;
 }
 
-QString QJsonTreeItem::value() const
+QVariant QJsonTreeItem::value() const
 {
     return mValue;
 }
@@ -128,7 +128,7 @@ QJsonTreeItem* QJsonTreeItem::load(const QJsonValue& value, QJsonTreeItem* paren
     }
     else
     {
-        rootItem->setValue(value.toVariant().toString());
+        rootItem->setValue(value.toVariant());
         rootItem->setType(value.type());
     }
 

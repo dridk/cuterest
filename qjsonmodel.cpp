@@ -90,9 +90,37 @@ QVariant QJsonModel::data(const QModelIndex &index, int role) const
             return QString("%1").arg(item->key());
 
         if (index.column() == 1)
-            return QString("%1").arg(item->value());
+            return item->value();
     }
 
+
+    if (role == Qt::FontRole) {
+
+        QFont font;
+        if (index.column() == 0)
+        {
+            font.setBold(true);
+            return font;
+        }
+
+        return font;
+
+    }
+
+    if (role == Qt::ForegroundRole) {
+        if (index.column() == 1) {
+
+            if (index.data().type() == QVariant::String)
+                return QColor("#5293D8");
+
+            if (index.data().type() == QVariant::Bool)
+                return QColor("#CC0000");
+
+            return QColor("#FFAA2C");
+
+
+        }
+    }
 
 
     return QVariant();
@@ -147,7 +175,7 @@ QModelIndex QJsonModel::parent(const QModelIndex &index) const
 
 Qt::ItemFlags QJsonModel::flags(const QModelIndex &index) const
 {
-        return Qt::ItemIsSelectable|Qt::ItemIsEnabled;
+    return Qt::ItemIsSelectable|Qt::ItemIsEnabled;
 
 
 }

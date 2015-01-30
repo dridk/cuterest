@@ -15,10 +15,10 @@ public:
     int childCount() const;
     int row() const;
     void setKey(const QString& key);
-    void setValue(const QString& value);
+    void setValue(const QVariant& value);
     void setType(const QJsonValue::Type& type);
     QString key() const;
-    QString value() const;
+    QVariant value() const;
     QJsonValue::Type type() const;
 
 
@@ -29,7 +29,7 @@ protected:
 
 private:
     QString mKey;
-    QString mValue;
+    QVariant mValue;
     QJsonValue::Type mType;
 
     QList<QJsonTreeItem*> mChilds;
