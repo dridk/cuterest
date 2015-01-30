@@ -2,6 +2,7 @@
 #define REPONSE_H
 #include <QtCore>
 #include <QByteArray>
+#include <QNetworkReply>
 #include "request.h"
 class Response
 {
@@ -23,8 +24,13 @@ public:
     const QDateTime &time() const;
     int size() const;
 
+    const QList<QNetworkReply::RawHeaderPair> &rawHeaderPairs() const;
+    void setRawHeaderPairs(const QList<QNetworkReply::RawHeaderPair> & pairs);
+
+
 
 private:
+    QList<QNetworkReply::RawHeaderPair> mRawHeaderPairs;
     QByteArray mBody;
     qint64	mElapsed;
     Request mRequest;

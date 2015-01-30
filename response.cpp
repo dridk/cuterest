@@ -62,3 +62,14 @@ int Response::size() const
     return mSize;
 }
 
+const QList<QNetworkReply::RawHeaderPair> &Response::rawHeaderPairs() const
+{
+    return mRawHeaderPairs;
+}
+
+void Response::setRawHeaderPairs(const QList<QNetworkReply::RawHeaderPair> &pairs)
+{
+    mRawHeaderPairs = pairs;
+
+}
+

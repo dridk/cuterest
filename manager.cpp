@@ -126,6 +126,7 @@ Response Manager::createResponse(QNetworkReply *reply)
     rep.setBody(reply->readAll());
     rep.setElapsed(mTimer.elapsed());
     rep.setStatusCode(reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt());
+    rep.setRawHeaderPairs(reply->rawHeaderPairs());
 
     if (mRequests.contains(reply)) {
         rep.setRequest(mRequests[reply]);
