@@ -8,6 +8,7 @@
 
 class JsonResponseWidget : public AbstractResponseWidget
 {
+    Q_OBJECT
 public:
     JsonResponseWidget(QWidget * parent = 0);
     ~JsonResponseWidget();
@@ -16,6 +17,10 @@ public:
 
 public slots:
     void setResponse(const Response& rep);
+    void copy();
+
+protected:
+    void createActions();
 
 private:
     QTreeView * mView;

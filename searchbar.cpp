@@ -33,7 +33,7 @@ SearchBar::SearchBar(QWidget * parent):
     mToolButton->setIcon(QtAwesome::instance()->icon("cogs"));
     mFavButton->setIcon((QtAwesome::instance()->icon("bookmark")));
 
-    layout()->setContentsMargins(0,0,0,0);
+//    layout()->setContentsMargins(0,0,0,0);
 
     //temp test
 
