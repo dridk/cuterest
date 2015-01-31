@@ -7,6 +7,7 @@
 #include "qjsonmodel.h"
 #include "abstractresponsewidget.h"
 #include "request.h"
+#include "findbarwidget.h"
 
 class JsonResponseWidget : public AbstractResponseWidget
 {
@@ -32,7 +33,7 @@ private:
     QTreeView * mView;
     QJsonModel * mModel;
     TreeSortFilterProxyModel * mProxyModel;
-    QLineEdit * mSearchEdit;
+    FindBarWidget * mSearchEdit;
 };
 
 #endif // JSONRESPONSEWIDGET_H

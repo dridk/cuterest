@@ -9,7 +9,7 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
 
     mView = new QTreeView;
     mModel = new QJsonModel;
-    mSearchEdit = new QLineEdit;
+    mSearchEdit = new FindBarWidget;
     mProxyModel = new TreeSortFilterProxyModel;
 
     mProxyModel->setSourceModel(mModel);

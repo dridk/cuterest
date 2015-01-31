@@ -44,7 +44,8 @@ SOURCES += main.cpp\
     webresponsewidget.cpp \
     settingsdialog.cpp \
     abstractsettingswidget.cpp \
-    proxysettingswidget.cpp
+    proxysettingswidget.cpp \
+    findbarwidget.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -77,7 +78,8 @@ HEADERS  += mainwindow.h \
     webresponsewidget.h \
     settingsdialog.h \
     abstractsettingswidget.h \
-    proxysettingswidget.h
+    proxysettingswidget.h \
+    findbarwidget.h
 
 FORMS    += mainwindow.ui
 
