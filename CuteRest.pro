@@ -41,7 +41,10 @@ SOURCES += main.cpp\
     dicteditormodel.cpp \
     inforesponsewidget.cpp \
     treesortfilterproxymodel.cpp \
-    webresponsewidget.cpp
+    webresponsewidget.cpp \
+    settingsdialog.cpp \
+    abstractsettingswidget.cpp \
+    proxysettingswidget.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -71,7 +74,10 @@ HEADERS  += mainwindow.h \
     dicteditormodel.h \
     inforesponsewidget.h \
     treesortfilterproxymodel.h \
-    webresponsewidget.h
+    webresponsewidget.h \
+    settingsdialog.h \
+    abstractsettingswidget.h \
+    proxysettingswidget.h
 
 FORMS    += mainwindow.ui
 

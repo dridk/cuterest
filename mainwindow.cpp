@@ -33,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->actionExport,SIGNAL(triggered()),this,SLOT(exportFavorite()));
     connect(ui->actionImport,SIGNAL(triggered()),this,SLOT(importFavorite()));
+    connect(ui->actionSettings,SIGNAL(triggered()),this,SLOT(showSettings()));
 
     resize(1024,640);
 
@@ -78,4 +79,10 @@ void MainWindow::setStyle()
 
 
 
+}
+
+void MainWindow::showSettings()
+{
+    SettingsDialog dialog(this);
+    dialog.exec();
 }

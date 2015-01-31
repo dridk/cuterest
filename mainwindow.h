@@ -8,6 +8,7 @@
 #include "historydockwidget.h"
 #include "statusbar.h"
 #include "searchbar.h"
+#include "settingsdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,8 +25,8 @@ public:
 public slots:
     void exportFavorite();
     void importFavorite();
-
     void setStyle();
+    void showSettings();
 
 private:
     Ui::MainWindow *ui;

@@ -34,6 +34,8 @@
     <property name="title">
      <string>Edit</string>
     </property>
+    <addaction name="actionSettings"/>
+    <addaction name="separator"/>
     <addaction name="actionSet_style"/>
    </widget>
    <addaction name="menuFile"/>
@@ -55,6 +57,11 @@
    </property>
    <property name="shortcut">
     <string>F12</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings ...</string>
    </property>
   </action>
  </widget>

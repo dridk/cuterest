@@ -605,7 +605,7 @@ QtAwesome *QtAwesome::instance()
         mInstance->initFontAwesome();
 
 
-        mInstance->setDefaultOption( "color", QColor(200,200,200) );
+        mInstance->setDefaultOption( "color", QColor(0,0,0) );
         mInstance->setDefaultOption( "color-disabled", QColor(70,70,70,60));
         mInstance->setDefaultOption( "color-active", QColor(250,250,250));
         mInstance->setDefaultOption( "color-selected", QColor(250,250,250));
