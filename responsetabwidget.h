@@ -3,6 +3,11 @@
 #include <QTabWidget>
 #include "abstractresponsewidget.h"
 #include "response.h"
+#include "responsetabwidget.h"
+#include "textresponsewidget.h"
+#include "jsonresponsewidget.h"
+#include "inforesponsewidget.h"
+#include "webresponsewidget.h"
 class ResponseTabWidget : public QTabWidget
 {
     Q_OBJECT
@@ -18,9 +23,17 @@ public slots:
 signals:
     void requestTrigger(const Request& request);
 
+protected:
+    AbstractResponseWidget *widgetFromType(const QByteArray& array);
+
 
 private:
     QList<AbstractResponseWidget*> mList;
+
+    TextResponseWidget* mTextWidget ;
+    JsonResponseWidget* mJsonWidget;
+    InfoResponseWidget* mInfoWidget ;
+    WebResponseWidget*  mWebWidget ;
 
 };
 

@@ -15,6 +15,7 @@ public slots:
 
 
 
+
 private:
     QTextEdit * mEdit;
     JsonSyntaxHighlighter * mHighlighter;

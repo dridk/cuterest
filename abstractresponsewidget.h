@@ -17,6 +17,7 @@ public slots:
     virtual void setResponse(const Response& rep) = 0;
 
 
+
 private:
     Response mRep;
 

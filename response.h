@@ -27,7 +27,7 @@ public:
     const QList<QNetworkReply::RawHeaderPair> &rawHeaderPairs() const;
     void setRawHeaderPairs(const QList<QNetworkReply::RawHeaderPair> & pairs);
 
-
+    QByteArray	rawHeader(const QByteArray & headerName) const;
 
 private:
     QList<QNetworkReply::RawHeaderPair> mRawHeaderPairs;
@@ -37,6 +37,7 @@ private:
     int mStatusCode;
     QDateTime mTime;
     int mSize;
+
 
 
 

@@ -61,11 +61,11 @@ void JsonResponseWidget::doubleClicked(const QModelIndex &index)
     // That's mean all url "http://" and relative url..
 
     QString path = mModel->index(mProxyModel->mapToSource(index).row(),1, mProxyModel->mapToSource(index).parent()).data().toString();
-    QRegularExpression regExp("^(https?://)?[\da-z\.-]+");
+    QRegularExpression regExp("^(https?://)?[\da-z\.-]+/");
     if (path.contains(regExp)){
 
         Request request = response().request();
-        qDebug()<<response().request().url();
+        qDebug()<<response().request().verb();
 
         if (path.contains(QRegularExpression("^https?://")))
             request.setUrl(QUrl(path));
@@ -87,15 +87,18 @@ void JsonResponseWidget::keyPressEvent(QKeyEvent *event)
     if (event->matches(QKeySequence::Find)){
         mSearchEdit->setVisible(!mSearchEdit->isVisible());
 
-        if (mSearchEdit->isVisible())
+        if (mSearchEdit->isVisible()){
             mSearchEdit->setFocus();
-        else
-            setFocus();
+            mView->expandAll();
 
-        //remove search when pannel is hide
-        if (mSearchEdit->isHidden())
+        }
+        else{
+            setFocus();
             mProxyModel->setFilterFixedString(QString());
-    }
+            mView->collapseAll();
+        }
+}
+
 
 
 
@@ -121,4 +124,6 @@ void JsonResponseWidget::copy()
 
 
 }
+
+
 

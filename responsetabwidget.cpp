@@ -1,23 +1,19 @@
 #include "responsetabwidget.h"
-#include "textresponsewidget.h"
-#include "jsonresponsewidget.h"
-#include "inforesponsewidget.h"
-#include "webresponsewidget.h"
 ResponseTabWidget::ResponseTabWidget(QWidget * parent)
     :QTabWidget(parent)
 {
 
-    TextResponseWidget* textWidget = new TextResponseWidget();
-    JsonResponseWidget* jsonWidget = new JsonResponseWidget();
-    InfoResponseWidget *infoWidget = new InfoResponseWidget();
-    WebResponseWidget * webWidget  = new WebResponseWidget();
+    mTextWidget = new TextResponseWidget();
+    mJsonWidget = new JsonResponseWidget();
+    mInfoWidget = new InfoResponseWidget();
+    mWebWidget  = new WebResponseWidget();
 
-    addResponseWidget(textWidget);
-    addResponseWidget(jsonWidget);
-    addResponseWidget(infoWidget);
-    addResponseWidget(webWidget);
+    addResponseWidget(mTextWidget);
+    addResponseWidget(mJsonWidget);
+    addResponseWidget(mInfoWidget);
+    addResponseWidget(mWebWidget);
 
-    connect(jsonWidget,SIGNAL(requestTrigger(Request)),this,SIGNAL(requestTrigger(Request)));
+    connect(mJsonWidget,SIGNAL(requestTrigger(Request)),this,SIGNAL(requestTrigger(Request)));
 
 
 
@@ -43,12 +39,29 @@ void ResponseTabWidget::addResponseWidget(AbstractResponseWidget *widget)
 void ResponseTabWidget::setResponse(const Response &rep)
 {
 
-
     foreach (AbstractResponseWidget * w, mList) {
-
         w->setResponse(rep);
 
     }
+
+    setCurrentWidget(widgetFromType(rep.rawHeader("Content-Type")));
+
+
+
+}
+
+AbstractResponseWidget *ResponseTabWidget::widgetFromType(const QByteArray &array)
+{
+    AbstractResponseWidget * w = mTextWidget;
+
+    if (array.contains("html"))
+        w = mWebWidget;
+    if (array.contains("json"))
+        w = mJsonWidget;
+
+   return w;
+
+
 
 
 

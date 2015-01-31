@@ -107,12 +107,10 @@ QIcon FavoriteModel::iconFromVerb(const QString &verb)
     if (!mDecorations.keys().contains(verb))
         return QIcon();
 
-    qDebug()<<mDecorations[verb].first;
 
     QVariantMap params;
     params.insert("color", QColor(mDecorations[verb].first));
 
-    qDebug()<<"COLOR"<<mDecorations[verb].first;
 
     return QtAwesome::instance()->icon(mDecorations[verb].second, params);
 }

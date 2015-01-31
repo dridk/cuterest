@@ -17,8 +17,7 @@
 
 **********************************************/
 
-#include "qjsonmodel.h"
-#include <QFile>
+#include "qjsonmodel.h" #include <QFile>
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>

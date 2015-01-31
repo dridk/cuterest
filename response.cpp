@@ -73,3 +73,17 @@ void Response::setRawHeaderPairs(const QList<QNetworkReply::RawHeaderPair> &pair
 
 }
 
+QByteArray Response::rawHeader(const QByteArray &headerName) const
+{
+
+    foreach (QNetworkReply::RawHeaderPair pair, rawHeaderPairs()){
+        if (pair.first == headerName)
+            return pair.second;
+    }
+
+    return QByteArray();
+
+
+
+}
+
