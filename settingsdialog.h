@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QTabWidget>
+#include <QDialogButtonBox>
+#include <QNetworkProxy>
 #include "abstractsettingswidget.h"
 class SettingsDialog : public QDialog
 {
@@ -12,10 +14,13 @@ public:
     ~SettingsDialog();
 
     void addSettingsWidget(AbstractSettingsWidget* widget);
-
+public slots:
+    void save();
+    void load();
 private:
     QList<AbstractSettingsWidget*> mWidgets;
     QTabWidget * mTabWidget;
+    QDialogButtonBox * mButtonBox;
 };
 
 #endif // SETTINGSDIALOG_H

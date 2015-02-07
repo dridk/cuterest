@@ -27,7 +27,7 @@
 QJsonModel::QJsonModel(QObject *parent) :
     QAbstractItemModel(parent)
 {
-    mRootItem = new QJsonTreeItem;
+    mRootItem = NULL;
     mHeaders.append("key");
     mHeaders.append("value");
 
@@ -141,6 +141,9 @@ QVariant QJsonModel::headerData(int section, Qt::Orientation orientation, int ro
 
 QModelIndex QJsonModel::index(int row, int column, const QModelIndex &parent) const
 {
+    if (!mRootItem)
+        return QModelIndex();
+
     if (!hasIndex(row, column, parent))
         return QModelIndex();
 
@@ -160,6 +163,9 @@ QModelIndex QJsonModel::index(int row, int column, const QModelIndex &parent) co
 
 QModelIndex QJsonModel::parent(const QModelIndex &index) const
 {
+    if (!mRootItem)
+        return QModelIndex();
+
     if (!index.isValid())
         return QModelIndex();
 
@@ -181,6 +187,9 @@ Qt::ItemFlags QJsonModel::flags(const QModelIndex &index) const
 
 int QJsonModel::rowCount(const QModelIndex &parent) const
 {
+    if (!mRootItem)
+        return 0;
+
     QJsonTreeItem *parentItem;
     if (parent.column() > 0)
         return 0;
@@ -196,6 +205,7 @@ int QJsonModel::rowCount(const QModelIndex &parent) const
 int QJsonModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
+
     return 2;
 }
 
@@ -203,3 +213,11 @@ void QJsonModel::setIcon(const QJsonValue::Type &type, const QIcon &icon)
 {
     mTypeIcons.insert(type,icon);
 }
+
+void QJsonModel::clear()
+{
+    beginResetModel();
+    mRootItem = NULL;
+    endResetModel();
+}
+

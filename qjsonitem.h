@@ -20,6 +20,7 @@ public:
     QString key() const;
     QVariant value() const;
     QJsonValue::Type type() const;
+    void clear();
 
 
     static QJsonTreeItem* load(const QJsonValue& value, QJsonTreeItem * parent = 0);

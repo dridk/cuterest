@@ -106,7 +106,7 @@ void JsonResponseWidget::keyPressEvent(QKeyEvent *event)
 
 void JsonResponseWidget::setResponse(const Response &rep)
 {
-
+    mModel->clear();
     mModel->loadJson(rep.body());
 
 

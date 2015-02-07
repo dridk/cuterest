@@ -4,15 +4,26 @@
 SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
 {
     mTabWidget = new QTabWidget;
+    mButtonBox = new QDialogButtonBox(QDialogButtonBox::Save|
+                                      QDialogButtonBox::Reset|
+                                      QDialogButtonBox::Cancel);
 
     QVBoxLayout * layout = new QVBoxLayout;
     layout->addWidget(mTabWidget);
+    layout->addWidget(mButtonBox);
 
     setLayout(layout);
+
+
+
+
 
     resize(600,400);
 
     addSettingsWidget(new ProxySettingsWidget());
+
+    connect(mButtonBox,SIGNAL(accepted()),this,SLOT(save()));
+    connect(mButtonBox,SIGNAL(rejected()),this,SLOT(reject()));
 }
 
 SettingsDialog::~SettingsDialog()
@@ -27,5 +38,17 @@ void SettingsDialog::addSettingsWidget(AbstractSettingsWidget *widget)
     mWidgets.append(widget);
 
 
+}
+
+void SettingsDialog::save()
+{
+    foreach( AbstractSettingsWidget * w, mWidgets)
+        w->save();
+}
+
+void SettingsDialog::load()
+{
+    foreach( AbstractSettingsWidget * w, mWidgets)
+        w->load();
 }
 

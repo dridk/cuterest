@@ -22,7 +22,7 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     void setIcon(const QJsonValue::Type& type, const QIcon& icon);
-
+    void clear();
 
 
 private:

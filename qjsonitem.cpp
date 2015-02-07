@@ -91,6 +91,11 @@ QJsonValue::Type QJsonTreeItem::type() const
     return mType;
 }
 
+void QJsonTreeItem::clear()
+{
+    qDeleteAll(mChilds);
+}
+
 QJsonTreeItem* QJsonTreeItem::load(const QJsonValue& value, QJsonTreeItem* parent)
 {
 
