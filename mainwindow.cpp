@@ -67,7 +67,7 @@ void MainWindow::importFavorite()
 void MainWindow::setStyle()
 {
 
-    QFile styleFile( "/home/sacha/darkdesign/style.qss" );
+    QFile styleFile( ":style.qss" );
     styleFile.open( QFile::ReadOnly );
 
     QString style( styleFile.readAll() );
