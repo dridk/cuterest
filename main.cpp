@@ -4,7 +4,7 @@
 #include <QFontDatabase>
 #include <QDebug>
 #include "QtAwesome/QtAwesome.h"
-
+#include <QStyleFactory>
 int main(int argc, char *argv[])
 {
 
@@ -15,8 +15,6 @@ int main(int argc, char *argv[])
     int i = QFontDatabase::addApplicationFont(":/fonts/Menlo-Regular.ttf");
 
     qDebug()<<QFontDatabase::applicationFontFamilies(i);
-
-
 
 
     MainWindow w;

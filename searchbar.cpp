@@ -8,7 +8,7 @@ SearchBar::SearchBar(QWidget * parent):
     mVerbCombo = new VerbComboBox;
     mToolButton = new QToolButton;
     mFavButton= new QToolButton;
-    mSearchButton = new QPushButton(tr("Search"));
+    mSearchButton = new QPushButton(tr("Send"));
     mMainWidget = new QWidget;
 
     QHBoxLayout * wLayout = new QHBoxLayout;
