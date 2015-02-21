@@ -11,12 +11,12 @@
 #include "request.h"
 #include "findbarwidget.h"
 
-class TreeResponseWidget : public AbstractResponseWidget
+class JsonResponseWidget : public AbstractResponseWidget
 {
     Q_OBJECT
 public:
-    TreeResponseWidget(QWidget * parent = 0);
-    ~TreeResponseWidget();
+    JsonResponseWidget(QWidget * parent = 0);
+    ~JsonResponseWidget();
 
     void keyPressEvent(QKeyEvent *event);
 

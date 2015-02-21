@@ -4,7 +4,7 @@ ResponseTabWidget::ResponseTabWidget(QWidget * parent)
 {
 
     mTextWidget = new TextResponseWidget();
-    mJsonWidget = new TreeResponseWidget();
+    mJsonWidget = new JsonResponseWidget();
     mInfoWidget = new InfoResponseWidget();
     mWebWidget  = new WebResponseWidget();
     mDomWidget  = new XmlResponseWidget();

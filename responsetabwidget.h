@@ -5,7 +5,7 @@
 #include "response.h"
 #include "responsetabwidget.h"
 #include "textresponsewidget.h"
-#include "treeresponsewidget.h"
+#include "jsonresponsewidget.h"
 #include "inforesponsewidget.h"
 #include "webresponsewidget.h"
 #include "xmlresponsewidget.h"
@@ -32,7 +32,7 @@ private:
     QList<AbstractResponseWidget*> mList;
 
     TextResponseWidget* mTextWidget ;
-    TreeResponseWidget* mJsonWidget;
+    JsonResponseWidget* mJsonWidget;
     InfoResponseWidget* mInfoWidget ;
     WebResponseWidget*  mWebWidget ;
     XmlResponseWidget * mDomWidget;

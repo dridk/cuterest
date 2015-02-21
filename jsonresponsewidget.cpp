@@ -1,8 +1,8 @@
-#include "treeresponsewidget.h"
+#include "jsonresponsewidget.h"
 #include <QClipboard>
 #include <QRegularExpression>
 #include <QApplication>
-TreeResponseWidget::TreeResponseWidget(QWidget * parent)
+JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     :AbstractResponseWidget(parent)
 {
     setWindowTitle("Tree");
@@ -47,11 +47,11 @@ TreeResponseWidget::TreeResponseWidget(QWidget * parent)
 
 }
 
-TreeResponseWidget::~TreeResponseWidget()
+JsonResponseWidget::~JsonResponseWidget()
 {
 
 }
-void TreeResponseWidget::createActions()
+void JsonResponseWidget::createActions()
 {
     setContextMenuPolicy(Qt::ActionsContextMenu);
     QAction* copyAction = new QAction(tr("Copy"),this);
@@ -60,7 +60,7 @@ void TreeResponseWidget::createActions()
 
 }
 
-void TreeResponseWidget::doubleClicked(const QModelIndex &index)
+void JsonResponseWidget::doubleClicked(const QModelIndex &index)
 {
     // This methods allow to send new request from endpoint clicked from view..
     // That's mean all url "http://" and relative url..
@@ -87,7 +87,7 @@ void TreeResponseWidget::doubleClicked(const QModelIndex &index)
 }
 
 
-void TreeResponseWidget::keyPressEvent(QKeyEvent *event)
+void JsonResponseWidget::keyPressEvent(QKeyEvent *event)
 {
     if (event->matches(QKeySequence::Find)){
         mSearchEdit->setVisible(!mSearchEdit->isVisible());
@@ -109,14 +109,14 @@ void TreeResponseWidget::keyPressEvent(QKeyEvent *event)
 
 }
 
-void TreeResponseWidget::setResponse(const Response &rep)
+void JsonResponseWidget::setResponse(const Response &rep)
 {
         mJsonModel->clear();
         mJsonModel->loadJson(rep.body());
         mView->setModel(mJsonModel);
 }
 
-void TreeResponseWidget::copy()
+void JsonResponseWidget::copy()
 {
     if (mView->selectionModel()->selectedRows().count() > 0) {
         int row = mProxyModel->mapToSource(mView->currentIndex()).row();

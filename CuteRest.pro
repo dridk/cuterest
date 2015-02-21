@@ -46,11 +46,11 @@ SOURCES += main.cpp\
     findbarwidget.cpp \
     domitem.cpp \
     dommodel.cpp \
-    treeresponsewidget.cpp \
     xmlresponsewidget.cpp \
     controlbar.cpp \
     consoledockwidget.cpp \
-    favoritetreeview.cpp
+    favoritetreeview.cpp \
+    jsonresponsewidget.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -85,11 +85,11 @@ HEADERS  += mainwindow.h \
     findbarwidget.h \
     domitem.h \
     dommodel.h \
-    treeresponsewidget.h \
     xmlresponsewidget.h \
     controlbar.h \
     consoledockwidget.h \
-    favoritetreeview.h
+    favoritetreeview.h \
+    jsonresponsewidget.h
 
 FORMS    += mainwindow.ui
 
