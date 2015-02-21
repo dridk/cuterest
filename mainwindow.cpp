@@ -102,6 +102,6 @@ void MainWindow::setStyle()
 
 void MainWindow::showSettings()
 {
-    SettingsDialog dialog(this);
+    SettingsDialog dialog(mManager,this);
     dialog.exec();
 }

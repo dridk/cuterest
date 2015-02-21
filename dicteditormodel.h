@@ -2,6 +2,7 @@
 #define DICTEDITORMODEL_H
 #include <QAbstractTableModel>
 #include <QtCore>
+
 class DictEditorModel : public QAbstractTableModel
 {
     Q_OBJECT

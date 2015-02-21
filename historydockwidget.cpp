@@ -14,7 +14,9 @@ HistoryDockWidget::HistoryDockWidget(QWidget * parent)
     mView->setObjectName("History");
 
     //hide titleBar
-    setTitleBarWidget(new QWidget());
+//    setTitleBarWidget(new QWidget());
+
+    setWindowTitle("History");
 
     mView->verticalHeader()->setDefaultSectionSize(26);
     mView->horizontalHeader()->hide();

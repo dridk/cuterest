@@ -1,8 +1,10 @@
 #include "settingsdialog.h"
 #include <QVBoxLayout>
 #include "proxysettingswidget.h"
-SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
+SettingsDialog::SettingsDialog(Manager   * manager,QWidget *parent)
+    : QDialog(parent)
 {
+    mManager = manager;
     mTabWidget = new QTabWidget;
     mButtonBox = new QDialogButtonBox(QDialogButtonBox::Save|
                                       QDialogButtonBox::Reset|

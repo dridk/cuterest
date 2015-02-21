@@ -1,5 +1,6 @@
 #include "dicteditormodel.h"
 #include <QDebug>
+
 DictEditorModel::DictEditorModel(QObject * parent)
     :QAbstractTableModel(parent)
 {
@@ -23,6 +24,8 @@ int DictEditorModel::columnCount(const QModelIndex &parent) const
 
 QVariant DictEditorModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    if ( (section < 0)  || (section > columnCount()))
+        return QVariant();
 
     if (role == Qt::DisplayRole)
     {
@@ -30,6 +33,7 @@ QVariant DictEditorModel::headerData(int section, Qt::Orientation orientation, i
            return "test";
         }
     }
+    return QVariant();
 }
 
 QVariant DictEditorModel::data(const QModelIndex &index, int role) const

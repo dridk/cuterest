@@ -57,7 +57,7 @@ DictEditorWidget::DictEditorWidget(QWidget *parent)
 
 DictEditorWidget::~DictEditorWidget()
 {
-    delete mModel;
+
 }
 
 void DictEditorWidget::setCompleter(const QStringList &keys)
