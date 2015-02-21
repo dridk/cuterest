@@ -4,12 +4,14 @@ ResponseTabWidget::ResponseTabWidget(QWidget * parent)
 {
 
     mTextWidget = new TextResponseWidget();
-    mJsonWidget = new JsonResponseWidget();
+    mJsonWidget = new TreeResponseWidget();
     mInfoWidget = new InfoResponseWidget();
     mWebWidget  = new WebResponseWidget();
+    mDomWidget  = new XmlResponseWidget();
 
     addResponseWidget(mTextWidget);
     addResponseWidget(mJsonWidget);
+    addResponseWidget(mDomWidget);
     addResponseWidget(mInfoWidget);
     addResponseWidget(mWebWidget);
 
@@ -59,7 +61,7 @@ AbstractResponseWidget *ResponseTabWidget::widgetFromType(const QByteArray &arra
     if (array.contains("json"))
         w = mJsonWidget;
 
-   return w;
+    return w;
 
 
 

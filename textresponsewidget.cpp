@@ -29,7 +29,7 @@ TextResponseWidget::~TextResponseWidget()
 void TextResponseWidget::setResponse(const Response &rep)
 {
     mEdit->clear();
-    mEdit->setText(rep.body());
+    mEdit->setPlainText(rep.body());
 
 
 }

@@ -5,9 +5,10 @@
 #include "response.h"
 #include "responsetabwidget.h"
 #include "textresponsewidget.h"
-#include "jsonresponsewidget.h"
+#include "treeresponsewidget.h"
 #include "inforesponsewidget.h"
 #include "webresponsewidget.h"
+#include "xmlresponsewidget.h"
 class ResponseTabWidget : public QTabWidget
 {
     Q_OBJECT
@@ -31,9 +32,10 @@ private:
     QList<AbstractResponseWidget*> mList;
 
     TextResponseWidget* mTextWidget ;
-    JsonResponseWidget* mJsonWidget;
+    TreeResponseWidget* mJsonWidget;
     InfoResponseWidget* mInfoWidget ;
     WebResponseWidget*  mWebWidget ;
+    XmlResponseWidget * mDomWidget;
 
 };
 

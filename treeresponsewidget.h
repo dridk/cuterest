@@ -3,18 +3,20 @@
 
 #include <QtWidgets>
 #include <QKeyEvent>
+#include <QDomDocument>
 #include "treesortfilterproxymodel.h"
 #include "qjsonmodel.h"
+#include "dommodel.h"
 #include "abstractresponsewidget.h"
 #include "request.h"
 #include "findbarwidget.h"
 
-class JsonResponseWidget : public AbstractResponseWidget
+class TreeResponseWidget : public AbstractResponseWidget
 {
     Q_OBJECT
 public:
-    JsonResponseWidget(QWidget * parent = 0);
-    ~JsonResponseWidget();
+    TreeResponseWidget(QWidget * parent = 0);
+    ~TreeResponseWidget();
 
     void keyPressEvent(QKeyEvent *event);
 
@@ -31,9 +33,12 @@ signals:
     void requestTrigger(const Request& request);
 private:
     QTreeView * mView;
-    QJsonModel * mModel;
+    QJsonModel * mJsonModel;
     TreeSortFilterProxyModel * mProxyModel;
     FindBarWidget * mSearchEdit;
+
+    QStringList mDomType;
+    QStringList mJsonType;
 };
 
 #endif // JSONRESPONSEWIDGET_H

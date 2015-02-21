@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network webkitwidgets
+QT       += core gui network webkitwidgets xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,7 +20,6 @@ SOURCES += main.cpp\
     request.cpp \
     manager.cpp \
     textresponsewidget.cpp \
-    jsonresponsewidget.cpp \
     historydockwidget.cpp \
     favoritedockwidget.cpp \
     searchbar.cpp \
@@ -45,7 +44,11 @@ SOURCES += main.cpp\
     settingsdialog.cpp \
     abstractsettingswidget.cpp \
     proxysettingswidget.cpp \
-    findbarwidget.cpp
+    findbarwidget.cpp \
+    domitem.cpp \
+    dommodel.cpp \
+    treeresponsewidget.cpp \
+    xmlresponsewidget.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -54,7 +57,6 @@ HEADERS  += mainwindow.h \
     request.h \
     manager.h \
     textresponsewidget.h \
-    jsonresponsewidget.h \
     historydockwidget.h \
     favoritedockwidget.h \
     searchbar.h \
@@ -79,7 +81,11 @@ HEADERS  += mainwindow.h \
     settingsdialog.h \
     abstractsettingswidget.h \
     proxysettingswidget.h \
-    findbarwidget.h
+    findbarwidget.h \
+    domitem.h \
+    dommodel.h \
+    treeresponsewidget.h \
+    xmlresponsewidget.h
 
 FORMS    += mainwindow.ui
 

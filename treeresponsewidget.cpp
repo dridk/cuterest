@@ -1,18 +1,18 @@
-#include "jsonresponsewidget.h"
+#include "treeresponsewidget.h"
 #include <QClipboard>
 #include <QRegularExpression>
 #include <QApplication>
-JsonResponseWidget::JsonResponseWidget(QWidget * parent)
+TreeResponseWidget::TreeResponseWidget(QWidget * parent)
     :AbstractResponseWidget(parent)
 {
     setWindowTitle("Tree");
 
     mView = new QTreeView;
-    mModel = new QJsonModel;
+    mJsonModel = new QJsonModel;
     mSearchEdit = new FindBarWidget;
     mProxyModel = new TreeSortFilterProxyModel;
 
-    mProxyModel->setSourceModel(mModel);
+    mProxyModel->setSourceModel(mJsonModel);
 
     QVBoxLayout * mainLayout = new QVBoxLayout;
 
@@ -30,11 +30,16 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
 
     mSearchEdit->setVisible(false);
 
-    mModel->load("/home/sacha/test.json");
+    mJsonModel->load("/home/sacha/test.json");
 
     setLayout(mainLayout);
 
     createActions();
+
+
+
+
+
 
     //double click.. for link ... !
     connect(mView,SIGNAL(doubleClicked(QModelIndex)), this,SLOT(doubleClicked(QModelIndex)));
@@ -42,11 +47,11 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
 
 }
 
-JsonResponseWidget::~JsonResponseWidget()
+TreeResponseWidget::~TreeResponseWidget()
 {
 
 }
-void JsonResponseWidget::createActions()
+void TreeResponseWidget::createActions()
 {
     setContextMenuPolicy(Qt::ActionsContextMenu);
     QAction* copyAction = new QAction(tr("Copy"),this);
@@ -55,12 +60,12 @@ void JsonResponseWidget::createActions()
 
 }
 
-void JsonResponseWidget::doubleClicked(const QModelIndex &index)
+void TreeResponseWidget::doubleClicked(const QModelIndex &index)
 {
     // This methods allow to send new request from endpoint clicked from view..
     // That's mean all url "http://" and relative url..
 
-    QString path = mModel->index(mProxyModel->mapToSource(index).row(),1, mProxyModel->mapToSource(index).parent()).data().toString();
+    QString path = mJsonModel->index(mProxyModel->mapToSource(index).row(),1, mProxyModel->mapToSource(index).parent()).data().toString();
     QRegularExpression regExp("^(https?://)?[\da-z\.-]+/");
     if (path.contains(regExp)){
 
@@ -82,7 +87,7 @@ void JsonResponseWidget::doubleClicked(const QModelIndex &index)
 }
 
 
-void JsonResponseWidget::keyPressEvent(QKeyEvent *event)
+void TreeResponseWidget::keyPressEvent(QKeyEvent *event)
 {
     if (event->matches(QKeySequence::Find)){
         mSearchEdit->setVisible(!mSearchEdit->isVisible());
@@ -104,19 +109,18 @@ void JsonResponseWidget::keyPressEvent(QKeyEvent *event)
 
 }
 
-void JsonResponseWidget::setResponse(const Response &rep)
+void TreeResponseWidget::setResponse(const Response &rep)
 {
-    mModel->clear();
-    mModel->loadJson(rep.body());
-
-
+        mJsonModel->clear();
+        mJsonModel->loadJson(rep.body());
+        mView->setModel(mJsonModel);
 }
 
-void JsonResponseWidget::copy()
+void TreeResponseWidget::copy()
 {
     if (mView->selectionModel()->selectedRows().count() > 0) {
         int row = mProxyModel->mapToSource(mView->currentIndex()).row();
-        QString value = mModel->index(row,1,mView->currentIndex().parent()).data().toString();
+        QString value = mJsonModel->index(row,1,mView->currentIndex().parent()).data().toString();
         qApp->clipboard()->setText(value);
 
 
