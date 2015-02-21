@@ -23,7 +23,7 @@ TreeResponseWidget::TreeResponseWidget(QWidget * parent)
 
     //For stylesheet
     mView->setObjectName("Json");
-    mView->header()->hide();
+//    mView->header()->hide();
     mView->setModel(mProxyModel);
     mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
