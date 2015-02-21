@@ -1,5 +1,5 @@
 #include "dicteditorwidget.h"
-
+#include "QtAwesome/QtAwesome.h"
 DictEditorWidget::DictEditorWidget(QWidget *parent)
     : QWidget(parent)
 {
@@ -8,39 +8,45 @@ DictEditorWidget::DictEditorWidget(QWidget *parent)
     mModel = new DictEditorModel;
     mKeyEdit = new QComboBox;
     mValueEdit = new QLineEdit;
-    mAddButton = new QPushButton(tr("Add"));
-    mRemButton = new QPushButton(tr("Remove"));
+    mAddButton = new QToolButton;
+    mRemButton = new QToolButton;
+    mTypeLabel = new QLabel("type");
+    mValueLabel = new QLabel("value");
+
+    mAddButton->setIcon(QtAwesome::instance()->icon("plus"));
+    mRemButton->setIcon(QtAwesome::instance()->icon("minus"));
+
 
 
     mView->setModel(mModel);
-    mView->horizontalHeader()->hide();
     mView->verticalHeader()->hide();
     mView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     mView->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-    QVBoxLayout * rightLayout = new QVBoxLayout;
-    rightLayout->addWidget(mAddButton);
-    rightLayout->addWidget(mRemButton);
-    rightLayout->addStretch();
 
 
-    QHBoxLayout * hLayout = new QHBoxLayout;
 
-    hLayout->addWidget(mKeyEdit);
-    hLayout->addWidget(mValueEdit);
+    QFormLayout * formLayout = new QFormLayout;
+    formLayout->addRow(mTypeLabel,mKeyEdit);
+    formLayout->addRow(mValueLabel,mValueEdit);
+    formLayout->setVerticalSpacing(5);
+    formLayout->setFormAlignment(Qt::AlignCenter);
 
     QVBoxLayout * vLayout = new QVBoxLayout;
 
-    vLayout->addItem(hLayout);
+    vLayout->addItem(formLayout);
     vLayout->addWidget(mView);
 
-    QHBoxLayout * mainLayout  = new QHBoxLayout;
-    mainLayout->addItem(vLayout);
-    mainLayout->addItem(rightLayout);
 
-    setLayout(mainLayout);
+    QHBoxLayout * buttonLayout = new QHBoxLayout;
+    buttonLayout->addWidget(mAddButton);
+    buttonLayout->addWidget(mRemButton);
+    buttonLayout->addStretch();
 
-    mainLayout->setContentsMargins(0,0,0,0);
+    vLayout->addLayout(buttonLayout);
+
+    setLayout(vLayout);
+
     mKeyEdit->setEditable(true);
 
 
@@ -85,6 +91,13 @@ int DictEditorWidget::count() const
 void DictEditorWidget::clear()
 {
     mModel->clear();
+}
+
+void DictEditorWidget::setLabel(const QString &typeName, const QString &valueName)
+{
+    mTypeLabel->setText(typeName);
+    mValueLabel->setText(valueName);
+
 }
 
 void DictEditorWidget::addClicked()

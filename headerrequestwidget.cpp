@@ -7,12 +7,14 @@ HeaderRequestWidget::HeaderRequestWidget(QWidget *parent) :
     mEditor = new DictEditorWidget;
 
 
-    QVBoxLayout * layout = new QVBoxLayout;
-    layout->addWidget(mEditor);
+    QVBoxLayout * ll = new QVBoxLayout;
+    ll->addWidget(mEditor);
 
-    setLayout(layout);
+    setLayout(ll);
 
-    setWindowTitle("Headers");
+    setWindowTitle(tr("Headers"));
+
+    mEditor->setLabel(tr("Header type:  "),tr("Header value:  "));
 
 
     QStringList list;

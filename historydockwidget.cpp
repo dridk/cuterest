@@ -38,6 +38,31 @@ void HistoryDockWidget::append(const Response &rep)
     mModel->append(rep);
 }
 
+void HistoryDockWidget::setBack()
+{
+
+    int row = mView->currentIndex().row();
+    if ( row < mModel->rowCount() - 1){
+        QModelIndex index = mModel->index(++row,0);
+        mView->setCurrentIndex(index);
+        emit doubleClicked(mModel->response(index).request());
+    }
+
+
+}
+
+void HistoryDockWidget::setForward()
+{
+
+
+    int row = mView->currentIndex().row();
+    if ( row > 0){
+        QModelIndex index = mModel->index(--row,0);
+         mView->setCurrentIndex(index);
+        emit doubleClicked(mModel->response(index).request());
+    }
+}
+
 void HistoryDockWidget::doubleClickedReceived(const QModelIndex &index)
 {
 

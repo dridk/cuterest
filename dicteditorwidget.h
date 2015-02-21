@@ -17,6 +17,7 @@ public:
     const QVariant &value(int row) const;
     int count() const;
     void clear();
+    void setLabel(const QString& typeName, const QString& valueName);
 
 
 public slots:
@@ -28,8 +29,10 @@ private:
     DictEditorModel * mModel;
     QComboBox * mKeyEdit;
     QLineEdit * mValueEdit;
-    QPushButton* mAddButton;
-    QPushButton* mRemButton;
+    QToolButton* mAddButton;
+    QToolButton* mRemButton;
+    QLabel * mTypeLabel;
+    QLabel * mValueLabel;
 };
 
 #endif // DICTEDITORWIDGET_H

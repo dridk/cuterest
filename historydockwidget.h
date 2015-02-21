@@ -13,6 +13,8 @@ public:
 
 public slots:
     void append(const Response& rep);
+    void setBack();
+    void setForward();
 
 signals:
     void doubleClicked(const Request& request);

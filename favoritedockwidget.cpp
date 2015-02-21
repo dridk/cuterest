@@ -17,8 +17,9 @@ FavoriteDockWidget::FavoriteDockWidget(QWidget * parent)
     setFeatures(QDockWidget::NoDockWidgetFeatures);
 
     //hide titleBar
-    setTitleBarWidget(new QWidget());
+//    setTitleBarWidget(new QWidget());
 
+    setWindowTitle(tr("Favorite"));
     connect(mView,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(doubleClickedReceived(QModelIndex)));
 
 

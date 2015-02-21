@@ -7,7 +7,7 @@
 #include "favoritedockwidget.h"
 #include "historydockwidget.h"
 #include "statusbar.h"
-#include "searchbar.h"
+#include "controlbar.h"
 #include "settingsdialog.h"
 
 namespace Ui {
@@ -35,7 +35,9 @@ private:
     ResponseTabWidget * mResponseWidget;
     FavoriteDockWidget * mFavoriteDock;
     HistoryDockWidget * mHistoryDock;
-    SearchBar * mSearchBar;
+    ControlBar * mSearchBar;
+
+    QString mStyleFileName;
 
 };
 

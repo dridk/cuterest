@@ -21,6 +21,17 @@ int DictEditorModel::columnCount(const QModelIndex &parent) const
     return 2;
 }
 
+QVariant DictEditorModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+
+    if (role == Qt::DisplayRole)
+    {
+        if (orientation == Qt::Horizontal){
+           return "test";
+        }
+    }
+}
+
 QVariant DictEditorModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
@@ -52,6 +63,12 @@ const QVariant &DictEditorModel::value(int row)
     return mData.at(row).second;
 }
 
+void DictEditorModel::setHeaders(const QStringList &list)
+{
+    mHeaders = list;
+    emit headerDataChanged(Qt::Horizontal,0,2);
+}
+
 
 
 void DictEditorModel::clear()
@@ -66,9 +83,9 @@ void DictEditorModel::clear()
 void DictEditorModel::insert(const QString &key, const QVariant &value)
 {
 
-        beginInsertRows(QModelIndex(),mData.count(),mData.count());
-        mData.append(qMakePair(key,value));
-        endInsertRows();
+    beginInsertRows(QModelIndex(),mData.count(),mData.count());
+    mData.append(qMakePair(key,value));
+    endInsertRows();
 
 }
 

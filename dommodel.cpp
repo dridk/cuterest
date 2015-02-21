@@ -47,6 +47,8 @@
 DomModel::DomModel( QObject *parent)
     : QAbstractItemModel(parent)
 {
+    rootItem = new DomItem(domDocument, 0);
+
 }
 //! [0]
 

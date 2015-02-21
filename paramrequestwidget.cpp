@@ -9,7 +9,8 @@ ParamRequestWidget::ParamRequestWidget(QWidget * parent)
     mainLayout->addWidget(mEditor);
 
     setLayout(mainLayout);
-    setWindowTitle("Parameters");
+    setWindowTitle(tr("Parameters"));
+    mEditor->setLabel(tr("Key:  "), tr("Value:  "));
 
 }
 

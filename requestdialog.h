@@ -27,9 +27,7 @@ protected slots:
 private:
     QTabWidget * mTabWidget;
     QDialogButtonBox * mButtonBox;
-    QLineEdit * mEdit;
     QList<AbstractRequestWidget*> mWidgets;
-    VerbComboBox * mVerbCombo;
     Request mRequest;
 
 };

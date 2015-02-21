@@ -4,12 +4,12 @@
 #include "request.h"
 #include "requestdialog.h"
 #include "verbcombobox.h"
-class SearchBar : public QToolBar
+class ControlBar : public QToolBar
 {
     Q_OBJECT
 public:
-    SearchBar(QWidget * parent=0);
-    ~SearchBar();
+    ControlBar(QWidget * parent=0);
+    ~ControlBar();
 
 public slots:
     void setRequest(const Request& request);
@@ -17,7 +17,13 @@ public slots:
 signals:
     void requestTrigger(const Request& request);
     void favoriteTrigger(const Request& request);
-
+    void backTrigger();
+    void forwardTrigger();
+    void panelTrigger(bool show);
+    void importTrigger();
+    void exportTrigger();
+    void aboutTrigger();
+    void proxyTrigger();
 protected:
     Request createRequest();
 
@@ -33,8 +39,13 @@ private:
     VerbComboBox * mVerbCombo;
     QToolButton * mToolButton;
     QToolButton * mFavButton;
+    QToolButton * mBackButton;
+    QToolButton * mForwardButton;
+    QToolButton * mSettingButton;
+    QToolButton * mPannelButton;
 
-    QPushButton * mSearchButton;
+
+    QToolButton * mRefreshButton;
     QWidget * mMainWidget;
     Request mRequest;
 };

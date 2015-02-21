@@ -2,7 +2,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "requestserializer.h"
-
+#include <QFileDialog>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -13,35 +13,49 @@ MainWindow::MainWindow(QWidget *parent) :
     mResponseWidget = new ResponseTabWidget;
     mFavoriteDock   = new FavoriteDockWidget;
     mHistoryDock    = new HistoryDockWidget;
-    mSearchBar      = new SearchBar;
+    mSearchBar      = new ControlBar;
 
 
     addToolBar(Qt::TopToolBarArea,mSearchBar);
     setCentralWidget(mResponseWidget);
     addDockWidget(Qt::BottomDockWidgetArea, mHistoryDock);
-    addDockWidget(Qt::LeftDockWidgetArea,mFavoriteDock);
+    addDockWidget(Qt::RightDockWidgetArea,mFavoriteDock);
+
+    mHistoryDock->hide();
+    mFavoriteDock->hide();
 
 
 
     connect(mSearchBar,SIGNAL(requestTrigger(Request)),mManager,SLOT(sendRequest(Request)));
     connect(mSearchBar,SIGNAL(favoriteTrigger(Request)),mFavoriteDock,SLOT(append(Request)));
+    connect(mSearchBar,SIGNAL(backTrigger()),mHistoryDock,SLOT(setBack()));
+    connect(mSearchBar,SIGNAL(forwardTrigger()),mHistoryDock,SLOT(setForward()));
+    connect(mSearchBar,SIGNAL(panelTrigger(bool)),mFavoriteDock,SLOT(setVisible(bool)));
+    connect(mSearchBar,SIGNAL(panelTrigger(bool)),mHistoryDock,SLOT(setVisible(bool)));
+
     connect(mManager,SIGNAL(received(Response)),mResponseWidget, SLOT(setResponse(Response)));
     connect(mManager,SIGNAL(received(Response)),mHistoryDock,SLOT(append(Response)));
     connect(mFavoriteDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));
     connect(mHistoryDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));
     connect(mResponseWidget,SIGNAL(requestTrigger(Request)),mSearchBar,SLOT(setRequest(Request)));
 
-    connect(ui->actionExport,SIGNAL(triggered()),this,SLOT(exportFavorite()));
-    connect(ui->actionImport,SIGNAL(triggered()),this,SLOT(importFavorite()));
-    connect(ui->actionSettings,SIGNAL(triggered()),this,SLOT(showSettings()));
+    connect(mSearchBar,SIGNAL(exportTrigger()),this,SLOT(exportFavorite()));
+    connect(mSearchBar,SIGNAL(importTrigger()),this,SLOT(importFavorite()));
+    connect(mSearchBar,SIGNAL(proxyTrigger()),this,SLOT(showSettings()));
+
 
     resize(1024,640);
 
 
-    connect(ui->actionSet_style,SIGNAL(triggered()),this,SLOT(setStyle()));
 
 
 
+    QAction * styleAction = new QAction(this);
+    styleAction->setShortcut(Qt::Key_F12);
+
+    addAction(styleAction);
+
+    connect(styleAction,SIGNAL(triggered()),this,SLOT(setStyle()));
 
 }
 
@@ -67,7 +81,12 @@ void MainWindow::importFavorite()
 void MainWindow::setStyle()
 {
 
-    QFile styleFile( ":style.qss" );
+
+
+    if (!QFile::exists(mStyleFileName))
+        mStyleFileName = QFileDialog::getOpenFileName(this,"qss file","","stylesheet (*.qss)");
+
+    QFile styleFile(mStyleFileName );
     styleFile.open( QFile::ReadOnly );
 
     QString style( styleFile.readAll() );

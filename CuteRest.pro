@@ -22,7 +22,6 @@ SOURCES += main.cpp\
     textresponsewidget.cpp \
     historydockwidget.cpp \
     favoritedockwidget.cpp \
-    searchbar.cpp \
     qjsonmodel.cpp \
     qjsonitem.cpp \
     jsonsyntaxhighlighter.cpp \
@@ -48,7 +47,8 @@ SOURCES += main.cpp\
     domitem.cpp \
     dommodel.cpp \
     treeresponsewidget.cpp \
-    xmlresponsewidget.cpp
+    xmlresponsewidget.cpp \
+    controlbar.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -59,7 +59,6 @@ HEADERS  += mainwindow.h \
     textresponsewidget.h \
     historydockwidget.h \
     favoritedockwidget.h \
-    searchbar.h \
     qjsonmodel.h \
     qjsonitem.h \
     jsonsyntaxhighlighter.h \
@@ -85,7 +84,8 @@ HEADERS  += mainwindow.h \
     domitem.h \
     dommodel.h \
     treeresponsewidget.h \
-    xmlresponsewidget.h
+    xmlresponsewidget.h \
+    controlbar.h
 
 FORMS    += mainwindow.ui
 
