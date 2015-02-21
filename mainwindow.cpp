@@ -10,19 +10,24 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     mManager = new Manager(this);
 
-    mResponseWidget = new ResponseTabWidget;
-    mFavoriteDock   = new FavoriteDockWidget;
-    mHistoryDock    = new HistoryDockWidget;
-    mSearchBar      = new ControlBar;
+    mResponseWidget    = new ResponseTabWidget;
+    mFavoriteDock      = new FavoriteDockWidget;
+    mHistoryDock       = new HistoryDockWidget;
+    mConsoleDockWidget = new ConsoleDockWidget;
+    mSearchBar         = new ControlBar;
 
 
     addToolBar(Qt::TopToolBarArea,mSearchBar);
     setCentralWidget(mResponseWidget);
     addDockWidget(Qt::BottomDockWidgetArea, mHistoryDock);
     addDockWidget(Qt::RightDockWidgetArea,mFavoriteDock);
+    addDockWidget(Qt::BottomDockWidgetArea,mConsoleDockWidget);
+
+    tabifyDockWidget(mHistoryDock,mConsoleDockWidget);
 
     mHistoryDock->hide();
     mFavoriteDock->hide();
+    mConsoleDockWidget->hide();
 
 
 
@@ -32,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mSearchBar,SIGNAL(forwardTrigger()),mHistoryDock,SLOT(setForward()));
     connect(mSearchBar,SIGNAL(panelTrigger(bool)),mFavoriteDock,SLOT(setVisible(bool)));
     connect(mSearchBar,SIGNAL(panelTrigger(bool)),mHistoryDock,SLOT(setVisible(bool)));
+    connect(mSearchBar,SIGNAL(panelTrigger(bool)),mConsoleDockWidget,SLOT(setVisible(bool)));
 
     connect(mManager,SIGNAL(received(Response)),mResponseWidget, SLOT(setResponse(Response)));
     connect(mManager,SIGNAL(received(Response)),mHistoryDock,SLOT(append(Response)));
@@ -56,6 +62,8 @@ MainWindow::MainWindow(QWidget *parent) :
     addAction(styleAction);
 
     connect(styleAction,SIGNAL(triggered()),this,SLOT(setStyle()));
+
+    setWindowTitle(tr("Cuterest"));
 
 }
 

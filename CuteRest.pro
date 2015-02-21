@@ -48,7 +48,8 @@ SOURCES += main.cpp\
     dommodel.cpp \
     treeresponsewidget.cpp \
     xmlresponsewidget.cpp \
-    controlbar.cpp
+    controlbar.cpp \
+    consoledockwidget.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -85,7 +86,8 @@ HEADERS  += mainwindow.h \
     dommodel.h \
     treeresponsewidget.h \
     xmlresponsewidget.h \
-    controlbar.h
+    controlbar.h \
+    consoledockwidget.h
 
 FORMS    += mainwindow.ui
 

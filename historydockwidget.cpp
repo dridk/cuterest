@@ -14,7 +14,7 @@ HistoryDockWidget::HistoryDockWidget(QWidget * parent)
     mView->setObjectName("History");
 
     //hide titleBar
-//    setTitleBarWidget(new QWidget());
+    //    setTitleBarWidget(new QWidget());
 
     setWindowTitle("History");
 
@@ -26,7 +26,17 @@ HistoryDockWidget::HistoryDockWidget(QWidget * parent)
     mView->verticalHeader()->hide();
     mView->setAlternatingRowColors(true);
 
+
+    //set contextual menu
+
+    QAction * clearAction = new QAction(tr("Clear history"), this);
+
+    mView->addAction(clearAction);
+    mView->setContextMenuPolicy(Qt::ActionsContextMenu);
+
+    connect(clearAction,SIGNAL(triggered()),this,SLOT(clear()));
     connect(mView,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(doubleClickedReceived(QModelIndex)));
+
 
 }
 
@@ -60,9 +70,14 @@ void HistoryDockWidget::setForward()
     int row = mView->currentIndex().row();
     if ( row > 0){
         QModelIndex index = mModel->index(--row,0);
-         mView->setCurrentIndex(index);
+        mView->setCurrentIndex(index);
         emit doubleClicked(mModel->response(index).request());
     }
+}
+
+void HistoryDockWidget::clear()
+{
+    mModel->clear();
 }
 
 void HistoryDockWidget::doubleClickedReceived(const QModelIndex &index)

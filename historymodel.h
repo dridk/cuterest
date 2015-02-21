@@ -21,7 +21,7 @@ public:
 
 public slots:
     void append(const Response& reponse);
-
+    void clear();
 
 
 private:

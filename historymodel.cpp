@@ -96,3 +96,10 @@ void HistoryModel::append(const Response &reponse)
 
 }
 
+void HistoryModel::clear()
+{
+    beginResetModel();
+    mData.clear();
+    endResetModel();
+}
+

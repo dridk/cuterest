@@ -6,6 +6,7 @@
 #include "responsetabwidget.h"
 #include "favoritedockwidget.h"
 #include "historydockwidget.h"
+#include "consoledockwidget.h"
 #include "statusbar.h"
 #include "controlbar.h"
 #include "settingsdialog.h"
@@ -35,6 +36,7 @@ private:
     ResponseTabWidget * mResponseWidget;
     FavoriteDockWidget * mFavoriteDock;
     HistoryDockWidget * mHistoryDock;
+    ConsoleDockWidget * mConsoleDockWidget;
     ControlBar * mSearchBar;
 
     QString mStyleFileName;

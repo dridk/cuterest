@@ -15,6 +15,7 @@ public slots:
     void append(const Response& rep);
     void setBack();
     void setForward();
+    void clear();
 
 signals:
     void doubleClicked(const Request& request);
