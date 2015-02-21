@@ -10,16 +10,11 @@
 #include "favoriteitem.h"
 
 
-
-
-
-
-
 class FavoriteModel : public QStandardItemModel
 {
     Q_OBJECT
 public:
-    FavoriteModel(QObject * parent = 0);
+    FavoriteModel( QObject * parent = 0);
     ~FavoriteModel();
 
    Request request(const QModelIndex& index) const;
@@ -27,9 +22,11 @@ public:
 public slots:
     void append(const Request& request);
     bool remove(const QModelIndex& index);
-    bool save(const QString& fileName);
-    bool load(const QString& fileName);
-    QString path();
+    bool save(const QString& fileName = QString());
+    bool load(const QString& fileName = QString());
+
+protected slots:
+    void itemChanged(QStandardItem *item);
 
 
 protected:
@@ -37,11 +34,10 @@ protected:
 
 
 private:
-
-
     QHash<QStandardItem*, Request> mData;
     // colors and font code icon
     QHash<QString, QPair<QString, int> >mDecorations;
+    QString mFilename;
 
 
 };

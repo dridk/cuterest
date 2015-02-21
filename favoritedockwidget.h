@@ -3,6 +3,7 @@
 #include <QDockWidget>
 #include <QTreeView>
 #include "favoritemodel.h"
+#include "favoritetreeview.h"
 class FavoriteDockWidget : public QDockWidget
 {
     Q_OBJECT
@@ -16,17 +17,13 @@ public slots:
     void importFavorite(const QString& path);
     void exportFavorite(const QString& path);
 
-
-protected slots:
-    void doubleClickedReceived(const QModelIndex& index);
-
 signals:
     void doubleClicked(const Request& request);
 
 
 private:
-    QTreeView * mView;
-    FavoriteModel * mModel;
+    FavoriteTreeView * mView;
+
 };
 
 #endif // FAVORITEDOCKWIDGET_H

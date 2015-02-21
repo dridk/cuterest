@@ -5,61 +5,42 @@ FavoriteDockWidget::FavoriteDockWidget(QWidget * parent)
     :QDockWidget(parent, Qt::Window | Qt::CustomizeWindowHint )
 {
 
-    mModel = new FavoriteModel;
-    mView = new QTreeView;
-    mView->setModel(mModel);
+    mView = new FavoriteTreeView;
+
     setWidget(mView);
 
-    mView->header()->hide();
-    //For stylesheet
     mView->setObjectName("Favorite");
 
     setFeatures(QDockWidget::NoDockWidgetFeatures);
 
-    //hide titleBar
-//    setTitleBarWidget(new QWidget());
+
 
     setWindowTitle(tr("Favorite"));
-    connect(mView,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(doubleClickedReceived(QModelIndex)));
+
+    connect(mView,SIGNAL(doubleClicked(Request)),this,SIGNAL(doubleClicked(Request)));
 
 
 }
 
 FavoriteDockWidget::~FavoriteDockWidget()
 {
-    delete mModel;
     delete mView;
 
 }
 
 void FavoriteDockWidget::append(const Request &request)
 {
-    mModel->append(request);
+    mView->favoriteModel()->append(request);
 }
 
 void FavoriteDockWidget::importFavorite(const QString &path)
 {
-    mModel->load(path);
+    mView->favoriteModel()->load(path);
 }
 
 void FavoriteDockWidget::exportFavorite(const QString &path)
 {
-    mModel->save(path);
+    mView->favoriteModel()->save(path);
 }
 
-
-
-void FavoriteDockWidget::doubleClickedReceived(const QModelIndex &index)
-{
-    // Avoid root parent selection... thos who have no parent
-    if (index.parent().isValid())
-    {
-
-        emit doubleClicked(mModel->request(index));
-
-
-    }
-
-
-}
 

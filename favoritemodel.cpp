@@ -8,7 +8,6 @@ FavoriteModel::FavoriteModel(QObject * parent)
     :QStandardItemModel(parent)
 {
 
-
     // init decoration
     mDecorations.insert("GET", qMakePair(QString("#0098ff"),0xf18e));
     mDecorations.insert("POST", qMakePair(QString("#17CA65"),0xf190));
@@ -18,15 +17,15 @@ FavoriteModel::FavoriteModel(QObject * parent)
     QDir dir;
     // make path to save
     dir.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
-    load(path());
 
 
+    connect(this,SIGNAL(itemChanged(QStandardItem*)),this,SLOT(itemChanged(QStandardItem*)));
 
 }
 
 FavoriteModel::~FavoriteModel()
 {
-    save(path());
+
 }
 
 Request FavoriteModel::request(const QModelIndex &index) const
@@ -64,7 +63,7 @@ bool FavoriteModel::remove(const QModelIndex &index)
 
 bool FavoriteModel::save(const QString& fileName)
 {
-
+    mFilename = fileName;
     qDebug()<<"save "<<fileName;
     QByteArray array =  RequestSerializer::toJson(mData.values());
 
@@ -83,6 +82,7 @@ bool FavoriteModel::save(const QString& fileName)
 
 bool FavoriteModel::load(const QString& fileName)
 {
+    mFilename = fileName;
     QFile file(fileName);
     if (file.open(QIODevice::ReadOnly)){
         foreach (Request r, RequestSerializer::fromJson(file.readAll()))
@@ -97,9 +97,15 @@ bool FavoriteModel::load(const QString& fileName)
 
 }
 
-QString FavoriteModel::path()
+
+void FavoriteModel::itemChanged(QStandardItem *item)
 {
-    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QDir::separator() + "favorite.json";
+    // when rename occurs !
+    qDebug()<<"rename item..";
+    mData[item].setName(item->text());
+    save(mFilename);
+
+
 }
 
 QIcon FavoriteModel::iconFromVerb(const QString &verb)
@@ -136,7 +142,7 @@ void FavoriteModel::append(const Request &request)
 
     QStandardItem * item = new QStandardItem;
     item->setText(request.name());
-    item->setEditable(false);
+    item->setEditable(true);
     mData.insert(item, request);
     item->setIcon(iconFromVerb(request.verb()));
     root->appendRow(item);
