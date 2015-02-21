@@ -5,7 +5,8 @@ QMainWindow::separator {
     width: 1px;
 }
 
- QTabWidget::pane {
+ QTabWidget::pane#response {
      margin : 0px;
+
 
 }

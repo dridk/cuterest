@@ -17,7 +17,7 @@ ResponseTabWidget::ResponseTabWidget(QWidget * parent)
 
     connect(mJsonWidget,SIGNAL(requestTrigger(Request)),this,SIGNAL(requestTrigger(Request)));
 
-
+    setObjectName("response");
 
 }
 
