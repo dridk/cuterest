@@ -4,10 +4,40 @@ StatusBar::StatusBar(QWidget * parent)
     :QStatusBar(parent)
 {
 
+
+    mLoadingLabel = new QLabel;
+    mLoadingLabel->setMovie(new QMovie(":/loading.gif"));
+    insertPermanentWidget(1, mLoadingLabel);
+
+
 }
 
 StatusBar::~StatusBar()
 {
+
+}
+
+void StatusBar::setLoading(bool loading)
+{
+    mLoadingLabel->setVisible(loading);
+
+    if (loading){
+        mLoadingLabel->movie()->start();
+
+    }
+    else {
+        mLoadingLabel->movie()->stop();
+
+    }
+
+}
+
+void StatusBar::setResponse(const Response &response)
+{
+
+
+    showMessage(response.rawHeader("Content-Type"));
+
 
 }
 

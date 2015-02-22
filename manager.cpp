@@ -40,6 +40,10 @@ void Manager::sendRequest(const Request &request)
     connect(reply,SIGNAL(finished()),this,SLOT(parse()));
 
 
+    emit sended(request);
+    emit loadingChanged(true);
+
+
 }
 
 void Manager::parse()
@@ -57,6 +61,7 @@ void Manager::parse()
 
 
 
+    emit loadingChanged(false);
 
 
 }

@@ -37,8 +37,8 @@ private:
     FavoriteDockWidget * mFavoriteDock;
     HistoryDockWidget * mHistoryDock;
     ConsoleDockWidget * mConsoleDockWidget;
-    ControlBar * mSearchBar;
-
+    ControlBar * mControlBar;
+    StatusBar * mStatusBar;
     QString mStyleFileName;
 
 };

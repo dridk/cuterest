@@ -24,8 +24,10 @@ protected slots:
 
 
 signals:
+    void sended(const Request& request);
     void received(const Response& response);
     void error(const QString& message);
+    void loadingChanged(bool loading);
 
 
 protected:

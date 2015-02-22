@@ -3,5 +3,6 @@
         <file>gear.png</file>
         <file>fav_on.png</file>
         <file>fav_off.png</file>
+        <file>loading.gif</file>
     </qresource>
 </RCC>

@@ -14,14 +14,15 @@ MainWindow::MainWindow(QWidget *parent) :
     mFavoriteDock      = new FavoriteDockWidget;
     mHistoryDock       = new HistoryDockWidget;
     mConsoleDockWidget = new ConsoleDockWidget;
-    mSearchBar         = new ControlBar;
+    mControlBar         = new ControlBar;
+    mStatusBar         = new StatusBar;
 
-
-    addToolBar(Qt::TopToolBarArea,mSearchBar);
+    addToolBar(Qt::TopToolBarArea,mControlBar);
     setCentralWidget(mResponseWidget);
     addDockWidget(Qt::BottomDockWidgetArea, mHistoryDock);
     addDockWidget(Qt::RightDockWidgetArea,mFavoriteDock);
     addDockWidget(Qt::BottomDockWidgetArea,mConsoleDockWidget);
+    setStatusBar(mStatusBar);
 
     tabifyDockWidget(mHistoryDock,mConsoleDockWidget);
 
@@ -31,25 +32,29 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
-    connect(mSearchBar,SIGNAL(requestTrigger(Request)),mManager,SLOT(sendRequest(Request)));
-    connect(mSearchBar,SIGNAL(favoriteTrigger(Request)),mFavoriteDock,SLOT(append(Request)));
-    connect(mSearchBar,SIGNAL(backTrigger()),mHistoryDock,SLOT(setBack()));
-    connect(mSearchBar,SIGNAL(forwardTrigger()),mHistoryDock,SLOT(setForward()));
-    connect(mSearchBar,SIGNAL(panelTrigger(bool)),mFavoriteDock,SLOT(setVisible(bool)));
-    connect(mSearchBar,SIGNAL(panelTrigger(bool)),mHistoryDock,SLOT(setVisible(bool)));
-    connect(mSearchBar,SIGNAL(panelTrigger(bool)),mConsoleDockWidget,SLOT(setVisible(bool)));
+    connect(mControlBar,SIGNAL(requestTrigger(Request)),mManager,SLOT(sendRequest(Request)));
+    connect(mControlBar,SIGNAL(favoriteTrigger(Request)),mFavoriteDock,SLOT(append(Request)));
+    connect(mControlBar,SIGNAL(backTrigger()),mHistoryDock,SLOT(setBack()));
+    connect(mControlBar,SIGNAL(forwardTrigger()),mHistoryDock,SLOT(setForward()));
+    connect(mControlBar,SIGNAL(panelTrigger(bool)),mFavoriteDock,SLOT(setVisible(bool)));
+    connect(mControlBar,SIGNAL(panelTrigger(bool)),mHistoryDock,SLOT(setVisible(bool)));
+    connect(mControlBar,SIGNAL(panelTrigger(bool)),mConsoleDockWidget,SLOT(setVisible(bool)));
 
     connect(mManager,SIGNAL(received(Response)),mResponseWidget, SLOT(setResponse(Response)));
     connect(mManager,SIGNAL(received(Response)),mHistoryDock,SLOT(append(Response)));
-    connect(mFavoriteDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));
-    connect(mHistoryDock,SIGNAL(doubleClicked(Request)),mSearchBar,SLOT(setRequest(Request)));
-    connect(mResponseWidget,SIGNAL(requestTrigger(Request)),mSearchBar,SLOT(setRequest(Request)));
+    connect(mManager,SIGNAL(sended(Request)),mConsoleDockWidget,SLOT(append(Request)));
+    connect(mManager,SIGNAL(received(Response)),mConsoleDockWidget,SLOT(append(Response)));
+    connect(mManager,SIGNAL(received(Response)),mStatusBar,SLOT(setResponse(Response)));
+    connect(mFavoriteDock,SIGNAL(doubleClicked(Request)),mControlBar,SLOT(setRequest(Request)));
+    connect(mHistoryDock,SIGNAL(doubleClicked(Request)),mControlBar,SLOT(setRequest(Request)));
+    connect(mResponseWidget,SIGNAL(requestTrigger(Request)),mControlBar,SLOT(setRequest(Request)));
 
-    connect(mSearchBar,SIGNAL(exportTrigger()),this,SLOT(exportFavorite()));
-    connect(mSearchBar,SIGNAL(importTrigger()),this,SLOT(importFavorite()));
-    connect(mSearchBar,SIGNAL(proxyTrigger()),this,SLOT(showSettings()));
+    connect(mControlBar,SIGNAL(exportTrigger()),this,SLOT(exportFavorite()));
+    connect(mControlBar,SIGNAL(importTrigger()),this,SLOT(importFavorite()));
+    connect(mControlBar,SIGNAL(proxyTrigger()),this,SLOT(showSettings()));
 
-
+    connect(mManager,SIGNAL(loadingChanged(bool)),mStatusBar,SLOT(setLoading(bool)));
+    connect(mManager,SIGNAL(loadingChanged(bool)),centralWidget(),SLOT(setDisabled(bool)));
     resize(1024,640);
 
 
@@ -64,6 +69,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(styleAction,SIGNAL(triggered()),this,SLOT(setStyle()));
 
     setWindowTitle(tr("Cuterest"));
+    setTabPosition(Qt::BottomDockWidgetArea,QTabWidget::North);
 
 }
 

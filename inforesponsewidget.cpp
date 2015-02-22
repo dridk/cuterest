@@ -11,7 +11,7 @@ InfoResponseWidget::InfoResponseWidget(QWidget * widget)
     mTableWidget->setAlternatingRowColors(true);
 
     mTableWidget->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
-
+    mTableWidget->setHeaderLabels(QStringList()<<"Key"<<"Value");
 
 }
 
