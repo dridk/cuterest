@@ -22,7 +22,7 @@ TextResponseWidget::TextResponseWidget(QWidget * parent)
 
 TextResponseWidget::~TextResponseWidget()
 {
-
+delete mEdit;
 }
 
 void TextResponseWidget::setResponse(const Response &rep)

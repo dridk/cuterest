@@ -40,6 +40,7 @@ AboutDialog::AboutDialog(QWidget * parent)
 
 AboutDialog::~AboutDialog()
 {
-
+    delete mButtonBox;
+    delete mContentLabel;
 }
 

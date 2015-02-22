@@ -30,6 +30,9 @@ SettingsDialog::SettingsDialog(Manager   * manager,QWidget *parent)
 SettingsDialog::~SettingsDialog()
 {
     qDeleteAll(mWidgets);
+
+    delete mTabWidget;
+    delete mButtonBox;
 }
 
 void SettingsDialog::addSettingsWidget(AbstractSettingsWidget *widget)

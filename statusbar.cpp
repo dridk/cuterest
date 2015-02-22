@@ -7,14 +7,14 @@ StatusBar::StatusBar(QWidget * parent)
 
     mLoadingLabel = new QLabel;
     mLoadingLabel->setMovie(new QMovie(":/loading.gif"));
-    insertPermanentWidget(1, mLoadingLabel);
+    insertPermanentWidget(0, mLoadingLabel);
 
 
 }
 
 StatusBar::~StatusBar()
 {
-
+delete mLoadingLabel;
 }
 
 void StatusBar::setLoading(bool loading)

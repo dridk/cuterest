@@ -25,7 +25,6 @@ public slots:
     void copy();
 
 protected slots:
-    void createActions();
     void doubleClicked(const QModelIndex& index);
 
 
@@ -39,6 +38,8 @@ private:
 
     QStringList mDomType;
     QStringList mJsonType;
+    QAction * mCopyKeyAction;
+    QAction * mCopyValueAction;
 };
 
 #endif // JSONRESPONSEWIDGET_H

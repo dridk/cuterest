@@ -96,7 +96,16 @@ ControlBar::ControlBar(QWidget * parent):
 
 ControlBar::~ControlBar()
 {
-
+    delete mLineEdit;
+    delete mVerbCombo;
+    delete mToolButton;
+    delete mFavButton;
+    delete mBackButton;
+    delete mForwardButton;
+    delete mRefreshButton;
+    delete mSettingButton;
+    delete mPannelButton;
+    delete mMainWidget;
 }
 
 void ControlBar::setRequest(const Request &request)

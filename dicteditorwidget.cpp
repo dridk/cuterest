@@ -57,7 +57,14 @@ DictEditorWidget::DictEditorWidget(QWidget *parent)
 
 DictEditorWidget::~DictEditorWidget()
 {
-
+    delete mView ;
+    delete mModel;
+    delete mKeyEdit;
+    delete mValueEdit;
+    delete mAddButton;
+    delete mRemButton;
+    delete mTypeLabel;
+    delete mValueLabel;
 }
 
 void DictEditorWidget::setCompleter(const QStringList &keys)

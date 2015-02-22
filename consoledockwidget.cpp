@@ -21,7 +21,7 @@ ConsoleDockWidget::ConsoleDockWidget(QWidget * parent)
 
 ConsoleDockWidget::~ConsoleDockWidget()
 {
-
+    delete mTextEdit;
 }
 
 void ConsoleDockWidget::append(const Response &rep)

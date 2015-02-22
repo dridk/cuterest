@@ -22,7 +22,7 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     mainLayout->setContentsMargins(0,0,0,0);
 
 
-//    mView->header()->hide();
+    //    mView->header()->hide();
     mView->setModel(mProxyModel);
     mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
@@ -32,31 +32,32 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
 
     setLayout(mainLayout);
 
-    createActions();
+    mCopyKeyAction = new QAction(tr("Copy key"), this);
+    mCopyValueAction = new QAction(tr("Copy value"), this);
 
-
-
+    addAction(mCopyKeyAction);
+    addAction(mCopyValueAction);
+    setContextMenuPolicy(Qt::ActionsContextMenu);
 
 
 
     //double click.. for link ... !
     connect(mView,SIGNAL(doubleClicked(QModelIndex)), this,SLOT(doubleClicked(QModelIndex)));
     connect(mSearchEdit,SIGNAL(textChanged(QString)),mProxyModel,SLOT(setFilterFixedString(QString)));
+    connect(mCopyKeyAction,SIGNAL(triggered()),this,SLOT(copy()));
+    connect(mCopyValueAction,SIGNAL(triggered()),this,SLOT(copy()));
+
 
 }
 
 JsonResponseWidget::~JsonResponseWidget()
 {
-
+    delete mView ;
+    delete mJsonModel;
+    delete mSearchEdit;
+    delete mProxyModel ;
 }
-void JsonResponseWidget::createActions()
-{
-    setContextMenuPolicy(Qt::ActionsContextMenu);
-    QAction* copyAction = new QAction(tr("Copy"),this);
-    connect(copyAction,SIGNAL(triggered()),this,SLOT(copy()));
-    addAction(copyAction);
 
-}
 
 void JsonResponseWidget::doubleClicked(const QModelIndex &index)
 {
@@ -100,7 +101,7 @@ void JsonResponseWidget::keyPressEvent(QKeyEvent *event)
             mProxyModel->setFilterFixedString(QString());
             mView->collapseAll();
         }
-}
+    }
 
 
 
@@ -109,17 +110,29 @@ void JsonResponseWidget::keyPressEvent(QKeyEvent *event)
 
 void JsonResponseWidget::setResponse(const Response &rep)
 {
-        mJsonModel->clear();
-        mJsonModel->loadJson(rep.body());
+    mJsonModel->clear();
+    if (mJsonModel->loadJson(rep.body()))
+    {
         mView->setModel(mJsonModel);
+        setEnabled(true);
+    }
+    else
+        setEnabled(false);
 }
 
 void JsonResponseWidget::copy()
 {
     if (mView->selectionModel()->selectedRows().count() > 0) {
-        int row = mProxyModel->mapToSource(mView->currentIndex()).row();
-        QString value = mJsonModel->index(row,1,mView->currentIndex().parent()).data().toString();
-        qApp->clipboard()->setText(value);
+        QString tmp;
+
+        if (sender() == mCopyKeyAction)
+            tmp = mView->selectionModel()->selectedRows(0).first().data().toString();
+
+        if (sender() == mCopyValueAction)
+            tmp = mView->selectionModel()->selectedRows(1).first().data().toString();
+
+        qDebug()<<tmp;
+        qApp->clipboard()->setText(tmp);
 
 
     }

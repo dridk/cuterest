@@ -76,6 +76,15 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete mManager;
+
+    delete mResponseWidget;
+    delete mFavoriteDock;
+    delete mHistoryDock;
+    delete mConsoleDockWidget ;
+    delete mControlBar;
+    delete mStatusBar;
+
 }
 
 void MainWindow::exportFavorite()

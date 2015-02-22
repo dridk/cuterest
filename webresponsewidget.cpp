@@ -18,7 +18,8 @@ WebResponseWidget::WebResponseWidget(QWidget * parent)
 
 WebResponseWidget::~WebResponseWidget()
 {
-
+    delete mWebView;
+    delete mTreeWidget;
 }
 
 void WebResponseWidget::setResponse(const Response &rep)

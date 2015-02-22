@@ -36,6 +36,12 @@ ProxySettingsWidget::ProxySettingsWidget(QWidget * parent)
 
 ProxySettingsWidget::~ProxySettingsWidget()
 {
+    delete mHostEdit ;
+    delete mPortEdit;
+    delete mUserEdit;
+    delete mPasswordEdit;
+    delete mTypeCombo;
+    delete mBox;
 
 }
 

@@ -26,7 +26,7 @@ FavoriteTreeView::FavoriteTreeView(QWidget * parent)
 FavoriteTreeView::~FavoriteTreeView()
 {
     mModel->save(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QDir::separator() + "favorite.json");
-
+    delete mModel;
 }
 
 FavoriteModel *FavoriteTreeView::favoriteModel()

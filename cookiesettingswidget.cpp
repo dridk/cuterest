@@ -23,7 +23,9 @@ CookieSettingsWidget::CookieSettingsWidget(QWidget * parent)
 
 CookieSettingsWidget::~CookieSettingsWidget()
 {
-
+    delete mView;
+    delete mModel;
+    delete mClearButton;
 }
 
 bool CookieSettingsWidget::save()
@@ -38,21 +40,21 @@ bool CookieSettingsWidget::load()
 
 
 
-//    mModel->clear();
-//    foreach (QNetworkCookie cookie, manager()->cookieJar()->allCookies()){
+    //    mModel->clear();
+    //    foreach (QNetworkCookie cookie, manager()->cookieJar()->allCookies()){
 
-//        QList<QStandardItem*> row;
+    //        QList<QStandardItem*> row;
 
-//        row.append(new QStandardItem(cookie.domain()));
-//        row.append(new QStandardItem(cookie.expirationDate().toString()));
-//        row.append(new QStandardItem(cookie.value()));
+    //        row.append(new QStandardItem(cookie.domain()));
+    //        row.append(new QStandardItem(cookie.expirationDate().toString()));
+    //        row.append(new QStandardItem(cookie.value()));
 
-//        mModel->appendRow(row);
-
-
+    //        mModel->appendRow(row);
 
 
-//    }
+
+
+    //    }
 
 
 }
