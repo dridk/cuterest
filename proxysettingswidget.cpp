@@ -4,7 +4,7 @@ ProxySettingsWidget::ProxySettingsWidget(QWidget * parent)
     :AbstractSettingsWidget(parent)
 {
     mHostEdit    = new QLineEdit();
-    mPortEdit    = new QLineEdit();
+    mPortEdit    = new QSpinBox();
     mUserEdit    = new QLineEdit();
     mPasswordEdit= new QLineEdit();
     mTypeCombo   = new QComboBox();
@@ -22,7 +22,7 @@ ProxySettingsWidget::ProxySettingsWidget(QWidget * parent)
     layout->addRow(tr("Password"), mPasswordEdit);
 
     mBox->setLayout(layout);
-
+    mPortEdit->setRange(0,65535);
 
     QVBoxLayout * mainLayout = new QVBoxLayout;
     mainLayout->addWidget(mTypeCombo);
@@ -39,13 +39,42 @@ ProxySettingsWidget::~ProxySettingsWidget()
 
 }
 
-void ProxySettingsWidget::save()
+bool ProxySettingsWidget::save()
 {
+
+
+    QNetworkProxy proxy;
+    proxy.setType(QNetworkProxy::ProxyType(mTypeCombo->currentData().toInt()));
+    proxy.setHostName(mHostEdit->text());
+    proxy.setPort(mPortEdit->value());
+    proxy.setUser(mUserEdit->text());
+    proxy.setPassword(mPasswordEdit->text());
+
+    manager()->setProxy(proxy);
+
+    return true;
+
 
 }
 
-void ProxySettingsWidget::load()
+bool ProxySettingsWidget::load()
 {
+
+    QNetworkProxy proxy = manager()->proxy();
+
+    for (int i=0; i<mTypeCombo->count(); ++i){
+        if (mTypeCombo->itemData(i).toInt() == proxy.type())
+            mTypeCombo->setCurrentIndex(i);
+    }
+
+    mHostEdit->setText(proxy.hostName());
+    mPortEdit->setValue(proxy.port());
+    mUserEdit->setText(proxy.user());
+    mPasswordEdit->setText(proxy.password());
+
+
+    return true;
+
 
 }
 

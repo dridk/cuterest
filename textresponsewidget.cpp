@@ -4,7 +4,7 @@ TextResponseWidget::TextResponseWidget(QWidget * parent)
     :AbstractResponseWidget(parent)
 {
 
-    setWindowTitle("Text");
+    setWindowTitle("Raw");
 
     mEdit = new QTextEdit;
     mEdit->setAcceptRichText(false);

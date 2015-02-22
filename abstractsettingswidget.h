@@ -2,7 +2,7 @@
 #define ABSTRACTSETTINGSWIDGET_H
 
 #include <QWidget>
-
+#include "manager.h"
 class AbstractSettingsWidget : public QWidget
 {
     Q_OBJECT
@@ -10,9 +10,16 @@ public:
     AbstractSettingsWidget(QWidget * parent=0);
     ~AbstractSettingsWidget();
 
+    void setManager(Manager * manager);
+    Manager *manager();
+
 public slots:
-    virtual void save() = 0;
-    virtual void load() = 0;
+    virtual bool save() = 0;
+    virtual bool load() = 0;
+
+private:
+    Manager * mManager;
+
 };
 
 #endif // ABSTRACTSETTINGSWIDGET_H

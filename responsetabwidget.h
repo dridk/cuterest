@@ -35,7 +35,7 @@ private:
     JsonResponseWidget* mJsonWidget;
     InfoResponseWidget* mInfoWidget ;
     WebResponseWidget*  mWebWidget ;
-    XmlResponseWidget * mDomWidget;
+    XmlResponseWidget * mXmlWidget;
 
 };
 

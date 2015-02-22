@@ -12,8 +12,8 @@ public:
     ~ProxySettingsWidget();
 
 public slots:
-    void save();
-    void load();
+    bool save();
+    bool load();
 
 protected slots:
     void typeChanged(int index);
@@ -24,7 +24,7 @@ protected:
 
 private:
     QLineEdit * mHostEdit;
-    QLineEdit * mPortEdit;
+    QSpinBox * mPortEdit;
     QLineEdit * mUserEdit;
     QLineEdit * mPasswordEdit;
     QComboBox * mTypeCombo;

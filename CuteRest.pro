@@ -50,7 +50,8 @@ SOURCES += main.cpp\
     controlbar.cpp \
     consoledockwidget.cpp \
     favoritetreeview.cpp \
-    jsonresponsewidget.cpp
+    jsonresponsewidget.cpp \
+    cookiesettingswidget.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -89,7 +90,8 @@ HEADERS  += mainwindow.h \
     controlbar.h \
     consoledockwidget.h \
     favoritetreeview.h \
-    jsonresponsewidget.h
+    jsonresponsewidget.h \
+    cookiesettingswidget.h
 
 FORMS    += mainwindow.ui
 

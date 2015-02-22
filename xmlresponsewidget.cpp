@@ -9,6 +9,7 @@ XmlResponseWidget::XmlResponseWidget(QWidget * parent )
     mView->setModel(mModel);
     setWidget(mView);
 
+    mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
     setWindowTitle("Xml");
 

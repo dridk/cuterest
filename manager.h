@@ -21,6 +21,9 @@ protected slots:
     QNetworkReply* postRequest(const Request& request);
     QNetworkReply* putRequest(const Request& request);
     QNetworkReply* deleteRequest(const Request& request);
+    QNetworkReply *headRequest(const Request& request);
+    QNetworkReply *customRequest(const Request& request);
+
 
 
 signals:

@@ -7,11 +7,11 @@ ResponseTabWidget::ResponseTabWidget(QWidget * parent)
     mJsonWidget = new JsonResponseWidget();
     mInfoWidget = new InfoResponseWidget();
     mWebWidget  = new WebResponseWidget();
-    mDomWidget  = new XmlResponseWidget();
+    mXmlWidget  = new XmlResponseWidget();
 
     addResponseWidget(mTextWidget);
     addResponseWidget(mJsonWidget);
-    addResponseWidget(mDomWidget);
+    addResponseWidget(mXmlWidget);
     addResponseWidget(mInfoWidget);
     addResponseWidget(mWebWidget);
 

@@ -58,11 +58,13 @@ ControlBar::ControlBar(QWidget * parent):
     mPannelButton->setIcon(QtAwesome::instance()->icon("columns"));
 
 
+
+
     QMenu * settingMenu  = new QMenu;
     QAction * importAction = settingMenu->addAction(tr("Import"));
     QAction * exportAction = settingMenu->addAction(tr("export"));
     settingMenu->addSeparator();
-    QAction * proxyAction = settingMenu->addAction(tr("Proxy"));
+    QAction * proxyAction = settingMenu->addAction(tr("Settings"));
     QAction * aboutAction = settingMenu->addAction(tr("About CuteRest"));
 
     mSettingButton->setMenu(settingMenu);

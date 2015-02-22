@@ -1,6 +1,7 @@
 #include "settingsdialog.h"
 #include <QVBoxLayout>
 #include "proxysettingswidget.h"
+#include "cookiesettingswidget.h"
 SettingsDialog::SettingsDialog(Manager   * manager,QWidget *parent)
     : QDialog(parent)
 {
@@ -15,17 +16,15 @@ SettingsDialog::SettingsDialog(Manager   * manager,QWidget *parent)
     layout->addWidget(mButtonBox);
 
     setLayout(layout);
-
-
-
-
-
     resize(600,400);
 
     addSettingsWidget(new ProxySettingsWidget());
+    addSettingsWidget(new CookieSettingsWidget());
 
     connect(mButtonBox,SIGNAL(accepted()),this,SLOT(save()));
     connect(mButtonBox,SIGNAL(rejected()),this,SLOT(reject()));
+
+    load();
 }
 
 SettingsDialog::~SettingsDialog()
@@ -36,6 +35,7 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::addSettingsWidget(AbstractSettingsWidget *widget)
 {
 
+    widget->setManager(mManager);
     mTabWidget->addTab(widget,widget->windowIcon(), widget->windowTitle());
     mWidgets.append(widget);
 
@@ -44,8 +44,13 @@ void SettingsDialog::addSettingsWidget(AbstractSettingsWidget *widget)
 
 void SettingsDialog::save()
 {
+
     foreach( AbstractSettingsWidget * w, mWidgets)
-        w->save();
+    {
+        if (!w->save())
+            return;
+    }
+    emit accept();
 }
 
 void SettingsDialog::load()

@@ -108,10 +108,6 @@ void MainWindow::setStyle()
 
 
 
-
-
-
-
 }
 
 void MainWindow::showSettings()

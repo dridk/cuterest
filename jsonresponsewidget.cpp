@@ -5,7 +5,7 @@
 JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     :AbstractResponseWidget(parent)
 {
-    setWindowTitle("Tree");
+    setWindowTitle("Json");
 
     mView = new QTreeView;
     mJsonModel = new QJsonModel;
@@ -21,8 +21,7 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
 
     mainLayout->setContentsMargins(0,0,0,0);
 
-    //For stylesheet
-    mView->setObjectName("Json");
+
 //    mView->header()->hide();
     mView->setModel(mProxyModel);
     mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
@@ -30,7 +29,6 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
 
     mSearchEdit->setVisible(false);
 
-    mJsonModel->load("/home/sacha/test.json");
 
     setLayout(mainLayout);
 

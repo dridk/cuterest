@@ -30,8 +30,13 @@ void Manager::sendRequest(const Request &request)
     if (request.verb() == "DELETE")
         reply = deleteRequest(request);
 
+    if (request.verb() == "HEAD")
+        reply = headRequest(request);
+
     if (!reply){
-        qDebug()<<"unknown HTTP VERBS";
+
+
+
         return;
     }
 
@@ -124,6 +129,26 @@ QNetworkReply* Manager::deleteRequest(const Request &request)
     return deleteResource(request);
 }
 
+QNetworkReply *Manager::headRequest(const Request &request)
+{
+    return headRequest(request);
+}
+QNetworkReply* Manager::customRequest(const Request &request)
+{
+    QJsonDocument doc;
+    QJsonObject obj;
+
+    foreach (QString key, request.params().keys())
+        obj.insert(key, QJsonValue::fromVariant(request.param(key)));
+
+    doc.setObject(obj);
+
+   return sendCustomRequest(request, request.verb().toUtf8());
+
+
+
+
+}
 Response Manager::createResponse(QNetworkReply *reply)
 {
 
