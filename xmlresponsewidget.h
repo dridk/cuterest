@@ -14,10 +14,17 @@ public:
     ~XmlResponseWidget();
     void setResponse(const Response& rep);
 
+protected slots:
+    void copy();
+
 private:
     QDomDocument mDoc;
     DomModel * mModel;
     QTreeView * mView;
+    QAction * mCopyNameAction;
+    QAction * mCopyAttributeAction;
+    QAction * mCopyValueAction;
+
 
 
 };

@@ -22,10 +22,13 @@ public:
     QString name() const;
     void setName(const QString &name);
 
+    QByteArray paramToJson() const;
+
 private:
     QString mVerb;
     QHash<QString,QVariant> mParams;
     QString mName;
+
 };
 
 #endif // REQUEST_H

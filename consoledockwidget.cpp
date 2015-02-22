@@ -51,6 +51,8 @@ void ConsoleDockWidget::append(const Request &req)
         out(QString("  %1 : %2").arg(QString(key)).arg(QString(req.rawHeader(key))));
     }
 
+    out(QString(req.paramToJson()));
+
 
 
 

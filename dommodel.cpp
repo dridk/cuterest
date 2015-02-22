@@ -42,7 +42,8 @@
 #include "dommodel.h"
 
 #include <QtXml>
-
+#include <QFont>
+#include <QColor>
 //! [0]
 DomModel::DomModel( QObject *parent)
     : QAbstractItemModel(parent)
@@ -83,17 +84,17 @@ QVariant DomModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    if (role != Qt::DisplayRole)
-        return QVariant();
+    if (role == Qt::DisplayRole)
 
-    DomItem *item = static_cast<DomItem*>(index.internalPointer());
+    {
+        DomItem *item = static_cast<DomItem*>(index.internalPointer());
 
-    QDomNode node = item->node();
-//! [3] //! [4]
-    QStringList attributes;
-    QDomNamedNodeMap attributeMap = node.attributes();
+        QDomNode node = item->node();
+        //! [3] //! [4]
+        QStringList attributes;
+        QDomNamedNodeMap attributeMap = node.attributes();
 
-    switch (index.column()) {
+        switch (index.column()) {
         case 0:
             return node.nodeName();
         case 1:
@@ -107,11 +108,38 @@ QVariant DomModel::data(const QModelIndex &index, int role) const
             return node.nodeValue().split("\n").join(' ');
         default:
             return QVariant();
-    }
-}
-//! [4]
+        }
 
-//! [5]
+    }
+
+
+
+    if (role == Qt::FontRole) {
+
+        QFont font;
+        if (index.column() == 0)
+        {
+            font.setBold(true);
+            return font;
+        }
+
+        return font;
+    }
+
+    if (role == Qt::TextColorRole){
+        if (index.column() == 1)
+            return QColor("#FFAA2C");
+        if (index.column() == 2)
+            return QColor("#5293D8");
+
+
+
+    }
+    return QVariant();
+
+}
+
+
 Qt::ItemFlags DomModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
@@ -127,14 +155,14 @@ QVariant DomModel::headerData(int section, Qt::Orientation orientation,
 {
     if (orientation == Qt::Horizontal && role == Qt::DisplayRole) {
         switch (section) {
-            case 0:
-                return tr("Name");
-            case 1:
-                return tr("Attributes");
-            case 2:
-                return tr("Value");
-            default:
-                return QVariant();
+        case 0:
+            return tr("Name");
+        case 1:
+            return tr("Attributes");
+        case 2:
+            return tr("Value");
+        default:
+            return QVariant();
         }
     }
 
@@ -144,7 +172,7 @@ QVariant DomModel::headerData(int section, Qt::Orientation orientation,
 
 //! [7]
 QModelIndex DomModel::index(int row, int column, const QModelIndex &parent)
-            const
+const
 {
     if (!hasIndex(row, column, parent))
         return QModelIndex();
@@ -155,9 +183,9 @@ QModelIndex DomModel::index(int row, int column, const QModelIndex &parent)
         parentItem = rootItem;
     else
         parentItem = static_cast<DomItem*>(parent.internalPointer());
-//! [7]
+    //! [7]
 
-//! [8]
+    //! [8]
     DomItem *childItem = parentItem->child(row);
     if (childItem)
         return createIndex(row, column, childItem);

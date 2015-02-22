@@ -6,11 +6,9 @@ ControlBar::ControlBar(QWidget * parent):
 {
     mLineEdit = new QLineEdit;
     mVerbCombo = new VerbComboBox;
-    mToolButton = new QToolButton;
     mFavButton= new QToolButton;
     mBackButton = new QToolButton;
     mForwardButton = new QToolButton;
-    mRefreshButton = new QToolButton;
     mSettingButton = new QToolButton;
     mPannelButton = new QToolButton;
     mMainWidget = new QWidget;
@@ -25,8 +23,6 @@ ControlBar::ControlBar(QWidget * parent):
 
     wLayout->addWidget(mVerbCombo);
     wLayout->addWidget(mLineEdit);
-    wLayout->addWidget(mToolButton);
-    wLayout->addWidget(mRefreshButton);
     wLayout->addWidget(mFavButton);
 
     mPannelButton->setCheckable(true);
@@ -49,15 +45,13 @@ ControlBar::ControlBar(QWidget * parent):
 
 
     mVerbCombo->setMinimumWidth(80);
-    mToolButton->setIcon(QtAwesome::instance()->icon("cogs"));
     mFavButton->setIcon((QtAwesome::instance()->icon("bookmark")));
-    mRefreshButton->setIcon(QtAwesome::instance()->icon("refresh"));
     mBackButton->setIcon(QtAwesome::instance()->icon("arrow-left"));
     mForwardButton->setIcon(QtAwesome::instance()->icon("arrow-right"));
     mSettingButton->setIcon(QtAwesome::instance()->icon("cog"));
     mPannelButton->setIcon(QtAwesome::instance()->icon("columns"));
 
-
+    mLineEdit->setPlaceholderText("Enter adress ");
 
 
     QMenu * settingMenu  = new QMenu;
@@ -70,18 +64,23 @@ ControlBar::ControlBar(QWidget * parent):
     mSettingButton->setMenu(settingMenu);
     mSettingButton->setPopupMode(QToolButton::InstantPopup);
 
-
-
-    setRequest(Request(QUrl("http://api.duckduckgo.com")));
-
+    QAction * optionAction =  mLineEdit->addAction(QtAwesome::instance()->icon("cog"),QLineEdit::LeadingPosition);
+    QAction * refreshAction = mLineEdit->addAction(QtAwesome::instance()->icon("refresh"),QLineEdit::TrailingPosition);
 
 
 
 
-    connect(mRefreshButton,SIGNAL(clicked()),this,SLOT(sendRequest()));
+    setRequest(Request(QUrl("http://api.duckduckgo.com/?q=apple&format=json&pretty=1")));
+
+
+    setWindowTitle(tr("Control"));
+
+
+    connect(refreshAction,SIGNAL(triggered()),this,SLOT(sendRequest()));
+    connect(optionAction,SIGNAL(triggered()),this,SLOT(showRequestDialog()));
+
     connect(mLineEdit,SIGNAL(returnPressed()),this,SLOT(sendRequest()));
     connect(mFavButton,SIGNAL(clicked()),this,SLOT(sendFavorite()));
-    connect(mToolButton,SIGNAL(clicked()),this,SLOT(showRequestDialog()));
     connect(mBackButton,SIGNAL(clicked()),this,SIGNAL(backTrigger()));
     connect(mForwardButton,SIGNAL(clicked()),this,SIGNAL(forwardTrigger()));
     connect(mPannelButton,SIGNAL(clicked(bool)),this,SIGNAL(panelTrigger(bool)));
@@ -92,17 +91,16 @@ ControlBar::ControlBar(QWidget * parent):
     connect(proxyAction,SIGNAL(triggered()),this,SIGNAL(proxyTrigger()));
 
 
+
 }
 
 ControlBar::~ControlBar()
 {
     delete mLineEdit;
     delete mVerbCombo;
-    delete mToolButton;
     delete mFavButton;
     delete mBackButton;
     delete mForwardButton;
-    delete mRefreshButton;
     delete mSettingButton;
     delete mPannelButton;
     delete mMainWidget;

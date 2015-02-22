@@ -95,32 +95,13 @@ QNetworkReply* Manager::getRequest(const Request &request)
 
 QNetworkReply* Manager::postRequest(const Request &request)
 {
-    QJsonDocument doc;
-    QJsonObject obj;
-
-    foreach (QString key, request.params().keys())
-        obj.insert(key, QJsonValue::fromVariant(request.param(key)));
-
-    doc.setObject(obj);
-
-   return post(request,doc.toJson());
-
-
-
-
+   return post(request,request.paramToJson());
 }
 
 QNetworkReply* Manager::putRequest(const Request &request)
 {
-    QJsonDocument doc;
-    QJsonObject obj;
 
-    foreach (QString key, request.params().keys())
-        obj.insert(key, QJsonValue::fromVariant(request.param(key)));
-
-    doc.setObject(obj);
-
-    return put(request,doc.toJson());
+    return put(request,request.paramToJson());
 
 }
 
@@ -135,19 +116,7 @@ QNetworkReply *Manager::headRequest(const Request &request)
 }
 QNetworkReply* Manager::customRequest(const Request &request)
 {
-    QJsonDocument doc;
-    QJsonObject obj;
-
-    foreach (QString key, request.params().keys())
-        obj.insert(key, QJsonValue::fromVariant(request.param(key)));
-
-    doc.setObject(obj);
-
    return sendCustomRequest(request, request.verb().toUtf8());
-
-
-
-
 }
 Response Manager::createResponse(QNetworkReply *reply)
 {

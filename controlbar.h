@@ -37,7 +37,6 @@ protected slots:
 private:
     QLineEdit * mLineEdit;
     VerbComboBox * mVerbCombo;
-    QToolButton * mToolButton;
     QToolButton * mFavButton;
     QToolButton * mBackButton;
     QToolButton * mForwardButton;
@@ -45,7 +44,6 @@ private:
     QToolButton * mPannelButton;
 
 
-    QToolButton * mRefreshButton;
     QWidget * mMainWidget;
     Request mRequest;
 };

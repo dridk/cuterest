@@ -70,6 +70,19 @@ void Request::setName(const QString &name)
     mName = name;
 }
 
+QByteArray Request::paramToJson() const
+{
+    QJsonDocument doc;
+    QJsonObject obj;
+
+    foreach (QString key, params().keys())
+        obj.insert(key, QJsonValue::fromVariant(param(key)));
+
+    doc.setObject(obj);
+
+    return doc.toJson();
+}
+
 
 
 
