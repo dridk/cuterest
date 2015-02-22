@@ -53,7 +53,8 @@ SOURCES += main.cpp\
     jsonresponsewidget.cpp \
     cookiesettingswidget.cpp \
     aboutdialog.cpp \
-    aboutlabel.cpp
+    aboutlabel.cpp \
+    xmlsyntaxhighlighter.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -95,7 +96,8 @@ HEADERS  += mainwindow.h \
     jsonresponsewidget.h \
     cookiesettingswidget.h \
     aboutdialog.h \
-    aboutlabel.h
+    aboutlabel.h \
+    xmlsyntaxhighlighter.h
 
 FORMS    += mainwindow.ui
 

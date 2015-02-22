@@ -3,6 +3,8 @@ QMainWindow::separator {
     margin: 0px;
     padding: 0px;
     width: 1px;
+
+  
 }
 
  QTabWidget::pane#response {
@@ -10,3 +12,10 @@ QMainWindow::separator {
 
 
 }
+QToolButton {
+    
+}
+
+ QDockWidget::title {
+   margin:6px;
+ }

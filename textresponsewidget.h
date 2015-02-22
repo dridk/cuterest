@@ -3,7 +3,7 @@
 #include "abstractresponsewidget.h"
 #include <QTextEdit>
 #include "jsonsyntaxhighlighter.h"
-
+#include "xmlsyntaxhighlighter.h"
 class TextResponseWidget : public AbstractResponseWidget
 {
 public:
@@ -18,7 +18,7 @@ public slots:
 
 private:
     QTextEdit * mEdit;
-    JsonSyntaxHighlighter * mHighlighter;
+    QSyntaxHighlighter * mHighlighter;
 };
 
 #endif // TEXTRESPONSEWIDGET_H

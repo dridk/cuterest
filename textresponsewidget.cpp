@@ -13,7 +13,6 @@ TextResponseWidget::TextResponseWidget(QWidget * parent)
 
 
 
-mHighlighter = new JsonSyntaxHighlighter(mEdit->document());
 
 
 
@@ -31,6 +30,9 @@ void TextResponseWidget::setResponse(const Response &rep)
     mEdit->clear();
     mEdit->setPlainText(rep.body());
 
+
+
+    mHighlighter = new JsonSyntaxHighlighter(mEdit->document());
 
 }
 

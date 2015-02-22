@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="dessin-1.svg">
+   sodipodi:docname="logo.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -23,11 +23,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="-1089.8007"
-     inkscape:cy="46.833785"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="540.30776"
+     inkscape:cy="-2140.509"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g9263"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1024"
@@ -41,8 +41,7 @@
   <defs
      id="defs4">
     <linearGradient
-       id="linearGradient8857"
-       inkscape:collect="always">
+       id="linearGradient8857">
       <stop
          id="stop8859"
          offset="0"
@@ -1136,16 +1135,6 @@
        y1="463.44327"
        x2="341.43155"
        y2="429.95062" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient8857"
-       id="linearGradient10842"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.66008096,3410.3956,937.59002)"
-       x1="-3362.5269"
-       y1="2146.175"
-       x2="-3362.5269"
-       y2="2721.5073" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient2998-52"
@@ -2876,7 +2865,7 @@
        height="317.77789"
        width="1042.7098"
        id="rect10650"
-       style="fill:url(#linearGradient10842);fill-opacity:1;stroke:none" />
+       style="fill:#000000;fill-opacity:0;stroke:none" />
     <g
        style="stroke:none"
        id="g10652"
@@ -3306,12 +3295,12 @@
     <rect
        ry="0"
        rx="0"
-       y="2534.8035"
-       x="821.52899"
-       height="1200.2936"
-       width="1042.7098"
+       y="2535.8027"
+       x="822.39716"
+       height="1198.2948"
+       width="1040.9735"
        id="rect10872"
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.76762342;stroke-opacity:1" />
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.7663452;stroke-opacity:1" />
     <g
        transform="matrix(0.36121715,0,0,0.36121715,1827.1054,1723.4226)"
        id="g10876"
@@ -4168,7 +4157,10 @@
     <g
        style="stroke:none"
        id="g11314"
-       transform="matrix(0.91809535,0,0,0.91809535,1370.2982,-1462.5961)">
+       transform="matrix(0.91809535,0,0,0.91809535,1370.2982,-1462.5961)"
+       inkscape:export-filename="/media/sacha/Linux_data/dev/CuteRest/icons/logo_32.png"
+       inkscape:export-xdpi="6.9173212"
+       inkscape:export-ydpi="6.9173212">
       <path
          transform="matrix(0.82992292,0,0,0.82992292,196.65399,461.46502)"
          inkscape:connector-curvature="0"
@@ -4561,7 +4553,10 @@
          inkscape:connector-curvature="0" />
     </g>
     <g
-       id="g11502">
+       id="g11502"
+       inkscape:export-filename="/media/sacha/Linux_data/dev/CuteRest/icons/logo_32.png"
+       inkscape:export-xdpi="6.9173212"
+       inkscape:export-ydpi="6.9173212">
       <path
          d="m -945.40625,933.96875 c -1.13822,0 -2.22483,0.38861 -3,1.15625 -0.77517,0.76764 -1.21875,1.90483 -1.21875,3.21875 l 0,20.96875 c 0,1.70099 0.34905,3.06861 1.28125,4 0.9322,0.93139 2.30054,1.28125 4.0625,1.28125 l 6.46875,0 a 0.80049878,0.80049878 0 0 0 0.78125,-0.65625 l 1.0625,-5.375 a 0.80049878,0.80049878 0 0 0 -0.78125,-0.96875 l -5.28125,0 0,-16.59375 5.28125,0 a 0.80049878,0.80049878 0 0 0 0.78125,-0.96875 l -1,-5.40625 a 0.80049878,0.80049878 0 0 0 -0.78125,-0.65625 l -7.65625,0 z m 10.65625,0 a 0.80049878,0.80049878 0 0 0 -0.8125,0.8125 l 0,24.53125 c 0,1.70099 0.34905,3.06861 1.28125,4 0.9322,0.93139 2.30054,1.28125 4.0625,1.28125 l 5.96875,0 c 1.76196,0 3.1381,-0.3475 4.0625,-1.28125 0.9244,-0.93375 1.25,-2.30162 1.25,-4 l 0,-19.09375 A 0.80049878,0.80049878 0 0 0 -918.125,941 l 3.0625,0 0,22.78125 a 0.80049878,0.80049878 0 0 0 0.8125,0.8125 l 5.9375,0 a 0.80049878,0.80049878 0 0 0 0.8125,-0.8125 l 0,-22.78125 3.0625,0 a 0.80049878,0.80049878 0 0 0 0.75,-0.53125 l 0,23.3125 a 0.80049878,0.80049878 0 0 0 0.8125,0.8125 l 11.0625,0 a 0.80049878,0.80049878 0 0 0 0.78125,-0.65625 l 1,-5.375 a 0.80049878,0.80049878 0 0 0 -0.78125,-0.96875 l -5.28125,0 0,-4.71875 4,0 a 0.80049878,0.80049878 0 0 0 0.8125,-0.8125 l 0,-5 a 0.80049878,0.80049878 0 0 0 -0.8125,-0.8125 l -4,0 0,-5.25 5.5,0 a 0.80049878,0.80049878 0 0 0 0.78125,-0.96875 l -1,-5.40625 a 0.80049878,0.80049878 0 0 0 -0.78125,-0.65625 l -11.28125,0 a 0.80049878,0.80049878 0 0 0 -0.8125,0.8125 l 0,5.0625 -1.40625,-5.28125 a 0.80049878,0.80049878 0 0 0 -0.78125,-0.59375 l -10.71875,0 a 0.80049878,0.80049878 0 0 0 -0.78125,0.59375 l -1.53125,5.40625 a 0.80049878,0.80049878 0 0 0 -0.0312,0.15625 l 0,-5.34375 a 0.80049878,0.80049878 0 0 0 -0.8125,-0.8125 l -5.90625,0 a 0.80049878,0.80049878 0 0 0 -0.8125,0.8125 l 0,23.125 -1.53125,0 0,-23.125 a 0.80049878,0.80049878 0 0 0 -0.8125,-0.8125 l -5.9375,0 z"
          id="path11496"
@@ -4582,6 +4577,18 @@
            id="tspan11488"
            sodipodi:role="line">Cute</tspan></text>
     </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="rect11526"
+       width="1040.9735"
+       height="1198.2948"
+       x="2433.8257"
+       y="698.65985"
+       rx="0"
+       ry="0"
+       inkscape:export-filename="/media/sacha/Linux_data/dev/CuteRest/icons/about_bg.png"
+       inkscape:export-xdpi="34.549095"
+       inkscape:export-ydpi="34.549095" />
   </g>
   <g
      id="g9263"
@@ -4735,16 +4742,16 @@
     <g
        id="g11066"
        inkscape:label="Calque 1"
-       transform="matrix(13.662793,0,0,13.662793,21355.997,15014.254)"
-       style="fill:#ececec;fill-opacity:1;display:inline;opacity:0.53649635">
+       transform="matrix(5.8839803,0,0,5.8839803,9888.2443,8537.5222)"
+       style="fill:#0d2442;fill-opacity:1;display:inline">
       <path
-         style="fill:#ececec;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         style="fill:#0d2442;fill-opacity:1;fill-rule:evenodd;stroke:none"
          d="m -1467.9362,-876.76409 0,4.97521 0,24.87525 4.9752,-4.97441 0,-19.90084 19.9008,0 4.9753,-4.97521 -24.8761,0 z"
          id="path11068"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccccccc" />
       <path
-         style="fill:#ececec;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         style="fill:#0d2442;fill-opacity:1;fill-rule:evenodd;stroke:none"
          d="m -1439.9506,-868.67938 0,19.90084 -19.9009,0 -4.9752,4.97521 24.8761,0 4.9752,0 0,-4.97521 0,-24.87684 z"
          id="path11070"
          inkscape:connector-curvature="0"
@@ -4752,15 +4759,15 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:124.46224976000000595px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ececec;fill-opacity:1;stroke:none;display:inline;font-family:Sans;opacity:0.53649635"
-       x="1216.3737"
-       y="3683.531"
+       style="font-size:53.60056686px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0d2442;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+       x="1214.9703"
+       y="3657.8647"
        id="text11072"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan11074"
-         x="1216.3737"
-         y="3683.531">labsquare</tspan></text>
+         x="1214.9703"
+         y="3657.8647">labsquare</tspan></text>
     <flowRoot
        transform="translate(890.14238,2797.7418)"
        xml:space="preserve"
@@ -4848,5 +4855,40 @@
          id="flowPara11294"
          style="font-size:30px">Ut venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. </flowPara><flowPara
          id="flowPara11296"
-         style="font-size:30px" /></flowRoot>  </g>
+         style="font-size:30px" /></flowRoot>    <g
+       style="opacity:0.53649633;fill:#ececec;fill-opacity:1;display:inline"
+       transform="matrix(13.662793,0,0,13.662793,22962.725,13162.825)"
+       inkscape:label="Calque 1"
+       id="g11528"
+       inkscape:export-filename="/media/sacha/Linux_data/dev/CuteRest/icons/about_bg.png"
+       inkscape:export-xdpi="34.549095"
+       inkscape:export-ydpi="34.549095">
+      <path
+         sodipodi:nodetypes="ccccccccc"
+         inkscape:connector-curvature="0"
+         id="path11530"
+         d="m -1467.9362,-876.76409 0,4.97521 0,24.87525 4.9752,-4.97441 0,-19.90084 19.9008,0 4.9753,-4.97521 -24.8761,0 z"
+         style="fill:#ececec;fill-opacity:1;fill-rule:evenodd;stroke:none" />
+      <path
+         sodipodi:nodetypes="ccccccccc"
+         inkscape:connector-curvature="0"
+         id="path11532"
+         d="m -1439.9506,-868.67938 0,19.90084 -19.9009,0 -4.9752,4.97521 24.8761,0 4.9752,0 0,-4.97521 0,-24.87684 z"
+         style="fill:#ececec;fill-opacity:1;fill-rule:evenodd;stroke:none" />
+    </g>
+    <text
+       sodipodi:linespacing="125%"
+       id="text11534"
+       y="1832.1024"
+       x="2822.0876"
+       style="font-size:124.46224976px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;opacity:0.53649633;fill:#ececec;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+       xml:space="preserve"
+       inkscape:export-filename="/media/sacha/Linux_data/dev/CuteRest/icons/about_bg.png"
+       inkscape:export-xdpi="34.549095"
+       inkscape:export-ydpi="34.549095"><tspan
+         y="1832.1024"
+         x="2822.0876"
+         id="tspan11536"
+         sodipodi:role="line">labsquare</tspan></text>
+  </g>
 </svg>
