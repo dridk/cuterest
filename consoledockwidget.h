@@ -16,6 +16,7 @@ public slots:
     void append(const Request& rep);
 
 
+    void out(const QString& message, bool rich = false);
 
 private:
     QPlainTextEdit * mTextEdit;

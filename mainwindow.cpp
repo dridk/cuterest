@@ -52,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mControlBar,SIGNAL(exportTrigger()),this,SLOT(exportFavorite()));
     connect(mControlBar,SIGNAL(importTrigger()),this,SLOT(importFavorite()));
     connect(mControlBar,SIGNAL(proxyTrigger()),this,SLOT(showSettings()));
-
+    connect(mControlBar,SIGNAL(aboutTrigger()),this,SLOT(showAbout()));
     connect(mManager,SIGNAL(loadingChanged(bool)),mStatusBar,SLOT(setLoading(bool)));
     connect(mManager,SIGNAL(loadingChanged(bool)),centralWidget(),SLOT(setDisabled(bool)));
     resize(1024,640);
@@ -113,5 +113,11 @@ void MainWindow::setStyle()
 void MainWindow::showSettings()
 {
     SettingsDialog dialog(mManager,this);
+    dialog.exec();
+}
+
+void MainWindow::showAbout()
+{
+    AboutDialog dialog(this);
     dialog.exec();
 }

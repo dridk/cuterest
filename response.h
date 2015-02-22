@@ -28,6 +28,7 @@ public:
     void setRawHeaderPairs(const QList<QNetworkReply::RawHeaderPair> & pairs);
 
     QByteArray	rawHeader(const QByteArray & headerName) const;
+    QList<QByteArray> rawHeaderList() const;
 
 private:
     QList<QNetworkReply::RawHeaderPair> mRawHeaderPairs;

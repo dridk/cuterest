@@ -87,3 +87,14 @@ QByteArray Response::rawHeader(const QByteArray &headerName) const
 
 }
 
+QList<QByteArray> Response::rawHeaderList() const
+{
+    QList<QByteArray> list;
+    foreach (QNetworkReply::RawHeaderPair pair, rawHeaderPairs()){
+        list.append(pair.first);
+    }
+
+
+    return list;
+}
+

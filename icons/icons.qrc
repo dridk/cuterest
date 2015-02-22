@@ -4,5 +4,10 @@
         <file>fav_on.png</file>
         <file>fav_off.png</file>
         <file>loading.gif</file>
+        <file>logo_32.png</file>
+        <file>logo_64.png</file>
+        <file>logo_128.png</file>
+        <file>logo_256.png</file>
+        <file>about_bg.png</file>
     </qresource>
 </RCC>

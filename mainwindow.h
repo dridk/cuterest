@@ -10,7 +10,7 @@
 #include "statusbar.h"
 #include "controlbar.h"
 #include "settingsdialog.h"
-
+#include "aboutdialog.h"
 namespace Ui {
 class MainWindow;
 }
@@ -28,6 +28,7 @@ public slots:
     void importFavorite();
     void setStyle();
     void showSettings();
+    void showAbout();
 
 private:
     Ui::MainWindow *ui;

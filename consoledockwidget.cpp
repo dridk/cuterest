@@ -1,5 +1,7 @@
 #include "consoledockwidget.h"
-
+#include <QHostInfo>
+#include <QDateTime>
+#include <QAction>
 ConsoleDockWidget::ConsoleDockWidget(QWidget * parent)
     :QDockWidget(parent)
 {
@@ -9,7 +11,12 @@ ConsoleDockWidget::ConsoleDockWidget(QWidget * parent)
     mTextEdit = new QPlainTextEdit;
     mTextEdit->setReadOnly(true);
 
+
     setWidget(mTextEdit);
+
+    QAction * clearAction = new QAction("Clear",this);
+
+    addAction(clearAction);
 }
 
 ConsoleDockWidget::~ConsoleDockWidget()
@@ -20,8 +27,13 @@ ConsoleDockWidget::~ConsoleDockWidget()
 void ConsoleDockWidget::append(const Response &rep)
 {
 
-    mTextEdit->appendPlainText(">>Response");
-    mTextEdit->appendPlainText(rep.body());
+    out(QString("<b>>>Response[%3] code %1 in %2sec</b>").arg(rep.statusCode())
+                                                   .arg(rep.time().toString("ss"))
+                                                   .arg(QDateTime::currentDateTime().toString("hh:mm:ss")),true);
+
+    foreach (QByteArray key , rep.rawHeaderList()) {
+        out(QString("  %1 : %2").arg(QString(key)).arg(QString(rep.rawHeader(key))));
+    }
 
 
 
@@ -31,11 +43,25 @@ void ConsoleDockWidget::append(const Response &rep)
 void ConsoleDockWidget::append(const Request &req)
 {
 
-mTextEdit->appendPlainText("<<Request");
-mTextEdit->appendPlainText(req.url().toString());
+    out(QString("<b>&lt;&lt;Request[%3] %1 %2</b>").arg(req.verb())
+                                                   .arg(req.url().toString())
+                                                   .arg(QDateTime::currentDateTime().toString("hh:mm:ss")), true);
+
+    foreach (QByteArray key , req.rawHeaderList()) {
+        out(QString("  %1 : %2").arg(QString(key)).arg(QString(req.rawHeader(key))));
+    }
 
 
 
+
+}
+
+void ConsoleDockWidget::out(const QString &message, bool rich)
+{
+    if (!rich)
+        mTextEdit->appendPlainText(message);
+    else
+        mTextEdit->appendHtml(message);
 
 
 

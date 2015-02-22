@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="icons/icons.qrc">
+    <normaloff>:/logo_32.png</normaloff>:/logo_32.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget"/>
   <action name="actionExport">
    <property name="text">
@@ -39,6 +43,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="icons/icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

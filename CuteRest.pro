@@ -51,7 +51,9 @@ SOURCES += main.cpp\
     consoledockwidget.cpp \
     favoritetreeview.cpp \
     jsonresponsewidget.cpp \
-    cookiesettingswidget.cpp
+    cookiesettingswidget.cpp \
+    aboutdialog.cpp \
+    aboutlabel.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -91,7 +93,9 @@ HEADERS  += mainwindow.h \
     consoledockwidget.h \
     favoritetreeview.h \
     jsonresponsewidget.h \
-    cookiesettingswidget.h
+    cookiesettingswidget.h \
+    aboutdialog.h \
+    aboutlabel.h
 
 FORMS    += mainwindow.ui
 

@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     int i = QFontDatabase::addApplicationFont(":/fonts/Menlo-Regular.ttf");
+    i = QFontDatabase::addApplicationFont(":/fonts/American-Captain.ttf");
 
     qDebug()<<QFontDatabase::applicationFontFamilies(i);
 
