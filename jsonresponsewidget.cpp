@@ -62,27 +62,27 @@ JsonResponseWidget::~JsonResponseWidget()
 void JsonResponseWidget::doubleClicked(const QModelIndex &index)
 {
     // This methods allow to send new request from endpoint clicked from view..
-    // That's mean all url "http://" and relative url..
+//    // That's mean all url "http://" and relative url..
 
-    QString path = mJsonModel->index(mProxyModel->mapToSource(index).row(),1, mProxyModel->mapToSource(index).parent()).data().toString();
-    QRegularExpression regExp("^(https?://)?[\da-z\.-]+/");
-    if (path.contains(regExp)){
+//    QString path = mJsonModel->index(mProxyModel->mapToSource(index).row(),1, mProxyModel->mapToSource(index).parent()).data().toString();
+//    QRegularExpression regExp("^(https?://)?[\da-z\.-]+/");
+//    if (path.contains(regExp)){
 
-        Request request = response().request();
-        qDebug()<<response().request().verb();
+//        Request request = response().request();
+//        qDebug()<<response().request().verb();
 
-        if (path.contains(QRegularExpression("^https?://")))
-            request.setUrl(QUrl(path));
-        else
-        {
-            QUrl url;
-            url.setAuthority(request.url().authority());
-            url.setPath(path);
-            request.setUrl(url);
-        }
+//        if (path.contains(QRegularExpression("^https?://")))
+//            request.setUrl(QUrl(path));
+//        else
+//        {
+//            QUrl url;
+//            url.setAuthority(request.url().authority());
+//            url.setPath(path);
+//            request.setUrl(url);
+//        }
 
-        emit requestTrigger(request);
-    }
+//        emit requestTrigger(request);
+//    }
 }
 
 
