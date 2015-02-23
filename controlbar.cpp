@@ -56,7 +56,7 @@ ControlBar::ControlBar(QWidget * parent):
 
     QMenu * settingMenu  = new QMenu;
     QAction * importAction = settingMenu->addAction(tr("Import"));
-    QAction * exportAction = settingMenu->addAction(tr("export"));
+    QAction * exportAction = settingMenu->addAction(tr("Export"));
     settingMenu->addSeparator();
     QAction * proxyAction = settingMenu->addAction(tr("Settings"));
     QAction * aboutAction = settingMenu->addAction(tr("About CuteRest"));
