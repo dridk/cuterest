@@ -139,6 +139,7 @@ void MainWindow::showError(const QString &error)
     QMessageBox box;
     box.setIcon(QMessageBox::Warning);
     box.setText(error);
+    box.setWindowTitle(tr("Error"));
     box.exec();
 
 

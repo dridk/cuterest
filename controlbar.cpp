@@ -125,11 +125,21 @@ Request ControlBar::createRequest()
     mRequest.setUrl(mLineEdit->text());
     mRequest.setVerb(mVerbCombo->currentText());
 
+
+
     return mRequest;
 }
 
 void ControlBar::sendRequest()
 {
+
+    if ( (!mLineEdit->text().startsWith("http://")) || (!mLineEdit->text().startsWith("https://")) ){
+        QString text = mLineEdit->text();
+        text.prepend("http://");
+        mLineEdit->setText(text);
+    }
+
+
     emit requestTrigger(createRequest());
 }
 
@@ -150,5 +160,7 @@ void ControlBar::showRequestDialog()
         setRequest(dialog.request());
 
 }
+
+
 
 
