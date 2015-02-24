@@ -133,7 +133,7 @@ Request ControlBar::createRequest()
 void ControlBar::sendRequest()
 {
 
-    if ( (!mLineEdit->text().startsWith("http://")) || (!mLineEdit->text().startsWith("https://")) ){
+    if  (!mLineEdit->text().contains(QRegularExpression("^https?://"))){
         QString text = mLineEdit->text();
         text.prepend("http://");
         mLineEdit->setText(text);
