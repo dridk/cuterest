@@ -145,10 +145,8 @@ void ControlBar::sendRequest()
 
 void ControlBar::sendFavorite()
 {
-    QString name = QInputDialog::getText(this,"enter name", "name");
     Request r = createRequest();
-    r.setName(name);
-
+    r.setName(r.url().path());
     emit favoriteTrigger(r);
 }
 

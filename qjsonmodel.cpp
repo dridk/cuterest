@@ -54,7 +54,9 @@ bool QJsonModel::load(QIODevice *device)
 
 bool QJsonModel::loadJson(const QByteArray &json)
 {
-    mDocument = QJsonDocument::fromJson(json);
+    QJsonParseError * error = new QJsonParseError;
+    mDocument = QJsonDocument::fromJson(QString(json).toUtf8(),error);
+
 
     if (!mDocument.isNull())
     {
@@ -63,6 +65,9 @@ bool QJsonModel::loadJson(const QByteArray &json)
         endResetModel();
         return true;
     }
+
+    qDebug()<<"QJsonDocument parse error "<<error->errorString();
+
     return false;
 }
 

@@ -5,6 +5,7 @@ Request::Request(const QUrl & url)
 {
 
     setRawHeader("Content-Type","application/json;charset=UTF-8");
+    mName ="No name";
 }
 
 Request::Request(const Request &other)

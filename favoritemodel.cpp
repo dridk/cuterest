@@ -121,7 +121,7 @@ QIcon FavoriteModel::iconFromVerb(const QString &verb)
     return QtAwesome::instance()->icon(mDecorations[verb].second, params);
 }
 
-void FavoriteModel::append(const Request &request)
+QStandardItem * FavoriteModel::append(const Request &request)
 {
     QString key = request.url().host();
 
@@ -147,7 +147,7 @@ void FavoriteModel::append(const Request &request)
     item->setIcon(iconFromVerb(request.verb()));
     root->appendRow(item);
 
-
+    return item;
 
 
 

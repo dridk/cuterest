@@ -30,7 +30,10 @@ FavoriteDockWidget::~FavoriteDockWidget()
 
 void FavoriteDockWidget::append(const Request &request)
 {
-    mView->favoriteModel()->append(request);
+    QStandardItem * item = mView->favoriteModel()->append(request);
+    mView->expand(item->parent()->index());
+    mView->edit(item->index());
+
 }
 
 void FavoriteDockWidget::importFavorite(const QString &path)

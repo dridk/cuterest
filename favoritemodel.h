@@ -20,7 +20,7 @@ public:
    Request request(const QModelIndex& index) const;
 
 public slots:
-    void append(const Request& request);
+    QStandardItem * append(const Request& request);
     bool remove(const QModelIndex& index);
     bool save(const QString& fileName = QString());
     bool load(const QString& fileName = QString());
