@@ -3,6 +3,7 @@
 #include "ui_mainwindow.h"
 #include "requestserializer.h"
 #include <QFileDialog>
+#include <QMessageBox>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -55,6 +56,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mControlBar,SIGNAL(aboutTrigger()),this,SLOT(showAbout()));
     connect(mManager,SIGNAL(loadingChanged(bool)),mStatusBar,SLOT(setLoading(bool)));
     connect(mManager,SIGNAL(loadingChanged(bool)),centralWidget(),SLOT(setDisabled(bool)));
+    connect(mManager,SIGNAL(error(QString)),this,SLOT(showError(QString)));
     resize(1024,640);
 
 
@@ -129,4 +131,17 @@ void MainWindow::showAbout()
 {
     AboutDialog dialog(this);
     dialog.exec();
+}
+
+void MainWindow::showError(const QString &error)
+{
+
+    QMessageBox box;
+    box.setIcon(QMessageBox::Warning);
+    box.setText(error);
+    box.exec();
+
+
+
+
 }

@@ -60,8 +60,10 @@ void Manager::parse()
         Response rep = createResponse(reply);
         emit received(rep);
 
-        if (reply->error() != QNetworkReply::NoError)
-            emit error(reply->errorString());
+        if (reply->error() != QNetworkReply::NoError){
+         emit error(reply->errorString());
+
+        }
     }
 
 
