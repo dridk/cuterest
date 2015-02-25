@@ -88,6 +88,7 @@ bool FavoriteModel::load(const QString& fileName)
         foreach (Request r, RequestSerializer::fromJson(file.readAll()))
             append(r);
 
+        sort(0);
         file.close();
         return true;
     }

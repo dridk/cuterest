@@ -10,6 +10,7 @@ FavoriteTreeView::FavoriteTreeView(QWidget * parent)
     setModel(mModel);
 
     setEditTriggers(QAbstractItemView::EditKeyPressed);
+    setSortingEnabled(true);
     header()->hide();
     mRenameAction = new QAction(tr("Rename"),this);
     mEditAction= new QAction(tr("Edit Favorite"),this);
