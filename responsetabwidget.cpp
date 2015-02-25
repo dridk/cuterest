@@ -46,7 +46,7 @@ void ResponseTabWidget::setResponse(const Response &rep)
 
     }
 
-    setCurrentWidget(widgetFromType(rep.rawHeader("Content-Type")));
+//    setCurrentWidget(widgetFromType(rep.rawHeader("Content-Type")));
 
 
 

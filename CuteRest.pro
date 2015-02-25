@@ -54,7 +54,9 @@ SOURCES += main.cpp\
     cookiesettingswidget.cpp \
     aboutdialog.cpp \
     aboutlabel.cpp \
-    xmlsyntaxhighlighter.cpp
+    xmlsyntaxhighlighter.cpp \
+    jsonitemdelegate.cpp \
+    urldetect.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -97,7 +99,9 @@ HEADERS  += mainwindow.h \
     cookiesettingswidget.h \
     aboutdialog.h \
     aboutlabel.h \
-    xmlsyntaxhighlighter.h
+    xmlsyntaxhighlighter.h \
+    jsonitemdelegate.h \
+    urldetect.h
 
 FORMS    += mainwindow.ui
 

@@ -23,6 +23,7 @@
 #include <QJsonObject>
 #include <QIcon>
 #include <QFont>
+#include "urldetect.h"
 
 QJsonModel::QJsonModel(QObject *parent) :
     QAbstractItemModel(parent)
@@ -105,6 +106,15 @@ QVariant QJsonModel::data(const QModelIndex &index, int role) const
         {
             font.setBold(true);
             return font;
+        }
+
+        if (index.column() == 1){
+
+                if (UrlDetect::isValid(item->value().toString())) {
+                font.setUnderline(true);
+                return font;
+                }
+
         }
 
         return font;

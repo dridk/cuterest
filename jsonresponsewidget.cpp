@@ -2,17 +2,19 @@
 #include <QClipboard>
 #include <QRegularExpression>
 #include <QApplication>
+#include "urldetect.h"
 JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     :AbstractResponseWidget(parent)
 {
     setWindowTitle("Json");
 
     mView = new QTreeView;
+    mDelegate = new JsonItemDelegate;
     mJsonModel = new QJsonModel;
     mSearchEdit = new FindBarWidget;
     mProxyModel = new TreeSortFilterProxyModel;
 
-    mProxyModel->setSourceModel(mJsonModel);
+
 
     QVBoxLayout * mainLayout = new QVBoxLayout;
 
@@ -24,7 +26,8 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
 
     //    mView->header()->hide();
     mView->setModel(mProxyModel);
-    mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    mView->setItemDelegate(mDelegate);
+    //    mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
 
     mSearchEdit->setVisible(false);
@@ -71,40 +74,58 @@ void JsonResponseWidget::doubleClicked(const QModelIndex &index)
 
     if (selectedIndex.isValid())
     {
+        //Get the selected string
         QString value = selectedIndex.data().toString();
-        QUrl url = mCurrentResponse.request().url();
-        url.setPath(value);
 
-        Request request = mCurrentResponse.request();
-        request.setUrl(url);
+        if (UrlDetect::isValid(value)) {
+            // Create a copy of the actual request
+            Request request = mCurrentResponse.request();
 
-        emit requestTrigger(request);
+            // Test if its a relative or absolute url
+            if (value.contains(QRegularExpression("^(http|https)"))){
+                request.setUrl(QUrl(value));
+
+            }
+            else {
+                QUrl tempUrl = request.url();
+                tempUrl.setPath(value);
+                request.setUrl(tempUrl);
+            }
+
+            emit requestTrigger(request);
+
+        }
+
+
+
+
+
 
 
     }
 
     // This methods allow to send new request from endpoint clicked from view..
-//    // That's mean all url "http://" and relative url..
+    //    // That's mean all url "http://" and relative url..
 
-//    QString path = mJsonModel->index(mProxyModel->mapToSource(index).row(),1, mProxyModel->mapToSource(index).parent()).data().toString();
-//    QRegularExpression regExp("^(https?://)?[\da-z\.-]+/");
-//    if (path.contains(regExp)){
+    //    QString path = mJsonModel->index(mProxyModel->mapToSource(index).row(),1, mProxyModel->mapToSource(index).parent()).data().toString();
+    //    QRegularExpression regExp("^(https?://)?[\da-z\.-]+/");
+    //    if (path.contains(regExp)){
 
-//        Request request = response().request();
-//        qDebug()<<response().request().verb();
+    //        Request request = response().request();
+    //        qDebug()<<response().request().verb();
 
-//        if (path.contains(QRegularExpression("^https?://")))
-//            request.setUrl(QUrl(path));
-//        else
-//        {
-//            QUrl url;
-//            url.setAuthority(request.url().authority());
-//            url.setPath(path);
-//            request.setUrl(url);
-//        }
+    //        if (path.contains(QRegularExpression("^https?://")))
+    //            request.setUrl(QUrl(path));
+    //        else
+    //        {
+    //            QUrl url;
+    //            url.setAuthority(request.url().authority());
+    //            url.setPath(path);
+    //            request.setUrl(url);
+    //        }
 
-//        emit requestTrigger(request);
-//    }
+    //        emit requestTrigger(request);
+    //    }
 }
 
 

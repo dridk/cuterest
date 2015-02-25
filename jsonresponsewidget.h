@@ -10,7 +10,7 @@
 #include "abstractresponsewidget.h"
 #include "request.h"
 #include "findbarwidget.h"
-
+#include "jsonitemdelegate.h"
 class JsonResponseWidget : public AbstractResponseWidget
 {
     Q_OBJECT
@@ -35,7 +35,7 @@ private:
     QJsonModel * mJsonModel;
     TreeSortFilterProxyModel * mProxyModel;
     FindBarWidget * mSearchEdit;
-
+    JsonItemDelegate * mDelegate;
     QStringList mDomType;
     QStringList mJsonType;
     QAction * mCopyKeyAction;
