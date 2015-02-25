@@ -34,6 +34,8 @@ private:
     QAction * mRenameAction;
     QAction * mEditAction;
     QAction * mDeleteAction;
+    QAction * mCollapseAction;
+
 
 
 };

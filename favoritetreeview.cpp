@@ -15,11 +15,13 @@ FavoriteTreeView::FavoriteTreeView(QWidget * parent)
     mRenameAction = new QAction(tr("Rename"),this);
     mEditAction= new QAction(tr("Edit Favorite"),this);
     mDeleteAction= new QAction(tr("Delete"),this);
-
+    mCollapseAction = new QAction(tr("Collapse all"), this);
     connect(mRenameAction,SIGNAL(triggered()),this,SLOT(renameFavorite()));
     connect(mDeleteAction,SIGNAL(triggered()),this,SLOT(deleteFavorite()));
+    connect(mCollapseAction,SIGNAL(triggered()),this,SLOT(collapseAll()));
     connect(this,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(doubleClickedReceived(QModelIndex)));
     connect(this,SIGNAL(clicked(QModelIndex)),this,SLOT(clickedReceived(QModelIndex)));
+
 
     mModel->load(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QDir::separator() + "favorite.json");
 
@@ -89,6 +91,13 @@ void FavoriteTreeView::contextMenuEvent(QContextMenuEvent *event)
         menu.addAction(mDeleteAction);
         menu.exec(event->globalPos());
     }
+
+    else  {
+        QMenu menu(this);
+        menu.addAction(mCollapseAction);
+        menu.exec(event->globalPos());
+    }
+
 
 
 
