@@ -61,6 +61,28 @@ JsonResponseWidget::~JsonResponseWidget()
 
 void JsonResponseWidget::doubleClicked(const QModelIndex &index)
 {
+
+    qDebug()<<index.row();
+    qDebug()<<index.column();
+    qDebug()<<index.parent();
+    qDebug()<<index.model();
+
+    QModelIndex selectedIndex  = mJsonModel->index(index.row(),1, index.parent());
+
+    if (selectedIndex.isValid())
+    {
+        QString value = selectedIndex.data().toString();
+        QUrl url = mCurrentResponse.request().url();
+        url.setPath(value);
+
+        Request request = mCurrentResponse.request();
+        request.setUrl(url);
+
+        emit requestTrigger(request);
+
+
+    }
+
     // This methods allow to send new request from endpoint clicked from view..
 //    // That's mean all url "http://" and relative url..
 
@@ -110,6 +132,7 @@ void JsonResponseWidget::keyPressEvent(QKeyEvent *event)
 
 void JsonResponseWidget::setResponse(const Response &rep)
 {
+    mCurrentResponse = rep;
     mJsonModel->clear();
     if (mJsonModel->loadJson(rep.body()))
     {

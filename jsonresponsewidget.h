@@ -40,6 +40,7 @@ private:
     QStringList mJsonType;
     QAction * mCopyKeyAction;
     QAction * mCopyValueAction;
+    Response mCurrentResponse;
 };
 
 #endif // JSONRESPONSEWIDGET_H
