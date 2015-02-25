@@ -46,8 +46,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mManager,SIGNAL(sended(Request)),mConsoleDockWidget,SLOT(append(Request)));
     connect(mManager,SIGNAL(received(Response)),mConsoleDockWidget,SLOT(append(Response)));
     connect(mManager,SIGNAL(received(Response)),mStatusBar,SLOT(setResponse(Response)));
-    connect(mFavoriteDock,SIGNAL(doubleClicked(Request)),mControlBar,SLOT(setRequest(Request)));
-    connect(mHistoryDock,SIGNAL(doubleClicked(Request)),mControlBar,SLOT(setRequest(Request)));
+    connect(mFavoriteDock,SIGNAL(doubleClicked(Request)),mControlBar,SLOT(sendRequest(Request)));
+    connect(mFavoriteDock,SIGNAL(clicked(Request)),mControlBar,SLOT(setRequest(Request)));
+
+    connect(mHistoryDock,SIGNAL(doubleClicked(Request)),mControlBar,SLOT(sendRequest(Request)));
     connect(mResponseWidget,SIGNAL(requestTrigger(Request)),mControlBar,SLOT(setRequest(Request)));
 
     connect(mControlBar,SIGNAL(exportTrigger()),this,SLOT(exportFavorite()));

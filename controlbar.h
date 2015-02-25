@@ -13,6 +13,7 @@ public:
 
 public slots:
     void setRequest(const Request& request);
+    void sendRequest(const Request& request);
 
 signals:
     void requestTrigger(const Request& request);

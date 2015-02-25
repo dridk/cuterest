@@ -18,6 +18,7 @@ FavoriteTreeView::FavoriteTreeView(QWidget * parent)
     connect(mRenameAction,SIGNAL(triggered()),this,SLOT(renameFavorite()));
     connect(mDeleteAction,SIGNAL(triggered()),this,SLOT(deleteFavorite()));
     connect(this,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(doubleClickedReceived(QModelIndex)));
+    connect(this,SIGNAL(clicked(QModelIndex)),this,SLOT(clickedReceived(QModelIndex)));
 
     mModel->load(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QDir::separator() + "favorite.json");
 
@@ -36,7 +37,6 @@ FavoriteModel *FavoriteTreeView::favoriteModel()
 
 void FavoriteTreeView::renameFavorite()
 {
-
     QModelIndex index = currentIndex();
     if (index.parent().isValid()) {
 
@@ -53,7 +53,6 @@ void FavoriteTreeView::deleteFavorite()
 {
     QModelIndex index = currentIndex();
     if (index.parent().isValid()) {
-
         mModel->remove(index);
     }
 
@@ -64,10 +63,16 @@ void FavoriteTreeView::doubleClickedReceived(const QModelIndex &index)
     //Avoid root parent selection... thos who have no parent
     if (index.parent().isValid())
     {
-
         emit doubleClicked(mModel->request(index));
+    }
+}
 
-
+void FavoriteTreeView::clickedReceived(const QModelIndex &index)
+{
+    //Avoid root parent selection... thos who have no parent
+    if (index.parent().isValid())
+    {
+        emit clicked(mModel->request(index));
     }
 }
 

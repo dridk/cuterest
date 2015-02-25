@@ -18,6 +18,7 @@ protected slots:
     void editFavorite();
     void deleteFavorite();
     void doubleClickedReceived(const QModelIndex& index);
+    void clickedReceived(const QModelIndex& index);
 
 
 protected :
@@ -25,6 +26,8 @@ protected :
 
 signals:
     void doubleClicked(const Request& request);
+    void clicked(const Request& request);
+
 
 private:
     FavoriteModel * mModel;

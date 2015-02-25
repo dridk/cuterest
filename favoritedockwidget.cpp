@@ -18,7 +18,7 @@ FavoriteDockWidget::FavoriteDockWidget(QWidget * parent)
     setWindowTitle(tr("Favorite"));
 
     connect(mView,SIGNAL(doubleClicked(Request)),this,SIGNAL(doubleClicked(Request)));
-
+    connect(mView,SIGNAL(clicked(Request)),this,SIGNAL(clicked(Request)));
 
 }
 

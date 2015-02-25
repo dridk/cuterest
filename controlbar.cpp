@@ -112,8 +112,19 @@ void ControlBar::setRequest(const Request &request)
     mRequest = request;
     mLineEdit->setText(mRequest.url().toString());
     mVerbCombo->setCurrentText(mRequest.verb());
-    emit requestTrigger(mRequest);
+//    emit requestTrigger(mRequest);
 
+
+
+}
+
+void ControlBar::sendRequest(const Request &request)
+{
+    qDebug()<<"set URL"<<request.url();
+    mRequest = request;
+    mLineEdit->setText(mRequest.url().toString());
+    mVerbCombo->setCurrentText(mRequest.verb());
+    emit requestTrigger(mRequest);
 
 
 }

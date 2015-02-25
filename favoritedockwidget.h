@@ -19,6 +19,7 @@ public slots:
 
 signals:
     void doubleClicked(const Request& request);
+    void clicked(const Request& request);
 
 
 private:
