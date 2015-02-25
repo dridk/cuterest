@@ -48,6 +48,7 @@ HistoryDockWidget::~HistoryDockWidget()
 void HistoryDockWidget::append(const Response &rep)
 {
     mModel->append(rep);
+    mView->selectRow(0);
 }
 
 void HistoryDockWidget::setBack()

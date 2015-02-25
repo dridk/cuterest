@@ -90,7 +90,7 @@ void HistoryModel::append(const Response &reponse)
 
 
     beginInsertRows(QModelIndex(),0,0);
-    mData.append(Response(reponse));
+    mData.prepend(Response(reponse));
     endInsertRows();
 
 
