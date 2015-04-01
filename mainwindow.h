@@ -31,6 +31,7 @@ public slots:
     void showAbout();
     void showError(const QString& error);
 
+
 private:
     Ui::MainWindow *ui;
 

@@ -19,11 +19,12 @@ MainWindow::MainWindow(QWidget *parent) :
     mStatusBar         = new StatusBar;
 
     addToolBar(Qt::TopToolBarArea,mControlBar);
-    setCentralWidget(mResponseWidget);
     addDockWidget(Qt::BottomDockWidgetArea, mHistoryDock);
     addDockWidget(Qt::RightDockWidgetArea,mFavoriteDock);
     addDockWidget(Qt::BottomDockWidgetArea,mConsoleDockWidget);
+
     setStatusBar(mStatusBar);
+    setCentralWidget(mResponseWidget);
 
     tabifyDockWidget(mHistoryDock,mConsoleDockWidget);
 
@@ -31,6 +32,37 @@ MainWindow::MainWindow(QWidget *parent) :
     mFavoriteDock->hide();
     mConsoleDockWidget->hide();
 
+
+    // INIT ACTIONS
+
+    QAction * refreshAction = new QAction(tr("Refresh"),this);
+    refreshAction->setShortcut(QKeySequence("F5"));
+
+    QAction * nextTabAction = new QAction(tr("Next result"),this);
+    nextTabAction->setShortcut(QKeySequence("Ctrl+Tab"));
+
+    QAction * previousTabAction = new QAction(tr("Previous result"),this);
+    previousTabAction->setShortcut(QKeySequence("Ctrl+Shift+Tab"));
+
+    QAction * previousAction = new QAction(tr("Previous"),this);
+    previousAction->setShortcut(QKeySequence(Qt::Key_Backspace));
+
+    QAction * editAction = new QAction(tr("edit query"),this);
+    editAction->setShortcut(QKeySequence(Qt::Key_Insert));
+
+    addAction(refreshAction);
+    addAction(nextTabAction);
+    addAction(previousTabAction);
+    addAction(previousAction);
+    addAction(editAction);
+
+
+    // INIT Connection
+    connect(refreshAction,SIGNAL(triggered()), mControlBar,SLOT(sendRequest()));
+    connect(nextTabAction,SIGNAL(triggered()),mResponseWidget,SLOT(nextTab()));
+    connect(previousTabAction,SIGNAL(triggered()),mResponseWidget,SLOT(previousTab()));
+    connect(previousAction,SIGNAL(triggered()),mHistoryDock,SLOT(setBack()));
+    connect(editAction,SIGNAL(triggered()),mControlBar,SLOT(edit()));
 
 
     connect(mControlBar,SIGNAL(requestTrigger(Request)),mManager,SLOT(sendRequest(Request)));
@@ -63,7 +95,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mManager,SIGNAL(error(QString)),this,SLOT(showError(QString)));
 
 
+
+
     resize(1024,640);
+
+
 
 
 
@@ -152,3 +188,5 @@ void MainWindow::showError(const QString &error)
 
 
 }
+
+

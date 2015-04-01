@@ -193,6 +193,13 @@ void ControlBar::setLoading(bool loading)
 
 }
 
+void ControlBar::edit()
+{
+    mLineEdit->setFocus();
+    mLineEdit->selectAll();
+
+}
+
 
 
 

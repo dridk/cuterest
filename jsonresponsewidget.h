@@ -27,6 +27,9 @@ public slots:
 protected slots:
     void doubleClicked(const QModelIndex& index);
 
+protected:
+   // void contextMenuEvent(QContextMenuEvent * event);
+
 
 signals:
     void requestTrigger(const Request& request);

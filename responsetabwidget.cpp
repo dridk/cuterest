@@ -52,6 +52,17 @@ void ResponseTabWidget::setResponse(const Response &rep)
 
 }
 
+void ResponseTabWidget::nextTab()
+{
+    setCurrentIndex(currentIndex() == count()-1 ? 0 : currentIndex()+1);
+}
+
+void ResponseTabWidget::previousTab()
+{
+    setCurrentIndex(currentIndex() == 0 ? count()-1 : currentIndex()-1);
+
+}
+
 AbstractResponseWidget *ResponseTabWidget::widgetFromType(const QByteArray &array)
 {
     AbstractResponseWidget * w = mTextWidget;

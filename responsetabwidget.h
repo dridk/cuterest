@@ -20,6 +20,8 @@ public:
 
 public slots:
     void setResponse(const Response& rep);
+    void nextTab();
+    void previousTab();
 
 signals:
     void requestTrigger(const Request& request);

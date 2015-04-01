@@ -36,6 +36,7 @@ protected slots:
     void sendFavorite();
     void showRequestDialog();
     void setLoading(bool loading);
+    void edit();
 
 
 private:
