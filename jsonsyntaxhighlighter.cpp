@@ -31,6 +31,8 @@ JsonSyntaxHighlighter::JsonSyntaxHighlighter(QTextDocument * parent)
     nameFormat.setFontWeight(QFont::Bold);
     valueFormat.setForeground(QColor("#5293D8"));
 
+    setObjectName("Json");
+
 }
 
 

@@ -6,19 +6,28 @@
 #include "xmlsyntaxhighlighter.h"
 class TextResponseWidget : public AbstractResponseWidget
 {
+    Q_OBJECT
 public:
     TextResponseWidget(QWidget * parent=0);
     ~TextResponseWidget();
 
 public slots:
     void setResponse(const Response& rep);
+    void setSyntaxHighlighter(const QString& key);
+    void saveAs();
 
+protected :
+    void addSyntaxHighlighter(const QString& key, QSyntaxHighlighter* highlighter);
 
 
 
 private:
     QTextEdit * mEdit;
-    QSyntaxHighlighter * mHighlighter;
+    QComboBox * mSyntaxBox;
+    QToolBar * mToolBar;
+
+    QHash<QString, QSyntaxHighlighter*> mHighlighters;
+
 };
 
 #endif // TEXTRESPONSEWIDGET_H

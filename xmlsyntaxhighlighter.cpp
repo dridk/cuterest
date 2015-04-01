@@ -69,6 +69,9 @@ XmlSyntaxHighlighter::XmlSyntaxHighlighter(QTextDocument *parent)
 
     commentStartExpression = QRegExp("<!--");
     commentEndExpression = QRegExp("-->");
+
+    setObjectName("Xml");
+
 }
 
 void XmlSyntaxHighlighter::highlightBlock(const QString &text)
