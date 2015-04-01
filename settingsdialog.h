@@ -19,6 +19,10 @@ public:
 public slots:
     void save();
     void load();
+    void reset();
+
+protected slots:
+    void buttonClicked(QAbstractButton * button);
 private:
     QList<AbstractSettingsWidget*> mWidgets;
     QTabWidget * mTabWidget;

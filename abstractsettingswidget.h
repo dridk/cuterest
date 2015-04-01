@@ -2,6 +2,7 @@
 #define ABSTRACTSETTINGSWIDGET_H
 
 #include <QWidget>
+#include <QSettings>
 #include "manager.h"
 class AbstractSettingsWidget : public QWidget
 {
@@ -16,6 +17,7 @@ public:
 public slots:
     virtual bool save() = 0;
     virtual bool load() = 0;
+    virtual bool reset() = 0;
 
 private:
     Manager * mManager;

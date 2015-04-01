@@ -11,9 +11,12 @@ public:
     ProxySettingsWidget(QWidget * parent=0);
     ~ProxySettingsWidget();
 
+
+
 public slots:
     bool save();
     bool load();
+    bool reset();
 
 protected slots:
     void typeChanged(int index);
@@ -21,6 +24,7 @@ protected slots:
 
 protected:
     void setTypeCombo();
+
 
 private:
     QLineEdit * mHostEdit;

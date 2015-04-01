@@ -23,6 +23,7 @@ SettingsDialog::SettingsDialog(Manager   * manager,QWidget *parent)
 
     connect(mButtonBox,SIGNAL(accepted()),this,SLOT(save()));
     connect(mButtonBox,SIGNAL(rejected()),this,SLOT(reject()));
+    connect(mButtonBox,SIGNAL(clicked(QAbstractButton*)),this,SLOT(buttonClicked(QAbstractButton*)));
 
     load();
 }
@@ -60,5 +61,21 @@ void SettingsDialog::load()
 {
     foreach( AbstractSettingsWidget * w, mWidgets)
         w->load();
+}
+
+void SettingsDialog::reset()
+{
+    foreach( AbstractSettingsWidget * w, mWidgets)
+        w->reset();
+}
+
+void SettingsDialog::buttonClicked(QAbstractButton *button)
+{
+    QDialogButtonBox::StandardButton type = mButtonBox->standardButton(button) ;
+    if (mButtonBox->standardButton(button) == QDialogButtonBox::Reset)
+        reset();
+
+
+
 }
 

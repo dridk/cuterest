@@ -12,6 +12,7 @@ public:
 
     bool save();
     bool load();
+    bool reset();
 
 public slots:
     void clear();

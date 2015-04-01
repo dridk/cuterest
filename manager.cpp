@@ -60,6 +60,23 @@ void Manager::abortRequest()
     }
 }
 
+void Manager::loadProxySettings()
+{
+    QSettings settings;
+    settings.beginGroup("proxy");
+
+    QNetworkProxy proxy;
+    proxy.setType(QNetworkProxy::ProxyType(settings.value("type").toInt()));
+    proxy.setHostName(settings.value("host").toString());
+    proxy.setPort(settings.value("port").toInt());
+    proxy.setUser(settings.value("user").toString());
+    proxy.setPassword(settings.value("password").toString());
+
+    setProxy(proxy);
+
+    settings.endGroup();
+}
+
 void Manager::parse()
 {
 

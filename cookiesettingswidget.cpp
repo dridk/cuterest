@@ -32,13 +32,13 @@ bool CookieSettingsWidget::save()
 {
 
 
-
+return true;
 }
 
 bool CookieSettingsWidget::load()
 {
 
-
+return true;
 
     //    mModel->clear();
     //    foreach (QNetworkCookie cookie, manager()->cookieJar()->allCookies()){
@@ -56,6 +56,11 @@ bool CookieSettingsWidget::load()
 
     //    }
 
+
+}
+
+bool CookieSettingsWidget::reset()
+{
 
 }
 

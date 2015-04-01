@@ -2,6 +2,7 @@
 #define MANAGER_H
 #include <QtNetwork>
 #include <QElapsedTimer>
+#include <QSettings>
 #include "request.h"
 #include "response.h"
 class Manager : public QNetworkAccessManager
@@ -14,6 +15,7 @@ public:
 public slots:
     void sendRequest(const Request& request);
     void abortRequest();
+    void loadProxySettings();
 
 
 protected slots:

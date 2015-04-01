@@ -31,7 +31,7 @@ ProxySettingsWidget::ProxySettingsWidget(QWidget * parent)
     setLayout(mainLayout);
     setWindowTitle("Proxy");
 
-    connect(mTypeCombo,SIGNAL(activated(int)),this,SLOT(typeChanged(int)));
+    connect(mTypeCombo,SIGNAL(currentIndexChanged(int)),this,SLOT(typeChanged(int)));
 }
 
 ProxySettingsWidget::~ProxySettingsWidget()
@@ -45,18 +45,22 @@ ProxySettingsWidget::~ProxySettingsWidget()
 
 }
 
+
 bool ProxySettingsWidget::save()
 {
 
 
-    QNetworkProxy proxy;
-    proxy.setType(QNetworkProxy::ProxyType(mTypeCombo->currentData().toInt()));
-    proxy.setHostName(mHostEdit->text());
-    proxy.setPort(mPortEdit->value());
-    proxy.setUser(mUserEdit->text());
-    proxy.setPassword(mPasswordEdit->text());
+    QSettings settings;
+    settings.beginGroup("Proxy");
+    settings.setValue("type", mTypeCombo->currentData().toInt());
+    settings.setValue("host", mHostEdit->text());
+    settings.setValue("port", mPortEdit->value());
+    settings.setValue("user", mUserEdit->text());
+    settings.setValue("password", mPasswordEdit->text());
+    settings.endGroup();
 
-    manager()->setProxy(proxy);
+    manager()->loadProxySettings();
+
 
     return true;
 
@@ -66,22 +70,32 @@ bool ProxySettingsWidget::save()
 bool ProxySettingsWidget::load()
 {
 
-    QNetworkProxy proxy = manager()->proxy();
-
-    for (int i=0; i<mTypeCombo->count(); ++i){
-        if (mTypeCombo->itemData(i).toInt() == proxy.type())
-            mTypeCombo->setCurrentIndex(i);
-    }
-
-    mHostEdit->setText(proxy.hostName());
-    mPortEdit->setValue(proxy.port());
-    mUserEdit->setText(proxy.user());
-    mPasswordEdit->setText(proxy.password());
-
+    QSettings settings;
+    settings.beginGroup("Proxy");
+    mTypeCombo->setCurrentIndex(settings.value("type",QNetworkProxy::NoProxy).toInt());
+    mHostEdit->setText(settings.value("host").toString());
+    mPortEdit->setValue(settings.value("port").toInt());
+    mUserEdit->setText(settings.value("user").toString());
+    mPasswordEdit->setText(settings.value("password").toString());
+    settings.endGroup();
 
     return true;
 
 
+}
+
+bool ProxySettingsWidget::reset()
+{
+
+    mTypeCombo->setCurrentIndex(0);
+    mHostEdit->setText("");
+    mPortEdit->setValue(80);
+    mUserEdit->setText("");
+    mPasswordEdit->setText("");
+
+
+
+    return true;
 }
 
 void ProxySettingsWidget::typeChanged(int index)
@@ -109,4 +123,3 @@ void ProxySettingsWidget::setTypeCombo()
 
 
 }
-
