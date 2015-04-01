@@ -13,6 +13,7 @@ public:
 
 public slots:
     void sendRequest(const Request& request);
+    void abortRequest();
 
 
 protected slots:
@@ -40,7 +41,6 @@ protected:
 private:
     QElapsedTimer mTimer;
     QHash<QNetworkReply*, Request> mRequests;
-
 
 };
 

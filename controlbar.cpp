@@ -12,6 +12,7 @@ ControlBar::ControlBar(QWidget * parent):
     mSettingButton = new QToolButton;
     mPannelButton = new QToolButton;
     mMainWidget = new QWidget;
+    mIsLoading = false;
 
     QHBoxLayout * wLayout = new QHBoxLayout;
 
@@ -65,7 +66,7 @@ ControlBar::ControlBar(QWidget * parent):
     mSettingButton->setPopupMode(QToolButton::InstantPopup);
 
     QAction * optionAction =  mLineEdit->addAction(QtAwesome::instance()->icon("cog"),QLineEdit::LeadingPosition);
-    QAction * refreshAction = mLineEdit->addAction(QtAwesome::instance()->icon("refresh"),QLineEdit::TrailingPosition);
+    mRefreshAction = mLineEdit->addAction(QtAwesome::instance()->icon("refresh"),QLineEdit::TrailingPosition);
 
 
 
@@ -76,7 +77,7 @@ ControlBar::ControlBar(QWidget * parent):
     setWindowTitle(tr("Control"));
 
 
-    connect(refreshAction,SIGNAL(triggered()),this,SLOT(sendRequest()));
+    connect(mRefreshAction,SIGNAL(triggered()),this,SLOT(sendRequest()));
     connect(optionAction,SIGNAL(triggered()),this,SLOT(showRequestDialog()));
 
     connect(mLineEdit,SIGNAL(returnPressed()),this,SLOT(sendRequest()));
@@ -112,7 +113,7 @@ void ControlBar::setRequest(const Request &request)
     mRequest = request;
     mLineEdit->setText(mRequest.url().toString());
     mVerbCombo->setCurrentText(mRequest.verb());
-//    emit requestTrigger(mRequest);
+    //    emit requestTrigger(mRequest);
 
 
 
@@ -143,6 +144,11 @@ Request ControlBar::createRequest()
 
 void ControlBar::sendRequest()
 {
+    if (mIsLoading)
+    {
+        emit abortTrigger();
+        return;
+    }
 
     if  (mLineEdit->text().contains(QRegularExpression("^(http|https)://"))){
 
@@ -170,6 +176,20 @@ void ControlBar::showRequestDialog()
     RequestDialog dialog(createRequest(),this);
     if (dialog.exec())
         setRequest(dialog.request());
+
+}
+
+void ControlBar::setLoading(bool loading)
+{
+
+    // Change icons ... Refresh normal and cross when loading...
+    if (loading)
+        mRefreshAction->setIcon(QtAwesome::instance()->icon(0xf00d));
+    else
+        mRefreshAction->setIcon(QtAwesome::instance()->icon("refresh"));
+
+    mIsLoading = loading;
+
 
 }
 

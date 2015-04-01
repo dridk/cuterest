@@ -56,9 +56,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mControlBar,SIGNAL(importTrigger()),this,SLOT(importFavorite()));
     connect(mControlBar,SIGNAL(proxyTrigger()),this,SLOT(showSettings()));
     connect(mControlBar,SIGNAL(aboutTrigger()),this,SLOT(showAbout()));
+    connect(mControlBar,SIGNAL(abortTrigger()),mManager,SLOT(abortRequest()));
     connect(mManager,SIGNAL(loadingChanged(bool)),mStatusBar,SLOT(setLoading(bool)));
     connect(mManager,SIGNAL(loadingChanged(bool)),centralWidget(),SLOT(setDisabled(bool)));
+    connect(mManager,SIGNAL(loadingChanged(bool)),mControlBar,SLOT(setLoading(bool)));
     connect(mManager,SIGNAL(error(QString)),this,SLOT(showError(QString)));
+
+
     resize(1024,640);
 
 

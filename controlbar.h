@@ -25,6 +25,9 @@ signals:
     void exportTrigger();
     void aboutTrigger();
     void proxyTrigger();
+    void abortTrigger();
+
+
 protected:
     Request createRequest();
 
@@ -32,7 +35,7 @@ protected slots:
     void sendRequest();
     void sendFavorite();
     void showRequestDialog();
-
+    void setLoading(bool loading);
 
 
 private:
@@ -43,10 +46,11 @@ private:
     QToolButton * mForwardButton;
     QToolButton * mSettingButton;
     QToolButton * mPannelButton;
-
-
+    QAction * mRefreshAction;
     QWidget * mMainWidget;
     Request mRequest;
+
+    bool mIsLoading;
 };
 
 #endif // SEARCHBAR_H

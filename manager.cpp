@@ -51,8 +51,18 @@ void Manager::sendRequest(const Request &request)
 
 }
 
+void Manager::abortRequest()
+{
+    qDebug()<<"ABORT";
+    foreach ( QNetworkReply * reply, mRequests.keys())
+    {
+        reply->abort();
+    }
+}
+
 void Manager::parse()
 {
+
     QNetworkReply * reply = qobject_cast<QNetworkReply*>(sender());
 
     if (reply) {
