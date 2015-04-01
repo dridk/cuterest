@@ -36,7 +36,7 @@ void StatusBar::setResponse(const Response &response)
 {
 
 
-    showMessage(response.rawHeader("Content-Type"));
+    showMessage(response.rawHeader("Content-Type") + QString(" %1 bytes").arg(response.body().size()));
 
 
 }
