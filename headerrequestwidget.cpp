@@ -77,13 +77,13 @@ void HeaderRequestWidget::load(Request &request)
 
 void HeaderRequestWidget::save(Request &request)
 {
-
+    Request newRequest = Request(request.url());
     for (int row=0; row < mEditor->count(); row++){
 
         qDebug()<<mEditor->key(row);
-
-        request.setRawHeader(mEditor->key(row).toUtf8(), mEditor->value(row).toByteArray());
+        newRequest.setRawHeader(mEditor->key(row).toUtf8(), mEditor->value(row).toByteArray());
     }
 
+    request = newRequest;
 }
 

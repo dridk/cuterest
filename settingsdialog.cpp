@@ -1,7 +1,9 @@
 #include "settingsdialog.h"
 #include <QVBoxLayout>
 #include "proxysettingswidget.h"
+#include "authsettingswidget.h"
 #include "cookiesettingswidget.h"
+
 SettingsDialog::SettingsDialog(Manager   * manager,QWidget *parent)
     : QDialog(parent)
 {
@@ -19,6 +21,7 @@ SettingsDialog::SettingsDialog(Manager   * manager,QWidget *parent)
     resize(600,400);
 
     addSettingsWidget(new ProxySettingsWidget());
+//    addSettingsWidget(new AuthSettingsWidget());
     addSettingsWidget(new CookieSettingsWidget());
 
     connect(mButtonBox,SIGNAL(accepted()),this,SLOT(save()));

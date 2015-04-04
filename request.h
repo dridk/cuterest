@@ -18,7 +18,8 @@ public:
     QVariant param(const QString& key) const;
     void insertParam(const QString& key, const QVariant& value);
     void setParams(const  QHash<QString,QVariant>& params);
-
+    void clearRawHeaders();
+    void clearParams();
     QString name() const;
     void setName(const QString &name);
 

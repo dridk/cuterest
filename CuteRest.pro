@@ -56,7 +56,8 @@ SOURCES += main.cpp\
     aboutlabel.cpp \
     xmlsyntaxhighlighter.cpp \
     jsonitemdelegate.cpp \
-    urldetect.cpp
+    urldetect.cpp \
+    authsettingswidget.cpp
 
 HEADERS  += mainwindow.h \
     statusbar.h \
@@ -101,7 +102,8 @@ HEADERS  += mainwindow.h \
     aboutlabel.h \
     xmlsyntaxhighlighter.h \
     jsonitemdelegate.h \
-    urldetect.h
+    urldetect.h \
+    authsettingswidget.h
 
 FORMS    += mainwindow.ui
 

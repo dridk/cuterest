@@ -61,6 +61,16 @@ void Request::setParams(const QHash<QString, QVariant> &params)
 {
     mParams = params;
 }
+
+void Request::clearRawHeaders()
+{
+
+}
+
+void Request::clearParams()
+{
+    mParams.clear();
+}
 QString Request::name() const
 {
     return mName;

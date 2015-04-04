@@ -77,6 +77,11 @@ void Manager::loadProxySettings()
     settings.endGroup();
 }
 
+void Manager::setAuth(const QAuthenticator &auth)
+{
+    mAuthentificator = auth;
+}
+
 void Manager::parse()
 {
 
@@ -100,7 +105,15 @@ void Manager::parse()
 
 }
 
-
+void Manager::auth(QNetworkReply *reply, QAuthenticator *authenticator)
+{
+    if (!mAuthentificator.user().isEmpty())
+    {
+        authenticator->setUser(mAuthentificator.user());
+        authenticator->setPassword(mAuthentificator.password());
+        authenticator->setRealm(mAuthentificator.realm());
+    }
+}
 
 QNetworkReply* Manager::getRequest(const Request &request)
 {

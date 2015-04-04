@@ -16,10 +16,12 @@ public slots:
     void sendRequest(const Request& request);
     void abortRequest();
     void loadProxySettings();
+    void setAuth(const QAuthenticator& auth);
 
 
 protected slots:
     void parse();
+    void auth(QNetworkReply * reply, QAuthenticator * authenticator);
     QNetworkReply* getRequest(const Request& request);
     QNetworkReply* postRequest(const Request& request);
     QNetworkReply* putRequest(const Request& request);
@@ -43,6 +45,7 @@ protected:
 private:
     QElapsedTimer mTimer;
     QHash<QNetworkReply*, Request> mRequests;
+    QAuthenticator mAuthentificator;
 
 };
 
