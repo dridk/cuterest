@@ -3,7 +3,6 @@
 AbstractResponseWidget::AbstractResponseWidget(QWidget *parent)
     : QWidget(parent)
 {
-
 }
 
 AbstractResponseWidget::~AbstractResponseWidget()

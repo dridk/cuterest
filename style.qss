@@ -7,6 +7,14 @@ QMainWindow::separator {
   
 }
 
+
+QAbstractItemView{
+
+
+
+}
+
+
  QTabWidget::pane#response {
      margin : 0px;
 

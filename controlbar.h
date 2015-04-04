@@ -5,6 +5,8 @@
 #include "requestdialog.h"
 #include "verbcombobox.h"
 #include "historymodel.h"
+#include "urlmodel.h"
+
 class ControlBar : public QToolBar
 {
     Q_OBJECT
@@ -12,7 +14,8 @@ public:
     ControlBar(QWidget * parent=0);
     ~ControlBar();
 
-    void setCompleterFromHistory(HistoryModel * model);
+    void setUrlModel(UrlModel * model);
+
 
 public slots:
     void setRequest(const Request& request);
@@ -54,7 +57,6 @@ private:
     QWidget * mMainWidget;
     Request mRequest;
     QCompleter * mCompleter;
-
     bool mIsLoading;
 };
 

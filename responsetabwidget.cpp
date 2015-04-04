@@ -3,6 +3,7 @@ ResponseTabWidget::ResponseTabWidget(QWidget * parent)
     :QTabWidget(parent)
 {
 
+    mUrlModel   = new UrlModel;
     mTextWidget = new TextResponseWidget();
     mJsonWidget = new JsonResponseWidget();
     mInfoWidget = new InfoResponseWidget();
@@ -19,11 +20,14 @@ ResponseTabWidget::ResponseTabWidget(QWidget * parent)
 
     setObjectName("response");
 
+
+
 }
 
 ResponseTabWidget::~ResponseTabWidget()
 {
     qDeleteAll(mList);
+    delete mUrlModel;
 }
 
 void ResponseTabWidget::addResponseWidget(AbstractResponseWidget *widget)
@@ -38,17 +42,24 @@ void ResponseTabWidget::addResponseWidget(AbstractResponseWidget *widget)
 
 }
 
+UrlModel *ResponseTabWidget::urlModel()
+{
+    return mUrlModel;
+}
+
 void ResponseTabWidget::setResponse(const Response &rep)
 {
+
+    // If response if valid, save the url .. This is used for search line completer
+    if ( (rep.statusCode() >=200) && (rep.statusCode() <300))
+        mUrlModel->append(rep.request().url());
 
     foreach (AbstractResponseWidget * w, mList) {
         w->setResponse(rep);
 
     }
 
-//    setCurrentWidget(widgetFromType(rep.rawHeader("Content-Type")));
-
-
+    //    setCurrentWidget(widgetFromType(rep.rawHeader("Content-Type")));
 
 }
 

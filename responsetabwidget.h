@@ -1,6 +1,7 @@
 #ifndef RESPONSETABWIDGET_H
 #define RESPONSETABWIDGET_H
 #include <QTabWidget>
+#include "urlmodel.h"
 #include "abstractresponsewidget.h"
 #include "response.h"
 #include "responsetabwidget.h"
@@ -17,6 +18,7 @@ public:
     ~ResponseTabWidget();
 
     void addResponseWidget(AbstractResponseWidget * widget);
+    UrlModel *urlModel();
 
 public slots:
     void setResponse(const Response& rep);
@@ -38,6 +40,9 @@ private:
     InfoResponseWidget* mInfoWidget ;
     WebResponseWidget*  mWebWidget ;
     XmlResponseWidget * mXmlWidget;
+
+    UrlModel * mUrlModel; // save url if it's valid...
+
 
 };
 

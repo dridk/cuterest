@@ -46,6 +46,8 @@ ControlBar::ControlBar(QWidget * parent):
     setMovable(false);
 
 
+
+
     mVerbCombo->setMinimumWidth(80);
     mFavButton->setIcon((QtAwesome::instance()->icon("bookmark")));
     mBackButton->setIcon(QtAwesome::instance()->icon("arrow-left"));
@@ -108,15 +110,17 @@ ControlBar::~ControlBar()
     delete mMainWidget;
 }
 
-void ControlBar::setCompleterFromHistory(HistoryModel *model)
+void ControlBar::setUrlModel(UrlModel *model)
 {
     mCompleter->setModel(model);
-    mCompleter->setCompletionColumn(1);
+    mCompleter->setCompletionColumn(0);
     mCompleter->setCompletionRole(Qt::DisplayRole);
     mCompleter->setCompletionMode(QCompleter::PopupCompletion);
     mLineEdit->setCompleter(mCompleter);
 
 }
+
+
 
 void ControlBar::setRequest(const Request &request)
 {

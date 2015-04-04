@@ -21,6 +21,7 @@ public slots:
 private:
     Response mRep;
 
+
 };
 
 #endif // ABSTRACTRESPONSEWIDGET_H

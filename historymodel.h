@@ -19,9 +19,13 @@ public:
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     Response response(const QModelIndex& index);
 
+
+
+
 public slots:
     void append(const Response& reponse);
     void clear();
+
 
 
 private:

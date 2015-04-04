@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     mFavoriteDock      = new FavoriteDockWidget;
     mHistoryDock       = new HistoryDockWidget;
     mConsoleDockWidget = new ConsoleDockWidget;
-    mControlBar         = new ControlBar;
+    mControlBar        = new ControlBar;
     mStatusBar         = new StatusBar;
 
     addToolBar(Qt::TopToolBarArea,mControlBar);
@@ -32,8 +32,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mFavoriteDock->hide();
     mConsoleDockWidget->hide();
 
-    mControlBar->setCompleterFromHistory(mHistoryDock->model());
-
+    //Init completer
+    mControlBar->setUrlModel(mResponseWidget->urlModel());
 
     // INIT ACTIONS
 
@@ -123,6 +123,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete mManager;
+
 
     delete mResponseWidget;
     delete mFavoriteDock;
