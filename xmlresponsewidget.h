@@ -5,6 +5,7 @@
 #include <QDomDocument>
 #include "abstractresponsewidget.h"
 #include "dommodel.h"
+#include "findbarwidget.h"
 
 class XmlResponseWidget : public AbstractResponseWidget
 {
@@ -15,15 +16,22 @@ public:
     void setResponse(const Response& rep);
 
 protected slots:
-    void copy();
+    void copyKey();
+    void copyAttribut();
+    void copyValue();
+    void showSearch(bool visible);
+
 
 private:
     QDomDocument mDoc;
     DomModel * mModel;
     QTreeView * mView;
+    QToolBar * mToolBar;
     QAction * mCopyNameAction;
     QAction * mCopyAttributeAction;
     QAction * mCopyValueAction;
+    FindBarWidget * mSearchEdit;
+
 
 
 

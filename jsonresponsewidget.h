@@ -17,12 +17,15 @@ class JsonResponseWidget : public AbstractResponseWidget
 public:
     JsonResponseWidget(QWidget * parent = 0);
     ~JsonResponseWidget();
-
     void keyPressEvent(QKeyEvent *event);
+
 
 public slots:
     void setResponse(const Response& rep);
-    void copy();
+    void copyKey();
+    void copyValue();
+    void showSearch(bool visible);
+
 
 protected slots:
     void doubleClicked(const QModelIndex& index);
@@ -41,9 +44,8 @@ private:
     JsonItemDelegate * mDelegate;
     QStringList mDomType;
     QStringList mJsonType;
-    QAction * mCopyKeyAction;
-    QAction * mCopyValueAction;
     Response mCurrentResponse;
+    QToolBar * mToolBar;
 };
 
 #endif // JSONRESPONSEWIDGET_H

@@ -2,6 +2,7 @@
 #include <QClipboard>
 #include <QRegularExpression>
 #include <QApplication>
+#include "QtAwesome/QtAwesome.h"
 #include "urldetect.h"
 JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     :AbstractResponseWidget(parent)
@@ -13,15 +14,34 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     mJsonModel = new QJsonModel;
     mSearchEdit = new FindBarWidget;
     mProxyModel = new TreeSortFilterProxyModel;
+    mToolBar = new QToolBar;
 
 
+    mToolBar->setIconSize(QSize(16,16));
+    mToolBar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+
+    QAction * expandAction   = mToolBar->addAction(QtAwesome::instance()->icon(0xf067),tr("Expand all"));
+    QAction * collapseAction = mToolBar->addAction(QtAwesome::instance()->icon(0xf068),tr("Expand all"));
+
+    QWidget* spacer = new QWidget();
+    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    mToolBar->addWidget(spacer);
+
+    QAction * searchAction = mToolBar->addAction(QtAwesome::instance()->icon(0xf002),tr("Search"));
+    QAction * copyKeyAction = mToolBar->addAction(QtAwesome::instance()->icon(0xf0ea),tr("Copy key"));
+    QAction * copyValueAction = mToolBar->addAction(QtAwesome::instance()->icon(0xf0ea),tr("Copy value"));
+
+    searchAction->setShortcut(QKeySequence("Ctrl+F"));
+    searchAction->setCheckable(true);
 
     QVBoxLayout * mainLayout = new QVBoxLayout;
 
+    mainLayout->addWidget(mToolBar);
     mainLayout->addWidget(mView);
     mainLayout->addWidget(mSearchEdit);
 
     mainLayout->setContentsMargins(0,0,0,0);
+    mainLayout->setSpacing(0);
 
 
     //    mView->header()->hide();
@@ -35,21 +55,17 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
 
     setLayout(mainLayout);
 
-    mCopyKeyAction = new QAction(tr("Copy key"), this);
-    mCopyValueAction = new QAction(tr("Copy value"), this);
-
-    addAction(mCopyKeyAction);
-    addAction(mCopyValueAction);
-    setContextMenuPolicy(Qt::ActionsContextMenu);
 
 
 
     //double click.. for link ... !
     connect(mView,SIGNAL(doubleClicked(QModelIndex)), this,SLOT(doubleClicked(QModelIndex)));
     connect(mSearchEdit,SIGNAL(textChanged(QString)),mProxyModel,SLOT(setFilterFixedString(QString)));
-    connect(mCopyKeyAction,SIGNAL(triggered()),this,SLOT(copy()));
-    connect(mCopyValueAction,SIGNAL(triggered()),this,SLOT(copy()));
-
+    connect(copyKeyAction,SIGNAL(triggered()),this,SLOT(copyKey()));
+    connect(copyValueAction,SIGNAL(triggered()),this,SLOT(copyValue()));
+    connect(searchAction,SIGNAL(triggered(bool)),this,SLOT(showSearch(bool)));
+    connect(expandAction,SIGNAL(triggered()),mView,SLOT(expandAll()));
+    connect(collapseAction,SIGNAL(triggered()),mView,SLOT(collapseAll()));
 
 }
 
@@ -164,25 +180,26 @@ void JsonResponseWidget::setResponse(const Response &rep)
         setEnabled(false);
 }
 
-void JsonResponseWidget::copy()
+void JsonResponseWidget::copyKey()
 {
-    if (mView->selectionModel()->selectedRows().count() > 0) {
-        QString tmp;
-
-        if (sender() == mCopyKeyAction)
-            tmp = mView->selectionModel()->selectedRows(0).first().data().toString();
-
-        if (sender() == mCopyValueAction)
-            tmp = mView->selectionModel()->selectedRows(1).first().data().toString();
-
-        qDebug()<<tmp;
-        qApp->clipboard()->setText(tmp);
-
-
-    }
-
+    QString tmp = mView->selectionModel()->selectedRows(0).first().data().toString();
+    qApp->clipboard()->setText(tmp);
 
 }
+
+void JsonResponseWidget::copyValue()
+{
+
+    QString tmp = mView->selectionModel()->selectedRows(1).first().data().toString();
+    qApp->clipboard()->setText(tmp);
+}
+
+void JsonResponseWidget::showSearch(bool visible)
+{
+    mSearchEdit->setVisible(visible);
+
+}
+
 
 
 

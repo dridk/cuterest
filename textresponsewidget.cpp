@@ -11,9 +11,6 @@ TextResponseWidget::TextResponseWidget(QWidget * parent)
     mEdit      = new QTextEdit;
     mToolBar   = new QToolBar;
 
-
-
-
     QVBoxLayout * vLayout = new QVBoxLayout;
     vLayout->addWidget(mToolBar);
     vLayout->addWidget(mEdit);
