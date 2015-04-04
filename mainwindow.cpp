@@ -32,6 +32,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mFavoriteDock->hide();
     mConsoleDockWidget->hide();
 
+    mControlBar->setCompleterFromHistory(mHistoryDock->model());
+
 
     // INIT ACTIONS
 

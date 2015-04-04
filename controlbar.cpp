@@ -13,6 +13,7 @@ ControlBar::ControlBar(QWidget * parent):
     mPannelButton = new QToolButton;
     mMainWidget = new QWidget;
     mIsLoading = false;
+    mCompleter = new QCompleter();
 
     QHBoxLayout * wLayout = new QHBoxLayout;
 
@@ -105,6 +106,16 @@ ControlBar::~ControlBar()
     delete mSettingButton;
     delete mPannelButton;
     delete mMainWidget;
+}
+
+void ControlBar::setCompleterFromHistory(HistoryModel *model)
+{
+    mCompleter->setModel(model);
+    mCompleter->setCompletionColumn(1);
+    mCompleter->setCompletionRole(Qt::DisplayRole);
+    mCompleter->setCompletionMode(QCompleter::PopupCompletion);
+    mLineEdit->setCompleter(mCompleter);
+
 }
 
 void ControlBar::setRequest(const Request &request)

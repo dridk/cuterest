@@ -4,12 +4,15 @@
 #include "request.h"
 #include "requestdialog.h"
 #include "verbcombobox.h"
+#include "historymodel.h"
 class ControlBar : public QToolBar
 {
     Q_OBJECT
 public:
     ControlBar(QWidget * parent=0);
     ~ControlBar();
+
+    void setCompleterFromHistory(HistoryModel * model);
 
 public slots:
     void setRequest(const Request& request);
@@ -50,6 +53,7 @@ private:
     QAction * mRefreshAction;
     QWidget * mMainWidget;
     Request mRequest;
+    QCompleter * mCompleter;
 
     bool mIsLoading;
 };

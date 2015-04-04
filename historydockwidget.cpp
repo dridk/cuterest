@@ -45,6 +45,11 @@ HistoryDockWidget::~HistoryDockWidget()
     delete mModel;
 }
 
+HistoryModel *HistoryDockWidget::model()
+{
+    return mModel;
+}
+
 void HistoryDockWidget::append(const Response &rep)
 {
     mModel->append(rep);
