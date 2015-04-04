@@ -6,6 +6,7 @@
 #include "abstractresponsewidget.h"
 #include "dommodel.h"
 #include "findbarwidget.h"
+#include "treesortfilterproxymodel.h"
 
 class XmlResponseWidget : public AbstractResponseWidget
 {
@@ -31,6 +32,7 @@ private:
     QAction * mCopyAttributeAction;
     QAction * mCopyValueAction;
     FindBarWidget * mSearchEdit;
+    TreeSortFilterProxyModel * mProxyModel;
 
 
 

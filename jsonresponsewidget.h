@@ -17,7 +17,6 @@ class JsonResponseWidget : public AbstractResponseWidget
 public:
     JsonResponseWidget(QWidget * parent = 0);
     ~JsonResponseWidget();
-    void keyPressEvent(QKeyEvent *event);
 
 
 public slots:
@@ -29,7 +28,6 @@ public slots:
 
 protected slots:
     void doubleClicked(const QModelIndex& index);
-
 protected:
    // void contextMenuEvent(QContextMenuEvent * event);
 

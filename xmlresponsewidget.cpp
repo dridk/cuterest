@@ -7,9 +7,14 @@ XmlResponseWidget::XmlResponseWidget(QWidget * parent )
 
     mView = new QTreeView;
     mModel = new DomModel();
+    mProxyModel = new TreeSortFilterProxyModel();
     mToolBar = new QToolBar;
-    mSearchEdit = new FindBarWidget;
-    mView->setModel(mModel);
+
+    mProxyModel->setSourceModel(mModel);
+    mView->setModel(mProxyModel);
+
+    mSearchEdit = new FindBarWidget(mProxyModel);
+
 
 
 
@@ -104,6 +109,9 @@ void XmlResponseWidget::copyValue()
 void XmlResponseWidget::showSearch(bool visible)
 {
     mSearchEdit->setVisible(visible);
+
+    if (visible)
+        mSearchEdit->edit();
 }
 
 

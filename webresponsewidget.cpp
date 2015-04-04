@@ -5,15 +5,19 @@ WebResponseWidget::WebResponseWidget(QWidget * parent)
     mWebView = new QWebView;
     mTreeWidget = new QTreeWidget;
 
-    QSplitter * splitter = new QSplitter(Qt::Horizontal);
+//    QSplitter * splitter = new QSplitter(Qt::Horizontal);
 
-    splitter->addWidget(mTreeWidget);
-    splitter->addWidget(mWebView);
-    setWidget(splitter);
+    //Disable html tree for now ..
+
+//    splitter->addWidget(mTreeWidget);
+//    splitter->addWidget(mWebView);
+    setWidget(mWebView);
 
     setWindowTitle("Web");
 
-    connect(mTreeWidget,SIGNAL(clicked(QModelIndex)),this,SLOT(elementClicked(QModelIndex)));
+
+
+//    connect(mTreeWidget,SIGNAL(clicked(QModelIndex)),this,SLOT(elementClicked(QModelIndex)));
 }
 
 WebResponseWidget::~WebResponseWidget()

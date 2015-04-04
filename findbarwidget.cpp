@@ -1,30 +1,25 @@
 #include "findbarwidget.h"
 #include <QtAwesome/QtAwesome.h>
-FindBarWidget::FindBarWidget(QWidget *parent) : QFrame(parent)
+FindBarWidget::FindBarWidget(TreeSortFilterProxyModel * model,QWidget *parent)
+    : QFrame(parent)
 {
     mEdit = new QLineEdit;
-    mRegButton = new QToolButton;
-    mFindButton = new QPushButton(tr("Search"));
-
-    mRegButton->setAutoRaise(true);
-    mRegButton->setCheckable(true);
-    mRegButton->setIcon(QtAwesome::instance()->icon(0xf0e7));
-
-    QMenu * menu = new QMenu(this);
-    menu->addAction(tr("key"));
-    menu->addAction(tr("value"));
-
-
-    mFindButton->setMenu(menu);
-
+    mColBox = new QComboBox();
     QHBoxLayout * layout = new QHBoxLayout;
-    layout->addWidget(mRegButton);
     layout->addWidget(mEdit);
-    layout->addWidget(mFindButton);
-
+    layout->addWidget(mColBox);
     setLayout(layout);
 
+    mModel = model;
+
+    for (int i=0; i< mModel->columnCount(); ++i)
+        mColBox->addItem(mModel->headerData(i,Qt::Horizontal).toString());
+
+
+
     connect(mEdit,SIGNAL(textChanged(QString)),this,SIGNAL(textChanged(QString)));
+    connect(mEdit,SIGNAL(textChanged(QString)),mModel,SLOT(setFilterFixedString(QString)));
+    connect(mColBox,SIGNAL(currentIndexChanged(int)),this,SLOT(setFilterColumn(int)));
 
 
 }
@@ -32,5 +27,19 @@ FindBarWidget::FindBarWidget(QWidget *parent) : QFrame(parent)
 FindBarWidget::~FindBarWidget()
 {
 
+}
+
+
+
+void FindBarWidget::edit()
+{
+    mEdit->setFocus();
+    mEdit->selectAll();
+
+}
+
+void FindBarWidget::setFilterColumn(int row)
+{
+    mModel->setFilterKeyColumn(row);
 }
 

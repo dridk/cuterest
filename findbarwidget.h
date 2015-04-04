@@ -2,21 +2,27 @@
 #define FINDBARWIDGET_H
 
 #include <QtWidgets>
+#include "treesortfilterproxymodel.h"
 
 class FindBarWidget : public QFrame
 {
     Q_OBJECT
 public:
-    explicit FindBarWidget(QWidget *parent = 0);
+    explicit FindBarWidget(TreeSortFilterProxyModel * model, QWidget *parent = 0);
     ~FindBarWidget();
+public slots:
+    void edit();
+    void setFilterColumn(int row);
+
 
 signals:
     void textChanged(const QString& txt);
 
 private:
     QLineEdit * mEdit;
-    QToolButton * mRegButton;
-    QPushButton * mFindButton;
+    QComboBox * mColBox;
+    TreeSortFilterProxyModel * mModel;
+
 };
 
 #endif // FINDBARWIDGET_H

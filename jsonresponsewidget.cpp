@@ -12,9 +12,13 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     mView = new QTreeView;
     mDelegate = new JsonItemDelegate;
     mJsonModel = new QJsonModel;
-    mSearchEdit = new FindBarWidget;
     mProxyModel = new TreeSortFilterProxyModel;
     mToolBar = new QToolBar;
+
+    mProxyModel->setSourceModel(mJsonModel);
+    mView->setModel(mProxyModel);
+
+    mSearchEdit = new FindBarWidget(mProxyModel);
 
 
     mToolBar->setIconSize(QSize(16,16));
@@ -43,24 +47,17 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     mainLayout->setContentsMargins(0,0,0,0);
     mainLayout->setSpacing(0);
 
-
     //    mView->header()->hide();
-    mView->setModel(mProxyModel);
-    mView->setItemDelegate(mDelegate);
+//    mView->setItemDelegate(mDelegate);
     //    mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
 
     mSearchEdit->setVisible(false);
-
-
     setLayout(mainLayout);
-
-
 
 
     //double click.. for link ... !
     connect(mView,SIGNAL(doubleClicked(QModelIndex)), this,SLOT(doubleClicked(QModelIndex)));
-    connect(mSearchEdit,SIGNAL(textChanged(QString)),mProxyModel,SLOT(setFilterFixedString(QString)));
     connect(copyKeyAction,SIGNAL(triggered()),this,SLOT(copyKey()));
     connect(copyValueAction,SIGNAL(triggered()),this,SLOT(copyValue()));
     connect(searchAction,SIGNAL(triggered(bool)),this,SLOT(showSearch(bool)));
@@ -145,27 +142,7 @@ void JsonResponseWidget::doubleClicked(const QModelIndex &index)
 }
 
 
-void JsonResponseWidget::keyPressEvent(QKeyEvent *event)
-{
-    if (event->matches(QKeySequence::Find)){
-        mSearchEdit->setVisible(!mSearchEdit->isVisible());
 
-        if (mSearchEdit->isVisible()){
-            mSearchEdit->setFocus();
-            mView->expandAll();
-
-        }
-        else{
-            setFocus();
-            mProxyModel->setFilterFixedString(QString());
-            mView->collapseAll();
-        }
-    }
-
-
-
-
-}
 
 void JsonResponseWidget::setResponse(const Response &rep)
 {
@@ -173,7 +150,6 @@ void JsonResponseWidget::setResponse(const Response &rep)
     mJsonModel->clear();
     if (mJsonModel->loadJson(rep.body()))
     {
-        mView->setModel(mJsonModel);
         setEnabled(true);
     }
     else
@@ -196,9 +172,13 @@ void JsonResponseWidget::copyValue()
 
 void JsonResponseWidget::showSearch(bool visible)
 {
+
     mSearchEdit->setVisible(visible);
 
+        if (visible)
+            mSearchEdit->edit();
 }
+
 
 
 
