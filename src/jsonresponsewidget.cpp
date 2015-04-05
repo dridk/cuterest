@@ -43,7 +43,7 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     mToolBar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 
     QAction * expandAction   = mToolBar->addAction(QtAwesome::instance()->icon(0xf067),tr("Expand all"));
-    QAction * collapseAction = mToolBar->addAction(QtAwesome::instance()->icon(0xf068),tr("Expand all"));
+    QAction * collapseAction = mToolBar->addAction(QtAwesome::instance()->icon(0xf068),tr("Collapse all"));
 
     QWidget* spacer = new QWidget();
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
