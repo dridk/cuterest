@@ -70,7 +70,7 @@ bool ProxySettingsWidget::save()
 
     QSettings settings;
     settings.beginGroup("Proxy");
-    settings.setValue("type", mTypeCombo->currentData().toInt());
+    settings.setValue("type",mTypeCombo->itemData(mTypeCombo->currentIndex()).toInt());
     settings.setValue("host", mHostEdit->text());
     settings.setValue("port", mPortEdit->value());
     settings.setValue("user", mUserEdit->text());
