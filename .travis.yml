@@ -6,7 +6,7 @@ compiler:
 before_install:
   - sudo add-apt-repository ppa:likemartinma/devel -y
   - sudo apt-get update -qq
-  - sudo apt-get install -qq libqt5-dev 
+  - sudo apt-get install -qq libqt4-dev 
 
 script:
   - qmake cuterest.pro
