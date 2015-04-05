@@ -130,7 +130,7 @@ void Manager::auth(QNetworkReply *reply, QAuthenticator *authenticator)
     {
         authenticator->setUser(mAuthentificator.user());
         authenticator->setPassword(mAuthentificator.password());
-        authenticator->setRealm(mAuthentificator.realm());
+//        authenticator->setRealm(mAuthentificator.realm());
     }
 }
 
