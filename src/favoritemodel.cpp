@@ -34,7 +34,7 @@ FavoriteModel::FavoriteModel(QObject * parent)
 
     QDir dir;
     // make path to save
-    dir.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
+    dir.mkpath(QStandardPaths::writableLocation(QStandardPaths::DataLocation));
 
 
     connect(this,SIGNAL(itemChanged(QStandardItem*)),this,SLOT(itemChanged(QStandardItem*)));
