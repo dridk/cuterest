@@ -32,7 +32,6 @@ signals:
 private:
     FavoriteModel * mModel;
     QAction * mRenameAction;
-    QAction * mEditAction;
     QAction * mDeleteAction;
     QAction * mCollapseAction;
 

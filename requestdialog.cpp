@@ -9,8 +9,6 @@ RequestDialog::RequestDialog(const Request& request, QWidget * parent)
                                       QDialogButtonBox::RestoreDefaults);
 
 
-
-
     QVBoxLayout * mainLayout =  new QVBoxLayout;
     mainLayout->addWidget(mTabWidget);
     mainLayout->addWidget(mButtonBox);

@@ -13,7 +13,7 @@ public:
 
     virtual void load(Request& request);
     virtual void save(Request& request) ;
-
+    virtual void reset();
 
 private:
     DictEditorWidget * mEditor;

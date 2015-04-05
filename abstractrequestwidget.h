@@ -12,7 +12,7 @@ public:
 
     virtual void load(Request& request) = 0;
     virtual void save(Request& request) = 0;
-
+    virtual void reset() = 0;
 
 
 

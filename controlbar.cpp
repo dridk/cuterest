@@ -46,8 +46,6 @@ ControlBar::ControlBar(QWidget * parent):
     setMovable(false);
 
 
-
-
     mVerbCombo->setMinimumWidth(80);
     mFavButton->setIcon((QtAwesome::instance()->icon("bookmark")));
     mBackButton->setIcon(QtAwesome::instance()->icon("arrow-left"));
@@ -148,12 +146,8 @@ void ControlBar::sendRequest(const Request &request)
 
 Request ControlBar::createRequest()
 {
-
     mRequest.setUrl(mLineEdit->text());
     mRequest.setVerb(mVerbCombo->currentText());
-
-
-
     return mRequest;
 }
 

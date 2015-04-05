@@ -5,17 +5,11 @@ HeaderRequestWidget::HeaderRequestWidget(QWidget *parent) :
 {
 
     mEditor = new DictEditorWidget;
-
-
     QVBoxLayout * ll = new QVBoxLayout;
     ll->addWidget(mEditor);
-
     setLayout(ll);
-
     setWindowTitle(tr("Headers"));
-
     mEditor->setLabel(tr("Header type:  "),tr("Header value:  "));
-
 
     QStringList list;
     list<<"Accept"
@@ -51,10 +45,6 @@ HeaderRequestWidget::HeaderRequestWidget(QWidget *parent) :
     <<"Via";
 
     mEditor->setCompleter(list);
-
-
-
-
 }
 
 HeaderRequestWidget::~HeaderRequestWidget()
@@ -64,26 +54,25 @@ HeaderRequestWidget::~HeaderRequestWidget()
 
 void HeaderRequestWidget::load(Request &request)
 {
-
     mEditor->clear();
 
     foreach (QByteArray header, request.rawHeaderList()){
         mEditor->insert(header, request.rawHeader(header));
-
     }
-
-
 }
 
 void HeaderRequestWidget::save(Request &request)
 {
-    Request newRequest = Request(request.url());
+    request.clearRawHeaders();
     for (int row=0; row < mEditor->count(); row++){
 
         qDebug()<<mEditor->key(row);
-        newRequest.setRawHeader(mEditor->key(row).toUtf8(), mEditor->value(row).toByteArray());
+        request.setRawHeader(mEditor->key(row).toUtf8(), mEditor->value(row).toByteArray());
     }
+}
 
-    request = newRequest;
+void HeaderRequestWidget::reset()
+{
+    mEditor->clear();
 }
 

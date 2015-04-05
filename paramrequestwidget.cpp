@@ -24,7 +24,7 @@ void ParamRequestWidget::load(Request &request)
     mEditor->clear();
 
     foreach (QString key, request.params().keys()) {
-       mEditor->insert(key, request.param(key));
+        mEditor->insert(key, request.param(key));
     }
 
 
@@ -32,7 +32,13 @@ void ParamRequestWidget::load(Request &request)
 
 void ParamRequestWidget::save(Request &request)
 {
+    request.clearParams();
     for (int row=0; row < mEditor->count(); row++)
-       request.insertParam(mEditor->key(row), mEditor->value(row));
+        request.insertParam(mEditor->key(row), mEditor->value(row));
+}
+
+void ParamRequestWidget::reset()
+{
+
 }
 

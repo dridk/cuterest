@@ -13,7 +13,6 @@ FavoriteTreeView::FavoriteTreeView(QWidget * parent)
     setSortingEnabled(true);
     header()->hide();
     mRenameAction = new QAction(tr("Rename"),this);
-    mEditAction= new QAction(tr("Edit Favorite"),this);
     mDeleteAction= new QAction(tr("Delete"),this);
     mCollapseAction = new QAction(tr("Collapse all"), this);
     connect(mRenameAction,SIGNAL(triggered()),this,SLOT(renameFavorite()));
@@ -87,7 +86,6 @@ void FavoriteTreeView::contextMenuEvent(QContextMenuEvent *event)
     {
         QMenu menu(this);
         menu.addAction(mRenameAction);
-        menu.addAction(mEditAction);
         menu.addAction(mDeleteAction);
         menu.exec(event->globalPos());
     }

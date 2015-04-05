@@ -65,6 +65,12 @@ void Request::setParams(const QHash<QString, QVariant> &params)
 void Request::clearRawHeaders()
 {
 
+    foreach (QByteArray key, rawHeaderList())
+    {
+        setRawHeader(key,QByteArray());
+    }
+
+
 }
 
 void Request::clearParams()
