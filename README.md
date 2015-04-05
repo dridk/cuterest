@@ -18,8 +18,8 @@ Feature
 * XML Tree View
 * HTML Web rendering
 * JSON syntax highlighter
-* JSON syntax highlighter
-* Basic,NTLM version 2 and Digest-MD5 Authentification
+* XML syntax highlighter
+* Authentification: Basic,NTLM version 2 and Digest-MD5 
 * Proxy settings
 * View History
 * Save Request in Favorite
@@ -46,7 +46,7 @@ Compiling on Windows, OSX, Linux, and FreeBSD are really easy. Just download Qt 
 
 ## Twitter
 
-Follow us on Twitter: https://twitter.com/dridk
+Follow me on Twitter: https://twitter.com/dridk
 
 ## Releases
 
