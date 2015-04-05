@@ -1,6 +1,8 @@
 # CuteRest
 CuteRest is a REST client tool dedicated for JSON 
 
+![CuteRest under linux](https://raw.githubusercontent.com/dridk/cuterest/master/screenshot.png "cuterest")
+
 ## What it is
 CuteRest is an opensource tool dedicated to communicate with a REST server. It's particulary useful to manage 
 Json Request during developement step. Actually, They are several tool for this purpose. You can use plugins from
