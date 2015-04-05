@@ -47,6 +47,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setCentralWidget(mResponseWidget);
     tabifyDockWidget(mHistoryDock,mConsoleDockWidget);
 
+    setTabPosition(Qt::BottomDockWidgetArea, QTabWidget::South);
+
     mHistoryDock->hide();
     mFavoriteDock->hide();
     mConsoleDockWidget->hide();

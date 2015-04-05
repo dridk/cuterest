@@ -32,7 +32,7 @@ HistoryDockWidget::HistoryDockWidget(QWidget * parent)
     mView->setObjectName("History");
 
     //hide titleBar
-    setTitleBarWidget(new QWidget());
+    //    setTitleBarWidget(new QWidget());
 
     setWindowTitle("History");
 

@@ -69,7 +69,7 @@ XmlResponseWidget::XmlResponseWidget(QWidget * parent )
     mainWidget->setLayout(vLayout);
     setWidget(mainWidget);
 
-    mView->header()->setSectionResizeMode(QHeaderView::Interactive);
+    mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
     setWindowTitle("Xml");
 
@@ -101,7 +101,12 @@ XmlResponseWidget::~XmlResponseWidget()
 void XmlResponseWidget::setResponse(const Response &rep)
 {
     qDebug()<<"set DOM TREE";
-    mModel->loadXml(rep.body());
+
+    if ( mModel->loadXml(rep.body()))
+        setEnabled(true);
+
+    else
+        setEnabled(false);
 
 }
 

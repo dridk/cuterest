@@ -59,7 +59,7 @@ ControlBar::ControlBar(QWidget * parent):
     setMovable(false);
 
     mVerbCombo->setMinimumWidth(80);
-    mFavButton->setIcon((QtAwesome::instance()->icon("bookmark")));
+    mFavButton->setIcon((QtAwesome::instance()->icon(0xf005)));
     mBackButton->setIcon(QtAwesome::instance()->icon("arrow-left"));
     mForwardButton->setIcon(QtAwesome::instance()->icon("arrow-right"));
     mSettingButton->setIcon(QtAwesome::instance()->icon("cog"));
@@ -69,6 +69,10 @@ ControlBar::ControlBar(QWidget * parent):
     mBackButton->setToolTip(tr("Previous request"));
     mForwardButton->setToolTip(tr("Next request"));
 
+    mForwardButton->setAutoRaise(true);
+    mBackButton->setAutoRaise(true);
+    mSettingButton->setAutoRaise(true);
+    mFavButton->setAutoRaise(true);
 
     QMenu   * settingMenu  = new QMenu;
     QAction * exportAction = settingMenu->addAction(QtAwesome::instance()->icon(0xf093),tr("Export favorite"));
@@ -94,9 +98,9 @@ ControlBar::ControlBar(QWidget * parent):
    toogleFavAction->setCheckable(true);
    toogleConsAction->setCheckable(true);
 
-   toogleHistAction->setShortcut(QKeySequence("Ctrl+H"));
-   toogleFavAction->setShortcut(QKeySequence("Ctrl+F"));
-   toogleConsAction->setShortcut(QKeySequence("Ctrl+T"));
+   toogleHistAction->setShortcut(QKeySequence("Ctrl+Shift+H"));
+   toogleFavAction->setShortcut(QKeySequence("Ctrl+Shift+F"));
+   toogleConsAction->setShortcut(QKeySequence("Ctrl+Shift+C"));
 
 
     mSettingButton->setMenu(settingMenu);

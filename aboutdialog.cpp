@@ -54,6 +54,8 @@ AboutDialog::AboutDialog(QWidget * parent)
     setFixedWidth(mContentLabel->width());
     setFixedHeight(500);
 
+    setWindowTitle(tr("About Cuterest"));
+
 }
 
 AboutDialog::~AboutDialog()

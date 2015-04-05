@@ -34,10 +34,9 @@ int main(int argc, char *argv[])
     a.setOrganizationName("labsquare");
 
 
-    int i = QFontDatabase::addApplicationFont(":/fonts/Menlo-Regular.ttf");
-    i = QFontDatabase::addApplicationFont(":/fonts/American-Captain.ttf");
 
-    qDebug()<<QFontDatabase::applicationFontFamilies(i);
+    QFontDatabase::addApplicationFont(":/fonts/American-Captain.ttf");
+
 
     QFile styleFile(":style.qss");
     styleFile.open( QFile::ReadOnly );

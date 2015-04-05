@@ -1,10 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>style.qss</file>
-        <file>fonts/Cantarell-Regular.ttf</file>
-        <file>fonts/Cantarell-Bold.ttf</file>
-        <file>fonts/Cantarell-Oblique.ttf</file>
-        <file>fonts/Cantarell-BoldOblique.ttf</file>
-        <file>icons/bg.png</file>
+        <file>fonts/American-Captain.ttf</file>
     </qresource>
 </RCC>

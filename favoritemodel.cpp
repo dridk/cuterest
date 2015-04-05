@@ -152,6 +152,7 @@ QStandardItem * FavoriteModel::append(const Request &request)
         root->setEditable(false);
         root->setSelectable(false);
         root->setText(key);
+        root->setIcon(QtAwesome::instance()->icon(0xf08d));
         appendRow(root);
     }
     else

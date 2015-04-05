@@ -47,6 +47,8 @@ SettingsDialog::SettingsDialog(Manager   * manager,QWidget *parent)
     connect(mButtonBox,SIGNAL(clicked(QAbstractButton*)),this,SLOT(buttonClicked(QAbstractButton*)));
 
     load();
+
+    setWindowTitle(tr("Settings"));
 }
 
 SettingsDialog::~SettingsDialog()

@@ -606,9 +606,9 @@ QtAwesome *QtAwesome::instance()
 
 
         mInstance->setDefaultOption( "color", QColor(0,0,0) );
-        mInstance->setDefaultOption( "color-disabled", QColor(70,70,70,60));
-        mInstance->setDefaultOption( "color-active", QColor(250,250,250));
-        mInstance->setDefaultOption( "color-selected", QColor(250,250,250));
+        mInstance->setDefaultOption( "color-disabled",QColor(50,50,50));
+        mInstance->setDefaultOption( "color-active", QColor("white"));
+        mInstance->setDefaultOption( "color-selected", QColor("white"));
 
     }
     return mInstance;

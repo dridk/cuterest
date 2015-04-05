@@ -29,7 +29,7 @@ ConsoleDockWidget::ConsoleDockWidget(QWidget * parent)
     mTextEdit = new QPlainTextEdit;
     mTextEdit->setReadOnly(true);
 
-    setTitleBarWidget(new QWidget());
+//    setTitleBarWidget(new QWidget());
 
     setWidget(mTextEdit);
 

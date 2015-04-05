@@ -66,8 +66,8 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     mainLayout->setSpacing(0);
 
     //    mView->header()->hide();
-//    mView->setItemDelegate(mDelegate);
-    //    mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    //    mView->setItemDelegate(mDelegate);
+    mView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
 
     mSearchEdit->setVisible(false);
@@ -193,8 +193,8 @@ void JsonResponseWidget::showSearch(bool visible)
 
     mSearchEdit->setVisible(visible);
 
-        if (visible)
-            mSearchEdit->edit();
+    if (visible)
+        mSearchEdit->edit();
 }
 
 

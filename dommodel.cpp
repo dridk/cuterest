@@ -88,9 +88,10 @@ bool DomModel::loadXml(const QByteArray &xml)
 {
     QString error;
     domDocument.setContent(xml,true,&error);
-    qDebug()<<"error"<<error;
     rootItem = new DomItem(domDocument, 0);
     emit layoutChanged();
+
+    return error.isEmpty();
 }
 
 
