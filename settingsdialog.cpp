@@ -94,7 +94,6 @@ void SettingsDialog::reset()
 
 void SettingsDialog::buttonClicked(QAbstractButton *button)
 {
-    QDialogButtonBox::StandardButton type = mButtonBox->standardButton(button) ;
     if (mButtonBox->standardButton(button) == QDialogButtonBox::Reset)
         reset();
 

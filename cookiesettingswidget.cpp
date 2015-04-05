@@ -79,7 +79,7 @@ return true;
 
 bool CookieSettingsWidget::reset()
 {
-
+    return true;
 }
 
 void CookieSettingsWidget::clear()

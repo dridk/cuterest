@@ -41,6 +41,7 @@ private:
     QPushButton * mTwitterButton;
     QPushButton * mGithubButton;
     AboutLabel * mContentLabel;
+    QScrollArea * mArea;
 };
 
 #endif // ABOUTDIALOG_H

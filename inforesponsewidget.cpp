@@ -74,6 +74,8 @@ void InfoResponseWidget::setResponse(const Response &rep)
 
 void InfoResponseWidget::setListFromIndex(const QModelIndex &index)
 {
+    Q_UNUSED(index);
+
 //    QString value = mTableWidget->currentItem()->text(1);
 
 //    if (value.contains(";"))

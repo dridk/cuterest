@@ -54,6 +54,7 @@ void WebResponseWidget::setResponse(const Response &rep)
 
 void WebResponseWidget::elementClicked(const QModelIndex &index)
 {
+    Q_UNUSED(index);
 
 
 

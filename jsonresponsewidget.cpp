@@ -101,7 +101,7 @@ void JsonResponseWidget::doubleClicked(const QModelIndex &index)
     qDebug()<<index.parent();
     qDebug()<<index.model();
 
-    QModelIndex selectedIndex  = mJsonModel->index(index.row(),1, index.parent());
+    QModelIndex selectedIndex  = mProxyModel->index(index.row(),1, index.parent());
 
     if (selectedIndex.isValid())
     {

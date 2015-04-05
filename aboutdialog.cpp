@@ -24,7 +24,7 @@ AboutDialog::AboutDialog(QWidget * parent)
     :QDialog(parent)
 {
     mButtonBox = new QDialogButtonBox();
-
+    mArea = new QScrollArea();
 
     mTwitterButton = new QPushButton(QtAwesome::instance()->icon(0xf099), tr("Twitter"));
     mGithubButton = new QPushButton(QtAwesome::instance()->icon(0xf09b), tr("Github"));
@@ -57,8 +57,10 @@ AboutDialog::AboutDialog(QWidget * parent)
 
 
     QVBoxLayout * v = new QVBoxLayout;
+    mArea->setWidget(mContentLabel);
+    mArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    v->addWidget(mContentLabel);
+    v->addWidget(mArea);
     v->addWidget(mButtonBox);
 
     v->setContentsMargins(0,0,0,0);

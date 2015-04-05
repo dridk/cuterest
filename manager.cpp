@@ -125,6 +125,7 @@ void Manager::parse()
 
 void Manager::auth(QNetworkReply *reply, QAuthenticator *authenticator)
 {
+    Q_UNUSED(reply);
     if (!mAuthentificator.user().isEmpty())
     {
         authenticator->setUser(mAuthentificator.user());

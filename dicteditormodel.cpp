@@ -32,11 +32,13 @@ DictEditorModel::~DictEditorModel()
 
 int DictEditorModel::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return mData.count();
 }
 
 int DictEditorModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return 2;
 }
 

@@ -35,7 +35,8 @@
 
 **********************************************/
 
-#include "qjsonmodel.h" #include <QFile>
+#include "qjsonmodel.h"
+#include <QFile>
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -213,6 +214,7 @@ QModelIndex QJsonModel::parent(const QModelIndex &index) const
 
 Qt::ItemFlags QJsonModel::flags(const QModelIndex &index) const
 {
+    Q_UNUSED(index);
     return Qt::ItemIsSelectable|Qt::ItemIsEnabled;
 
 
