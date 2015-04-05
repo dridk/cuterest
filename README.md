@@ -13,7 +13,7 @@ CuteRest have both. It's a REST client which have different view to parse the re
 
 Feature
 
-* Htp Verb supported : GET,POST,PUT,DELETE,HEAD,PATCH,OPTION 
+* Http Verb supported : GET,POST,PUT,DELETE,HEAD,PATCH,OPTION 
 * JSON Tree View
 * XML Tree View
 * HTML Web rendering
@@ -29,7 +29,6 @@ Feature
 
 Windows binaries can be downloaded from here:
 
-* https://github.com/sqlitebrowser/sqlitebrowser/releases
 
 ## MacOS X
 
@@ -38,7 +37,7 @@ Mac OS binaries can be downloaded from here:
 
 ## Linux
 
-CuteRest works well on Linux. There is not yet package avaible for linux distribution. I will publish a debian package
+CuteRest works well on Linux. There is not yet package avaible for distribution. I will publish a debian package
 as soon as possible. For now, you need to compile it as it's describe below. 
 
 ## from Source
@@ -54,7 +53,7 @@ Follow us on Twitter: https://twitter.com/dridk
 * [Version beta 0.1 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.5.1) - 2015-02-08
 
 ## Author
-Sacha Schutz ([@dridk](https://github.com/dridk)) created an initial
+Sacha Schutz ([@dridk](https://github.com/dridk)) created an initial  
 Eugene Trounev ([@its](https://github.com/its)) help for the design
 
 
