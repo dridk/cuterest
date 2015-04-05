@@ -1,5 +1,5 @@
 # CuteRest
-CuteRest is a REST client tool dedicated for JSON 
+CuteRest is a REST client tool dedicated for JSON... and also for XML 
 
 ![CuteRest under linux](https://raw.githubusercontent.com/dridk/cuterest/master/screenshot.png "cuterest")
 
@@ -14,11 +14,12 @@ CuteRest have both. It's a REST client which have different view to parse the re
 Feature
 
 * Http Verb supported : GET,POST,PUT,DELETE,HEAD,PATCH,OPTION 
-* JSON Tree View
-* XML Tree View
+* View as JSON Tree
+* View as XML Tree 
 * HTML Web rendering
 * JSON syntax highlighter
 * XML syntax highlighter
+* Search by key or value inside the tree
 * Authentification: Basic,NTLM version 2 and Digest-MD5 
 * Proxy settings
 * View History
