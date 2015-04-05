@@ -103,7 +103,7 @@ void RequestDialog::reset()
 void RequestDialog::clicked(QAbstractButton *button)
 {
 
-    if (mButtonBox->buttonRole(button) ==  QDialogButtonBox::RestoreDefaults)
+    if (mButtonBox->buttonRole(button) ==  QDialogButtonBox::ResetRole)
         reset();
 
 

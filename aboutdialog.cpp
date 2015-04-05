@@ -90,7 +90,8 @@ void AboutDialog::buttonClicked(QAbstractButton *button)
     if (button == mTwitterButton)
         QDesktopServices::openUrl(QUrl("https://twitter.com/dridk", QUrl::TolerantMode));
 
-
+    if (mButtonBox->buttonRole(button) == QDialogButtonBox::AcceptRole)
+        close();
 
 
 }

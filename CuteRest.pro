@@ -5,11 +5,22 @@
 #-------------------------------------------------
 
 QT       += core gui network webkitwidgets xml
+QT       -= qml quick
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = CuteRest
 TEMPLATE = app
+
+# ICONS FOR WINDOWS
+
+win32 {
+RC_ICONS = icons/cuterest.ico
+}
+win64 {
+RC_ICONS = icons/cuterest.ico
+}
+
 
 
 SOURCES += main.cpp\

@@ -79,9 +79,8 @@ void AboutLabel::paintEvent(QPaintEvent *event)
     QRect contentArea = QRect(0, titleArea.bottom() - 40, width(), rect().bottom()).adjusted(tMargin,0,-tMargin,-tMargin);
     //    painter.drawRect(contentArea);
 
-    f.setPointSize(10);
     painter.setPen(QPen(Qt::black));
-    painter.setFont(f);
+    painter.setFont(QFont());
 
     QTextOption option;
     option.setWrapMode(QTextOption::WordWrap);

@@ -1,8 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>gear.png</file>
-        <file>fav_on.png</file>
-        <file>fav_off.png</file>
         <file>loading.gif</file>
         <file>logo_32.png</file>
         <file>logo_64.png</file>
