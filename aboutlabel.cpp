@@ -31,6 +31,13 @@ AboutLabel::~AboutLabel()
 
 }
 
+void AboutLabel::setTitle(const QString &title, const QString &subTitle)
+{
+    mTitle = title;
+    mSubtitle = subTitle;
+    repaint();
+}
+
 void AboutLabel::paintEvent(QPaintEvent *event)
 {
     QLabel::paintEvent(event);
@@ -60,19 +67,19 @@ void AboutLabel::paintEvent(QPaintEvent *event)
     f.setPointSize(28);
     f.setFamily("American Captain");
     painter.setFont(f);
-    painter.drawText(titleArea.topLeft() + QPoint(80,32), "CUTE REST");
+    painter.drawText(titleArea.topLeft() + QPoint(80,32), mTitle);
 
     f.setFamily("Arial");
     f.setPointSize(12);
     painter.setFont(f);
     painter.setPen(QPen(Qt::lightGray));
-    painter.drawText(titleArea.topLeft() + QPoint(80,56), "version 1.0");
+    painter.drawText(titleArea.topLeft() + QPoint(80,56), mSubtitle);
 
 
     QRect contentArea = QRect(0, titleArea.bottom() - 40, width(), rect().bottom()).adjusted(tMargin,0,-tMargin,-tMargin);
     //    painter.drawRect(contentArea);
 
-    f.setPointSize(8);
+    f.setPointSize(10);
     painter.setPen(QPen(Qt::black));
     painter.setFont(f);
 

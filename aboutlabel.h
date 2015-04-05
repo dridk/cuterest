@@ -27,8 +27,14 @@ public:
     AboutLabel(QWidget * parent = 0);
     ~AboutLabel();
 
+    void setTitle(const QString& title, const QString & subTitle);
+
 protected:
     virtual void paintEvent(QPaintEvent * event);
+
+private:
+    QString mTitle;
+    QString mSubtitle;
 };
 
 #endif // ABOUTLABEL_H

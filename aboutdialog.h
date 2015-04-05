@@ -33,9 +33,13 @@ public:
     ~AboutDialog();
 
 
+protected slots:
+    void buttonClicked(QAbstractButton * button);
 
 private:
     QDialogButtonBox * mButtonBox;
+    QPushButton * mTwitterButton;
+    QPushButton * mGithubButton;
     AboutLabel * mContentLabel;
 };
 
