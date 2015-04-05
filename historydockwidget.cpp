@@ -71,7 +71,7 @@ HistoryModel *HistoryDockWidget::model()
 void HistoryDockWidget::append(const Response &rep)
 {
     mModel->append(rep);
-    mView->selectRow(0);
+//    mView->selectRow(0);
 }
 
 void HistoryDockWidget::setBack()
@@ -83,8 +83,6 @@ void HistoryDockWidget::setBack()
         mView->setCurrentIndex(index);
         emit doubleClicked(mModel->response(index).request());
     }
-
-
 }
 
 void HistoryDockWidget::setForward()
