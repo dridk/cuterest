@@ -28,7 +28,6 @@ ControlBar::ControlBar(QWidget * parent):
     mBackButton    = new QToolButton;
     mForwardButton = new QToolButton;
     mSettingButton = new QToolButton;
-    mPannelButton  = new QToolButton;
     mMainWidget    = new QWidget;
     mCompleter     = new QCompleter();
     mIsLoading     = false;
@@ -48,7 +47,6 @@ ControlBar::ControlBar(QWidget * parent):
     QSpacerItem * space2 = new QSpacerItem(100,0);
     wLayout->addSpacerItem(space2);
 
-    wLayout->addWidget(mPannelButton);
     wLayout->addWidget(mSettingButton);
 
     mMainWidget->setLayout(wLayout);
@@ -60,13 +58,11 @@ ControlBar::ControlBar(QWidget * parent):
     setFloatable(false);
     setMovable(false);
 
-    mPannelButton->setCheckable(true);
     mVerbCombo->setMinimumWidth(80);
     mFavButton->setIcon((QtAwesome::instance()->icon("bookmark")));
     mBackButton->setIcon(QtAwesome::instance()->icon("arrow-left"));
     mForwardButton->setIcon(QtAwesome::instance()->icon("arrow-right"));
     mSettingButton->setIcon(QtAwesome::instance()->icon("cog"));
-    mPannelButton->setIcon(QtAwesome::instance()->icon("columns"));
     mLineEdit->setPlaceholderText(tr("Enter adress..."));
 
     mFavButton->setToolTip(tr("Add to favorite"));
@@ -75,13 +71,33 @@ ControlBar::ControlBar(QWidget * parent):
 
 
     QMenu   * settingMenu  = new QMenu;
-    QAction * importAction = settingMenu->addAction(tr("Import"));
-    QAction * exportAction = settingMenu->addAction(tr("Export"));
+    QAction * exportAction = settingMenu->addAction(QtAwesome::instance()->icon(0xf093),tr("Export favorite"));
+    QAction * importAction = settingMenu->addAction(QtAwesome::instance()->icon(0xf019),tr("Import favorite"));
 
     settingMenu->addSeparator();
 
-    QAction * proxyAction = settingMenu->addAction(tr("Settings"));
-    QAction * aboutAction = settingMenu->addAction(tr("About CuteRest"));
+    QAction * toogleHistAction  = settingMenu->addAction(QtAwesome::instance()->icon(0xf1da),tr("Histoy"));
+    QAction * toogleFavAction   = settingMenu->addAction(QtAwesome::instance()->icon(0xf02e),tr("Favorite"));
+    QAction * toogleConsAction  = settingMenu->addAction(QtAwesome::instance()->icon(0xf120),tr("Console"));
+
+
+    settingMenu->addSeparator();
+
+    QAction * proxyAction = settingMenu->addAction(QtAwesome::instance()->icon(0xf0ad),tr("Settings"));
+    QAction * aboutAction = settingMenu->addAction(QtAwesome::instance()->icon(0xf129),tr("About CuteRest"));
+
+
+   exportAction->setShortcut(QKeySequence("Ctrl+S"));
+   importAction->setShortcut(QKeySequence("Ctrl+O"));
+
+   toogleHistAction->setCheckable(true);
+   toogleFavAction->setCheckable(true);
+   toogleConsAction->setCheckable(true);
+
+   toogleHistAction->setShortcut(QKeySequence("Ctrl+H"));
+   toogleFavAction->setShortcut(QKeySequence("Ctrl+F"));
+   toogleConsAction->setShortcut(QKeySequence("Ctrl+T"));
+
 
     mSettingButton->setMenu(settingMenu);
     mSettingButton->setPopupMode(QToolButton::InstantPopup);
@@ -101,12 +117,16 @@ ControlBar::ControlBar(QWidget * parent):
     connect(mFavButton,SIGNAL(clicked()),this,SLOT(sendFavorite()));
     connect(mBackButton,SIGNAL(clicked()),this,SIGNAL(backTrigger()));
     connect(mForwardButton,SIGNAL(clicked()),this,SIGNAL(forwardTrigger()));
-    connect(mPannelButton,SIGNAL(clicked(bool)),this,SIGNAL(panelTrigger(bool)));
 
     connect(importAction,SIGNAL(triggered()),this,SIGNAL(importTrigger()));
     connect(exportAction,SIGNAL(triggered()),this,SIGNAL(exportTrigger()));
     connect(aboutAction,SIGNAL(triggered()),this,SIGNAL(aboutTrigger()));
     connect(proxyAction,SIGNAL(triggered()),this,SIGNAL(proxyTrigger()));
+
+    connect(toogleHistAction,SIGNAL(triggered(bool)),this,SIGNAL(historyClicked(bool)));
+    connect(toogleFavAction,SIGNAL(triggered(bool)),this,SIGNAL(favoriteClicked(bool)));
+    connect(toogleConsAction,SIGNAL(triggered(bool)),this,SIGNAL(consoleClicked(bool)));
+
 }
 
 ControlBar::~ControlBar()
@@ -117,7 +137,6 @@ ControlBar::~ControlBar()
     delete mBackButton;
     delete mForwardButton;
     delete mSettingButton;
-    delete mPannelButton;
     delete mMainWidget;
 }
 

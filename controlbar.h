@@ -44,12 +44,16 @@ signals:
     void favoriteTrigger(const Request& request);
     void backTrigger();
     void forwardTrigger();
-    void panelTrigger(bool show);
     void importTrigger();
     void exportTrigger();
     void aboutTrigger();
     void proxyTrigger();
     void abortTrigger();
+
+    void historyClicked(bool checked);
+    void favoriteClicked(bool checked);
+    void consoleClicked(bool checked);
+
 
 
 protected:
@@ -70,7 +74,6 @@ private:
     QToolButton * mBackButton;
     QToolButton * mForwardButton;
     QToolButton * mSettingButton;
-    QToolButton * mPannelButton;
     QAction * mRefreshAction;
     QWidget * mMainWidget;
     Request mRequest;

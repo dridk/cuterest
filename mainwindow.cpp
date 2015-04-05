@@ -35,6 +35,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mConsoleDockWidget = new ConsoleDockWidget;
     mControlBar        = new ControlBar;
     mStatusBar         = new StatusBar;
+    mBottomView        = new QTabWidget;
+
 
     addToolBar(Qt::TopToolBarArea,mControlBar);
     addDockWidget(Qt::BottomDockWidgetArea, mHistoryDock);
@@ -87,9 +89,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mControlBar,SIGNAL(favoriteTrigger(Request)),mFavoriteDock,SLOT(append(Request)));
     connect(mControlBar,SIGNAL(backTrigger()),mHistoryDock,SLOT(setBack()));
     connect(mControlBar,SIGNAL(forwardTrigger()),mHistoryDock,SLOT(setForward()));
-    connect(mControlBar,SIGNAL(panelTrigger(bool)),mFavoriteDock,SLOT(setVisible(bool)));
-    connect(mControlBar,SIGNAL(panelTrigger(bool)),mHistoryDock,SLOT(setVisible(bool)));
-    connect(mControlBar,SIGNAL(panelTrigger(bool)),mConsoleDockWidget,SLOT(setVisible(bool)));
 
     connect(mManager,SIGNAL(received(Response)),mResponseWidget, SLOT(setResponse(Response)));
     connect(mManager,SIGNAL(received(Response)),mHistoryDock,SLOT(append(Response)));
@@ -107,6 +106,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mControlBar,SIGNAL(proxyTrigger()),this,SLOT(showSettings()));
     connect(mControlBar,SIGNAL(aboutTrigger()),this,SLOT(showAbout()));
     connect(mControlBar,SIGNAL(abortTrigger()),mManager,SLOT(abortRequest()));
+    connect(mControlBar,SIGNAL(favoriteClicked(bool)),mFavoriteDock,SLOT(setVisible(bool)));
+    connect(mControlBar,SIGNAL(historyClicked(bool)),mHistoryDock,SLOT(setVisible(bool)));
+    connect(mControlBar,SIGNAL(consoleClicked(bool)),mConsoleDockWidget,SLOT(setVisible(bool)));
+
+
+
     connect(mManager,SIGNAL(loadingChanged(bool)),mStatusBar,SLOT(setLoading(bool)));
     connect(mManager,SIGNAL(loadingChanged(bool)),centralWidget(),SLOT(setDisabled(bool)));
     connect(mManager,SIGNAL(loadingChanged(bool)),mControlBar,SLOT(setLoading(bool)));
@@ -179,11 +184,16 @@ void MainWindow::showAbout()
 
 void MainWindow::showError(const QString &error)
 {
+
     QMessageBox box;
     box.setIcon(QMessageBox::Warning);
     box.setText(error);
     box.setWindowTitle(tr("Error"));
     box.exec();
+
+
+
+
 }
 
 

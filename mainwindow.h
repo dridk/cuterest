@@ -63,6 +63,7 @@ private:
     ControlBar * mControlBar;
     StatusBar * mStatusBar;
     QString mStyleFileName;
+    QTabWidget * mBottomView;
 
 };
 
