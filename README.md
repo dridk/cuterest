@@ -41,18 +41,6 @@ as soon as possible. For now, you need to compile it as it's describe below.
 
 ## from Source
 
-DB Browser for SQLite works well on FreeBSD, and there is a port for it (thanks
-to [lbartoletti](https://github.com/lbartoletti) :smile:).  It can be installed
-using either this:
-
-    # make -C /usr/ports/databases/sqlitebrowser install
-
-or this:
-
-    # pkg install sqlitebrowser 
-
-### Compiling
-
 Compiling on Windows, OSX, Linux, and FreeBSD are really easy. Just download Qt SDK from ...
 
 ## Twitter
@@ -65,9 +53,7 @@ Follow us on Twitter: https://twitter.com/dridk
 
 ## Author
 Sacha Schutz ([@dridk](https://github.com/dridk)) created an initial
-
-
-Sacha Schutz ([@its](https://github.com/its)) created an initial
+Eugene Trounev ([@its](https://github.com/its)) help for the design
 
 
 ## License
