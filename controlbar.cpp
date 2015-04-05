@@ -22,19 +22,19 @@
 ControlBar::ControlBar(QWidget * parent):
     QToolBar(parent)
 {
-    mLineEdit = new QLineEdit;
-    mVerbCombo = new VerbComboBox;
-    mFavButton= new QToolButton;
-    mBackButton = new QToolButton;
+    mLineEdit      = new QLineEdit;
+    mVerbCombo     = new VerbComboBox;
+    mFavButton     = new QToolButton;
+    mBackButton    = new QToolButton;
     mForwardButton = new QToolButton;
     mSettingButton = new QToolButton;
-    mPannelButton = new QToolButton;
-    mMainWidget = new QWidget;
-    mIsLoading = false;
-    mCompleter = new QCompleter();
+    mPannelButton  = new QToolButton;
+    mMainWidget    = new QWidget;
+    mCompleter     = new QCompleter();
+    mIsLoading     = false;
 
+    //Create Layout
     QHBoxLayout * wLayout = new QHBoxLayout;
-
     wLayout->addWidget(mBackButton);
     wLayout->addWidget(mForwardButton);
 
@@ -45,14 +45,11 @@ ControlBar::ControlBar(QWidget * parent):
     wLayout->addWidget(mLineEdit);
     wLayout->addWidget(mFavButton);
 
-    mPannelButton->setCheckable(true);
-
     QSpacerItem * space2 = new QSpacerItem(100,0);
     wLayout->addSpacerItem(space2);
 
     wLayout->addWidget(mPannelButton);
     wLayout->addWidget(mSettingButton);
-
 
     mMainWidget->setLayout(wLayout);
     wLayout->setContentsMargins(0,0,0,0);
@@ -63,21 +60,26 @@ ControlBar::ControlBar(QWidget * parent):
     setFloatable(false);
     setMovable(false);
 
-
+    mPannelButton->setCheckable(true);
     mVerbCombo->setMinimumWidth(80);
     mFavButton->setIcon((QtAwesome::instance()->icon("bookmark")));
     mBackButton->setIcon(QtAwesome::instance()->icon("arrow-left"));
     mForwardButton->setIcon(QtAwesome::instance()->icon("arrow-right"));
     mSettingButton->setIcon(QtAwesome::instance()->icon("cog"));
     mPannelButton->setIcon(QtAwesome::instance()->icon("columns"));
+    mLineEdit->setPlaceholderText(tr("Enter adress..."));
 
-    mLineEdit->setPlaceholderText("Enter adress ");
+    mFavButton->setToolTip(tr("Add to favorite"));
+    mBackButton->setToolTip(tr("Previous request"));
+    mForwardButton->setToolTip(tr("Next request"));
 
 
-    QMenu * settingMenu  = new QMenu;
+    QMenu   * settingMenu  = new QMenu;
     QAction * importAction = settingMenu->addAction(tr("Import"));
     QAction * exportAction = settingMenu->addAction(tr("Export"));
+
     settingMenu->addSeparator();
+
     QAction * proxyAction = settingMenu->addAction(tr("Settings"));
     QAction * aboutAction = settingMenu->addAction(tr("About CuteRest"));
 
@@ -87,18 +89,14 @@ ControlBar::ControlBar(QWidget * parent):
     QAction * optionAction =  mLineEdit->addAction(QtAwesome::instance()->icon("cog"),QLineEdit::LeadingPosition);
     mRefreshAction = mLineEdit->addAction(QtAwesome::instance()->icon("refresh"),QLineEdit::TrailingPosition);
 
-
-
+    optionAction->setToolTip(tr("Custom request"));
+    mRefreshAction->setToolTip(tr("Refresh request"));
 
     setRequest(Request(QUrl("http://api.duckduckgo.com/?q=apple&format=json&pretty=1")));
-
-
     setWindowTitle(tr("Control"));
-
 
     connect(mRefreshAction,SIGNAL(triggered()),this,SLOT(sendRequest()));
     connect(optionAction,SIGNAL(triggered()),this,SLOT(showRequestDialog()));
-
     connect(mLineEdit,SIGNAL(returnPressed()),this,SLOT(sendRequest()));
     connect(mFavButton,SIGNAL(clicked()),this,SLOT(sendFavorite()));
     connect(mBackButton,SIGNAL(clicked()),this,SIGNAL(backTrigger()));
@@ -109,9 +107,6 @@ ControlBar::ControlBar(QWidget * parent):
     connect(exportAction,SIGNAL(triggered()),this,SIGNAL(exportTrigger()));
     connect(aboutAction,SIGNAL(triggered()),this,SIGNAL(aboutTrigger()));
     connect(proxyAction,SIGNAL(triggered()),this,SIGNAL(proxyTrigger()));
-
-
-
 }
 
 ControlBar::~ControlBar()

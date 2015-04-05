@@ -43,7 +43,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setStatusBar(mStatusBar);
     setCentralWidget(mResponseWidget);
-
     tabifyDockWidget(mHistoryDock,mConsoleDockWidget);
 
     mHistoryDock->hide();
@@ -53,8 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //Init completer
     mControlBar->setUrlModel(mResponseWidget->urlModel());
 
-    // INIT ACTIONS
-
+    //Create actions
     QAction * refreshAction = new QAction(tr("Refresh"),this);
     refreshAction->setShortcut(QKeySequence("F5"));
 
@@ -77,7 +75,7 @@ MainWindow::MainWindow(QWidget *parent) :
     addAction(editAction);
 
 
-    // INIT Connection
+    // Create Connection
     connect(refreshAction,SIGNAL(triggered()), mControlBar,SLOT(sendRequest()));
     connect(nextTabAction,SIGNAL(triggered()),mResponseWidget,SLOT(nextTab()));
     connect(previousTabAction,SIGNAL(triggered()),mResponseWidget,SLOT(previousTab()));
@@ -118,31 +116,21 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     resize(1024,640);
+//    QAction * styleAction = new QAction(this);
+//    styleAction->setShortcut(Qt::Key_F12);
 
+//    addAction(styleAction);
 
+//    connect(styleAction,SIGNAL(triggered()),this,SLOT(setStyle()));
 
-
-
-
-
-    QAction * styleAction = new QAction(this);
-    styleAction->setShortcut(Qt::Key_F12);
-
-    addAction(styleAction);
-
-    connect(styleAction,SIGNAL(triggered()),this,SLOT(setStyle()));
-
-    setWindowTitle(tr("Cuterest"));
+    setWindowTitle(qApp->applicationName());
     setTabPosition(Qt::BottomDockWidgetArea,QTabWidget::North);
-
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
     delete mManager;
-
-
     delete mResponseWidget;
     delete mFavoriteDock;
     delete mHistoryDock;
@@ -156,8 +144,6 @@ void MainWindow::exportFavorite()
 {
     QString filename = QFileDialog::getSaveFileName(this,tr("Export favorite"),"",tr("Json file (*.json)"));
     mFavoriteDock->exportFavorite(filename);
-
-
 }
 
 void MainWindow::importFavorite()
@@ -168,9 +154,6 @@ void MainWindow::importFavorite()
 
 void MainWindow::setStyle()
 {
-
-
-
     if (!QFile::exists(mStyleFileName))
         mStyleFileName = QFileDialog::getOpenFileName(this,"qss file","","stylesheet (*.qss)");
 
@@ -179,8 +162,6 @@ void MainWindow::setStyle()
 
     QString style( styleFile.readAll() );
     qApp->setStyleSheet(style);
-
-
 
 }
 
@@ -198,16 +179,11 @@ void MainWindow::showAbout()
 
 void MainWindow::showError(const QString &error)
 {
-
     QMessageBox box;
     box.setIcon(QMessageBox::Warning);
     box.setText(error);
     box.setWindowTitle(tr("Error"));
     box.exec();
-
-
-
-
 }
 
 

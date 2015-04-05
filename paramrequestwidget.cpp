@@ -57,6 +57,6 @@ void ParamRequestWidget::save(Request &request)
 
 void ParamRequestWidget::reset()
 {
-
+    mEditor->clear();
 }
 

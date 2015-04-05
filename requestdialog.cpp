@@ -36,6 +36,7 @@ RequestDialog::RequestDialog(const Request& request, QWidget * parent)
 
     connect(mButtonBox,SIGNAL(accepted()),this, SLOT(save()));
     connect(mButtonBox,SIGNAL(rejected()),this,SLOT(reject()));
+    connect(mButtonBox,SIGNAL(clicked(QAbstractButton*)),this,SLOT(clicked(QAbstractButton*)));
 
 
     resize(600, 500);
@@ -45,6 +46,8 @@ RequestDialog::RequestDialog(const Request& request, QWidget * parent)
 
 
     setRequest(request);
+
+    setWindowTitle(tr("Custom request"));
 
 
 }
@@ -87,6 +90,23 @@ void RequestDialog::load()
         widget->load(mRequest);
 
     }
+}
+
+void RequestDialog::reset()
+{
+    foreach (AbstractRequestWidget * widget, mWidgets){
+        widget->reset();
+
+    }
+}
+
+void RequestDialog::clicked(QAbstractButton *button)
+{
+
+    if (mButtonBox->buttonRole(button) ==  QDialogButtonBox::RestoreDefaults)
+        reset();
+
+
 }
 
 

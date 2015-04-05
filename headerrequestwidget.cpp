@@ -92,5 +92,6 @@ void HeaderRequestWidget::save(Request &request)
 void HeaderRequestWidget::reset()
 {
     mEditor->clear();
+    mEditor->insert("Content-Type","application/json;charset=UTF-8");
 }
 

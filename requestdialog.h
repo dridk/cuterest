@@ -41,6 +41,9 @@ public:
 protected slots:
     void save();
     void load();
+    void reset();
+    void clicked(QAbstractButton* button);
+
 
 private:
     QTabWidget * mTabWidget;

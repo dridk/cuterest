@@ -46,12 +46,10 @@ WebResponseWidget::~WebResponseWidget()
 
 void WebResponseWidget::setResponse(const Response &rep)
 {
-    mWebView->setHtml("<html></html>");
-    mWebView->setHtml(rep.body());
-
-    mTreeWidget->clear();
-    QWebElement document = mWebView->page()->mainFrame()->documentElement();
-    examineChildElements(document, mTreeWidget->invisibleRootItem());
+    mWebView->setUrl(rep.request().url());
+//    mTreeWidget->clear();
+//    QWebElement document = mWebView->page()->mainFrame()->documentElement();
+//    examineChildElements(document, mTreeWidget->invisibleRootItem());
 }
 
 void WebResponseWidget::elementClicked(const QModelIndex &index)
