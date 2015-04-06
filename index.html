@@ -1,103 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>CuteRest</title>
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-<link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+	<meta charset="UTF-8">
+	<title>CuteRest</title>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+	<link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
+
+	<!--GOOGLE ANALYTICS -->
+	
+	<script type="text/javascript">
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-44929010-3', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+
+</script>
+<!--GOOGLE ANALYTICS -->
+
 </head>
 <body>
-<div class="pure-menu pure-menu-horizontal">
-<a href="http://dridk.github.io/cuterest/" class="pure-menu-heading pure-menu-link">CuteRest</a>
-<ul class="pure-menu-list">
-<li class="pure-menu-item"><a href="https://github.com/dridk/cuterest/releases/tag/v0.1-beta" class="pure-menu-link">Download</a></li>
-<li class="pure-menu-item"><a href="https://github.com/dridk/cuterest" class="pure-menu-link">Github</a></l>
-<li class="pure-menu-item"><a href="http://dridk.me/" class="pure-menu-link">Blog</a></li>
-<li class="pure-menu-item"><a href="https://twitter.com/dridk" class="pure-menu-link">Twitter</a></li>
-</li>
-</ul>
-</div>
-<header>
-<div id="banner">
-<div><h2>Mac OS </h2>
-<img src="mac.png" alt="">
-</div>
-<div><h2>Windows</h2><img src="windows.png" alt=""></div>
-<div><h2>Linux </h2><img src="linux.png" alt=""></div>
-</div>
-<div id="download">
-<ul>
-<li><a href="https://github.com/dridk/cuterest/releases/download/v0.1-beta/CuteRest-win32-beta-0.1.exe" class="pure-button"><i class="fa fa-shopping-cart fa-windows"></i>
-Windows beta 0.1</a></li>
-<li><a href="https://github.com/dridk/cuterest/releases/download/v0.1-beta/CuteRest-beta-0.1.dmg" class="pure-button"><i class="fa fa-shopping-cart fa-apple"></i>
-MacOS beta 0.1</a></li>
-<li><a href="https://github.com/dridk/cuterest/blob/master/README.md#linux" class="pure-button"><i class="fa fa-shopping-cart fa-linux"></i>
-Linux beta 0.1</a></li>
-</ul>
-</div>
-</header>
-<div id="content">
-<h2>About</h2>
-<p>
-CuteRest is an opensource tool dedicated to communicate with a REST server. It's particulary useful to manage 
-Json Request during developement step. Actually, They are several tool for this purpose. You can use plugins from
-your browser, like <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm">Postman</a>. or use <a href="https://github.com/jakubroztocil/httpie">httpie</a> as command-line from your console. But those application doesn't provide
-a tree view for Json or XML response. YOu only have raw data, and you must use another software, like 
-<a href="http://jsonviewer.stack.hu/">jsonviewer</a> to view your content as a tree.<br>
-CuteRest have both. It's a REST client which have different view to parse the response.
-</p>
-<h2>Feature</h2>
-<div class="pure-g">
-<div class="pure-u-1-2">
-<h3>TreeView</h3>
-<p>Boring to read raw data ? CuteRest render JSON or XML data as a TreeView. You can either collapse or expand interested data. CuteRest also have a Search tool to get quickly your node. For exemple you can filter data by key or by value , see what you want and extract data easily. In the next release, regular expression will be supported to help you more. 
-There is also a color syntax highlight to warn you about each kind of variable type. For exemple string are colored in blue whereas integer are colored in orange. 
-</p></div>
-<div class="pure-u-1-2">
-<img src="feature1.png" alt="" class="src">
-</div>
-<div class="pure-u-1-2">
-<img src="feature2.png" alt="" class="src">
-</div>
-<div class="pure-u-1-2">
-<h3>Create HTTP Request</h3>
-<p>
-CuteRest has same feature than most of other REST client tools. And support all common Verb from the HTTP specification. You can create a HTTP request from a dedicated dialog and fill all parameter and header input. Proxy settings is also embeeded. So you can use CuteRest throught a firewall at your office. 
-If you API Request need authentification, CuteRest support Basic and Digest HTTP authentification. Next release will have other authentification system like OAuth. 
-</p></div>
-</div>
-</div>
-<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
-<script type="text/javascript" src="slick/slick.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-$('#banner').slick({
-dots: false,
-infinite: true,
-speed: 500,
-autoplay: true,
-autoplaySpeed: 4000,
-draggable: false
-});
-});
+	<div class="pure-menu pure-menu-horizontal">
+		<a href="http://dridk.github.io/cuterest/" class="pure-menu-heading pure-menu-link">CuteRest</a>
+		<ul class="pure-menu-list">
+			<li class="pure-menu-item"><a href="https://github.com/dridk/cuterest/releases/tag/v0.1-beta" class="pure-menu-link">Download</a></li>
+			<li class="pure-menu-item"><a href="https://github.com/dridk/cuterest" class="pure-menu-link">Github</a></l>
+				<li class="pure-menu-item"><a href="http://dridk.me/" class="pure-menu-link">Blog</a></li>
+				<li class="pure-menu-item"><a href="https://twitter.com/dridk" class="pure-menu-link">Twitter</a></li>
+			</li>
+		</ul>
+	</div>
+	<header>
+		<div id="banner">
+			<div><h2>Mac OS </h2>
+				<img src="mac.png" alt="">
+			</div>
+			<div><h2>Windows</h2><img src="windows.png" alt=""></div>
+			<div><h2>Linux </h2><img src="linux.png" alt=""></div>
+		</div>
+		<div id="download">
+			<ul>
+				<li><a href="https://github.com/dridk/cuterest/releases/download/v0.1-beta/CuteRest-win32-beta-0.1.exe" class="pure-button"><i class="fa fa-shopping-cart fa-windows"></i>
+					Windows beta 0.1</a></li>
+					<li><a href="https://github.com/dridk/cuterest/releases/download/v0.1-beta/CuteRest-beta-0.1.dmg" class="pure-button"><i class="fa fa-shopping-cart fa-apple"></i>
+						MacOS beta 0.1</a></li>
+						<li><a href="https://github.com/dridk/cuterest/blob/master/README.md#linux" class="pure-button"><i class="fa fa-shopping-cart fa-linux"></i>
+							Linux beta 0.1</a></li>
+						</ul>
+					</div>
+				</header>
+				<div id="content">
+					<h2>About</h2>
+					<p>
+						CuteRest is an opensource tool dedicated to communicate with a REST server. It's particulary useful to manage 
+						Json Request during developement step. Actually, They are several tool for this purpose. You can use plugins from
+						your browser, like <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm">Postman</a>. or use <a href="https://github.com/jakubroztocil/httpie">httpie</a> as command-line from your console. But those application doesn't provide
+						a tree view for Json or XML response. YOu only have raw data, and you must use another software, like 
+						<a href="http://jsonviewer.stack.hu/">jsonviewer</a> to view your content as a tree.<br>
+						CuteRest have both. It's a REST client which have different view to parse the response.
+					</p>
+					<h2>Feature</h2>
+					<div class="pure-g">
+						<div class="pure-u-1-2">
+							<h3>TreeView</h3>
+							<p>Boring to read raw data ? CuteRest render JSON or XML data as a TreeView. You can either collapse or expand interested data. CuteRest also have a Search tool to get quickly your node. For exemple you can filter data by key or by value , see what you want and extract data easily. In the next release, regular expression will be supported to help you more. 
+								There is also a color syntax highlight to warn you about each kind of variable type. For exemple string are colored in blue whereas integer are colored in orange. 
+							</p></div>
+							<div class="pure-u-1-2">
+								<img src="feature1.png" alt="" class="src">
+							</div>
+							<div class="pure-u-1-2">
+								<img src="feature2.png" alt="" class="src">
+							</div>
+							<div class="pure-u-1-2">
+								<h3>Create HTTP Request</h3>
+								<p>
+									CuteRest has same feature than most of other REST client tools. And support all common Verb from the HTTP specification. You can create a HTTP request from a dedicated dialog and fill all parameter and header input. Proxy settings is also embeeded. So you can use CuteRest throught a firewall at your office. 
+									If you API Request need authentification, CuteRest support Basic and Digest HTTP authentification. Next release will have other authentification system like OAuth. 
+								</p></div>
+							</div>
+						</div>
+						<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+						<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+						<script type="text/javascript" src="slick/slick.min.js"></script>
+						<script type="text/javascript">
+							$(document).ready(function(){
+								$('#banner').slick({
+									dots: false,
+									infinite: true,
+									speed: 500,
+									autoplay: true,
+									autoplaySpeed: 4000,
+									draggable: false
+								});
+							});
 
 
-</script>
+						</script>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-44929010-3', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-</body>
-</html>
+					</body>
+					</html>
