@@ -63,9 +63,9 @@ Follow me on Twitter: https://twitter.com/dridk
 * [Version beta 0.1 released](https://github.com/dridk/cuterest/releases/tag/v0.1-beta) - 2015-04-06
 
 ## Author
-Sacha Schutz alias [@dridk](https://github.com/dridk)) Create all the Qt code
-Eugene Trounev alias [@its](https://github.com/its)) help for the design
-Lucas Vourneuf alias [@Aluriak](https://github.com/its)) help for the Json Tree model 
+*  Schutz alias [@dridk](https://github.com/dridk)) Create all the Qt code
+* Eugene Trounev alias [@its](https://github.com/its)) help for the design
+* Lucas Bourneuf alias [@Aluriak](https://github.com/its)) help for the Json Tree model 
 
 ## License
 
