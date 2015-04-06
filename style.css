@@ -41,7 +41,7 @@ header div img{
  {
 	overflow: hidden;
 	height: 100%;
-	padding-top: 10px;
+	padding-top: 2px;
 
     /*clip: rect(0px,1000px,200px,0px);*/
 }
