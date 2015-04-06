@@ -28,15 +28,17 @@ header div img{
 
 #banner {
 	background-color: #204a87;
-	width: 100%;
-	height: 420px;
+	width: 1046px;
+	height: 400px;
+	margin: auto;
+
 }
 
 #banner div 
  {
 	overflow: hidden;
 	height: 100%;
-	margin-top: 20px;
+	margin-top: 10px;
 
     /*clip: rect(0px,1000px,200px,0px);*/
 }
@@ -60,7 +62,9 @@ header div img{
 	
 }
 
-
+div.slick-list {
+  margin:0px;
+}
 #download ul li {
 	display:inline;
 	margin-left: 5px;
