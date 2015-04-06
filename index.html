@@ -11,12 +11,12 @@
 </head>
 <body>
 <div class="pure-menu pure-menu-horizontal">
-<a href="#" class="pure-menu-heading pure-menu-link">CuteRest</a>
+<a href="http://dridk.github.io/cuterest/" class="pure-menu-heading pure-menu-link">CuteRest</a>
 <ul class="pure-menu-list">
-<li class="pure-menu-item"><a href="#" class="pure-menu-link">Download</a></li>
-<li class="pure-menu-item"><a href="#" class="pure-menu-link">Github</a></li>
-<li class="pure-menu-item"><a href="#" class="pure-menu-link">Blog</a></li>
-<li class="pure-menu-item"><a href="#" class="pure-menu-link">Twitter</a></li>
+<li class="pure-menu-item"><a href="https://github.com/dridk/cuterest/releases/tag/v0.1-beta" class="pure-menu-link">Download</a></li>
+<li class="pure-menu-item"><a href="https://github.com/dridk/cuterest" class="pure-menu-link">Github</a></li>
+<li class="pure-menu-item"><a href="http://dridk.me/" class="pure-menu-link">Blog</a></li>
+<li class="pure-menu-item"><a href="https://twitter.com/dridk" class="pure-menu-link">Twitter</a></li>
 </li>
 </ul>
 </div>
@@ -24,15 +24,15 @@
 <div id="banner">
 <div><img src="windows.png" alt=""></div>
 <div><img src="linux.png" alt=""></div>
-<div><img src="test.png" alt=""></div>
+<div><img src="mac.png" alt=""></div>
 </div>
 <div id="download">
 <ul>
-<li><a href="#" class="pure-button"><i class="fa fa-shopping-cart fa-windows"></i>
+<li><a href="https://github.com/dridk/cuterest/releases/download/v0.1-beta/CuteRest-win32-beta-0.1.exe" class="pure-button"><i class="fa fa-shopping-cart fa-windows"></i>
 Windows beta 0.1</a></li>
-<li><a href="#" class="pure-button"><i class="fa fa-shopping-cart fa-apple"></i>
+<li><a href="https://github.com/dridk/cuterest/releases/download/v0.1-beta/CuteRest-beta-0.1.dmg" class="pure-button"><i class="fa fa-shopping-cart fa-apple"></i>
 MacOS beta 0.1</a></li>
-<li><a href="#" class="pure-button"><i class="fa fa-shopping-cart fa-linux"></i>
+<li><a href="https://github.com/dridk/cuterest/blob/master/README.md#linux" class="pure-button"><i class="fa fa-shopping-cart fa-linux"></i>
 Linux beta 0.1</a></li>
 </ul>
 </div>
@@ -40,25 +40,31 @@ Linux beta 0.1</a></li>
 <div id="content">
 <h2>About</h2>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam reprehenderit, facilis sequi beatae libero quis, nostrum delectus, distinctio similique nobis ipsam suscipit. Exercitationem molestias, laudantium, perferendis magni impedit dolor modi!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, iste atque deserunt est dolorem ipsa obcaecati facilis adipisci omnis fugiat. Rerum vero tenetur dolorem est quaerat quae ut, velit eius.
+CuteRest is an opensource tool dedicated to communicate with a REST server. It's particulary useful to manage 
+Json Request during developement step. Actually, They are several tool for this purpose. You can use plugins from
+your browser, like <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm">Postman</a>. or use <a href="https://github.com/jakubroztocil/httpie">httpie</a> as command-line from your console. But those application doesn't provide
+a tree view for Json or XML response. YOu only have raw data, and you must use another software, like 
+<a href="http://jsonviewer.stack.hu/">jsonviewer</a> to view your content as a tree.<br>
+CuteRest have both. It's a REST client which have different view to parse the response.
 </p>
 <h2>Feature</h2>
 <div class="pure-g">
 <div class="pure-u-1-2">
-<h3>Feature1</h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo laudantium quia, esse suscipit quibusdam, commodi cupiditate a voluptates ipsum repudiandae eligendi, possimus quas. Illum accusantium adipisci magni, cum facilis voluptas asperiores quo labore autem temporibus dignissimos cumque aliquam a fugiat, sapiente repudiandae id, mollitia laboriosam enim, quae commodi ducimus ad.
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolorum illo eveniet iure sapiente eligendi molestiae adipisci iusto, quisquam maxime!
+<h3>TreeView</h3>
+<p>Boring to read raw data ? CuteRest render JSON or XML data as a TreeView. You can either collapse or expand interested data. CuteRest also have a Search tool to get quickly your node. For exemple you can filter data by key or by value , see what you want and extract data easily. In the next release, regular expression will be supported to help you more. 
+There is also a color syntax highlight to warn you about each kind of variable type. For exemple string are colored in blue whereas integer are colored in orange. 
 </p></div>
 <div class="pure-u-1-2">
-<img src="http://robomongo.org/images/full-power-of-shell.png" alt="" class="src">
+<img src="feature1.png" alt="" class="src">
 </div>
 <div class="pure-u-1-2">
-<img src="http://robomongo.org/images/full-power-of-shell.png" alt="" class="src">
+<img src="feature2.png" alt="" class="src">
 </div>
 <div class="pure-u-1-2">
-<h3>Feature1</h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo laudantium quia, esse suscipit quibusdam, commodi cupiditate a voluptates ipsum repudiandae eligendi, possimus quas. Illum accusantium adipisci magni, cum facilis voluptas asperiores quo labore autem temporibus dignissimos cumque aliquam a fugiat, sapiente repudiandae id, mollitia laboriosam enim, quae commodi ducimus ad.
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolorum illo eveniet iure sapiente eligendi molestiae adipisci iusto, quisquam maxime!
+<h3>Create HTTP Request</h3>
+<p>
+CuteRest has same feature than most of other REST client tools. And support all common Verb from the HTTP specification. You can create a HTTP request from a dedicated dialog and fill all parameter and header input. Proxy settings is also embeeded. So you can use CuteRest throught a firewall at your office. 
+If you API Request need authentification, CuteRest support Basic and Digest HTTP authentification. Next release will have other authentification system like OAuth. 
 </p></div>
 </div>
 </div>
@@ -68,10 +74,11 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolorum illo e
 <script type="text/javascript">
 $(document).ready(function(){
 $('#banner').slick({
-dots: false,
+dots: true,
 infinite: true,
-speed: 300,
-slidesToShow: 1,
+speed: 500,
+autoplay: true,
+  autoplaySpeed: 2000
 });
 });
 </script>
