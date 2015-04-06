@@ -1,7 +1,7 @@
 * {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 
@@ -38,12 +38,12 @@ header div img{
 	color:white;
 }
 #banner div 
- {
+{
 	overflow: hidden;
 	height: 100%;
 	padding-top: 2px;
 
-    /*clip: rect(0px,1000px,200px,0px);*/
+	/*clip: rect(0px,1000px,200px,0px);*/
 }
 
 #banner div img {
@@ -66,7 +66,7 @@ header div img{
 }
 
 div.slick-list {
-  margin:0px;
+	margin:0px;
 }
 #download ul li {
 	display:inline;
@@ -76,7 +76,27 @@ div.slick-list {
 
 
 #content * {
-font-family: "Helvetica Neue",Helvetica,Arial,serif;
-text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.8);
-color: #4D4D4D;
+	font-family: "Helvetica Neue",Helvetica,Arial,serif;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.8);
+	color: #4D4D4D;
+}
+
+footer {
+	width: 100%;
+	height: 60px;
+	background: none repeat scroll 0% 0% #111;
+	color: #888;
+	text-align: center;
+	padding-top: 10px;
+}
+
+
+footer a {
+    color: #DDD;
+}
+footer a:active, a:hover {
+    outline: 0px none;
+}
+a {
+    background-color: transparent;
 }
