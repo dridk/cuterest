@@ -27,13 +27,13 @@ Feature
 * Import & Export favorte 
 
 ## Windows
-
 Windows binaries can be downloaded from here:
+[CuteRest-win32-beta-0.1.exe](https://github.com/dridk/cuterest/releases/download/v0.1-beta/CuteRest-win32-beta-0.1.exe)
 
 
 ## MacOS X
-
 Mac OS binaries can be downloaded from here:
+[CuteRest-beta-0.1.dmg](https://github.com/dridk/cuterest/releases/download/v0.1-beta/CuteRest-beta-0.1.dmg)
 
 
 ## Linux
