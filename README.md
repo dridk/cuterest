@@ -6,9 +6,9 @@ CuteRest is a REST client tool dedicated for JSON... and also for XML
 ## What it is
 CuteRest is an opensource tool dedicated to communicate with a REST server. It's particulary useful to manage 
 Json Request during developement step. Actually, They are several tool for this purpose. You can use plugins from
-your browser, like Postman or use httpie as command-line from your console. But those application doesn't provide
-a tree view for Json or XML response. YOu only have raw data, and you need to use another software, like 
-http://jsonviewer.stack.hu/ to view your content as a tree.  
+your browser, like [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm). or use [httpie](https://github.com/jakubroztocil/httpie) as command-line from your console. But those application doesn't provide
+a tree view for Json or XML response. YOu only have raw data, and you must use another software, like 
+[jsonviewer](http://jsonviewer.stack.hu/) to view your content as a tree.  
 CuteRest have both. It's a REST client which have different view to parse the response.
 
 Feature
@@ -42,8 +42,17 @@ CuteRest works well on Linux. There is not yet package avaible for distribution.
 as soon as possible. For now, you need to compile it as it's describe below. 
 
 ## from Source
+Compiling on Windows, OSX, Linux, and FreeBSD are really easy. But cutrest need a least Qt5.4 . Older version will generate complain during the compilation. 
+* Download the community Qt 5.4 SDK from [qt.io](http://www.qt.io/download/)
+* Download the source code from master branch. 
+* From Qt Creator , File > Open project  then select cuterest.pro
+* Compile and run it by clicking on the Green button
 
-Compiling on Windows, OSX, Linux, and FreeBSD are really easy. Just download Qt SDK from ...
+If you want to install it on your system. Compile and install it from the command line by using qmake your Qt installation path. 
+    
+    qmake cuterest.pro
+    make
+    sudo make install
 
 ## Twitter
 
@@ -51,7 +60,7 @@ Follow me on Twitter: https://twitter.com/dridk
 
 ## Releases
 
-* [Version beta 0.1 released](https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.5.1) - 2015-02-08
+* [Version beta 0.1 released](https://github.com/dridk/cuterest/releases/tag/v0.1-beta) - 2015-04-06
 
 ## Author
 Sacha Schutz ([@dridk](https://github.com/dridk)) created an initial  
