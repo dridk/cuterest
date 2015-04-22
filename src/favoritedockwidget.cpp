@@ -51,6 +51,7 @@ void FavoriteDockWidget::append(const Request &request)
     QStandardItem * item = mView->favoriteModel()->append(request);
     mView->expand(item->parent()->index());
     mView->edit(item->index());
+    setVisible(true);
 
 }
 

@@ -43,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     addDockWidget(Qt::RightDockWidgetArea,mFavoriteDock);
     addDockWidget(Qt::BottomDockWidgetArea,mConsoleDockWidget);
 
+
     setStatusBar(mStatusBar);
     setCentralWidget(mResponseWidget);
     tabifyDockWidget(mHistoryDock,mConsoleDockWidget);
@@ -192,8 +193,6 @@ void MainWindow::showError(const QString &error)
     box.setText(error);
     box.setWindowTitle(tr("Error"));
     box.exec();
-
-
 
 
 }
