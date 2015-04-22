@@ -18,6 +18,7 @@
 
 #include "dicteditorwidget.h"
 #include "QtAwesome/QtAwesome.h"
+#include <QMessageBox>
 DictEditorWidget::DictEditorWidget(QWidget *parent)
     : QWidget(parent)
 {
@@ -95,6 +96,7 @@ void DictEditorWidget::setCompleter(const QStringList &keys)
 void DictEditorWidget::insert(const QString &key, const QVariant &value)
 {
     mModel->insert(key, value);
+    mView->selectRow(0);
 }
 
 const QString &DictEditorWidget::key(int row) const
@@ -127,15 +129,16 @@ void DictEditorWidget::setLabel(const QString &typeName, const QString &valueNam
 
 void DictEditorWidget::addClicked()
 {
-    mModel->insert( mKeyEdit->currentText(),mValueEdit->text());
+    if (mKeyEdit->currentText().isEmpty())
+        QMessageBox::warning(this,tr("error"),tr("Cannot add emply key"));
+    else
+        mModel->insert( mKeyEdit->currentText(),mValueEdit->text());
 }
 
 void DictEditorWidget::removeClicked()
 {
-
-
-    mModel->remove(mView->currentIndex().row());
-
+    if (mView->currentIndex().isValid())
+        mModel->remove(mView->currentIndex().row());
 
 }
 
