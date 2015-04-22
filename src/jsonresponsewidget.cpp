@@ -82,6 +82,7 @@ JsonResponseWidget::JsonResponseWidget(QWidget * parent)
     connect(expandAction,SIGNAL(triggered()),mView,SLOT(expandAll()));
     connect(collapseAction,SIGNAL(triggered()),mView,SLOT(collapseAll()));
 
+
 }
 
 JsonResponseWidget::~JsonResponseWidget()
@@ -176,6 +177,8 @@ void JsonResponseWidget::setResponse(const Response &rep)
 
 void JsonResponseWidget::copyKey()
 {
+    if (!mView->currentIndex().isValid())
+        return;
     QString tmp = mView->selectionModel()->selectedRows(0).first().data().toString();
     qApp->clipboard()->setText(tmp);
 
@@ -183,7 +186,8 @@ void JsonResponseWidget::copyKey()
 
 void JsonResponseWidget::copyValue()
 {
-
+    if (!mView->currentIndex().isValid())
+        return;
     QString tmp = mView->selectionModel()->selectedRows(1).first().data().toString();
     qApp->clipboard()->setText(tmp);
 }

@@ -51,10 +51,9 @@ ResponseTabWidget::~ResponseTabWidget()
 void ResponseTabWidget::addResponseWidget(AbstractResponseWidget *widget)
 {
 
-
-
     addTab(widget, widget->windowTitle());
     mList.append(widget);
+    widget->setEnabled(false);
 
 
 
