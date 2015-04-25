@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 
 
 
+
     QFontDatabase::addApplicationFont(":/fonts/American-Captain.ttf");
 
 

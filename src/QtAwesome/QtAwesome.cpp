@@ -11,6 +11,7 @@
 #include <QFile>
 #include <QFontDatabase>
 #include <QApplication>
+#include <QPalette>
 
 QtAwesome * QtAwesome::mInstance = NULL;
 
@@ -605,10 +606,13 @@ QtAwesome *QtAwesome::instance()
         mInstance->initFontAwesome();
 
 
-        mInstance->setDefaultOption( "color", QColor(0,0,0) );
-        mInstance->setDefaultOption( "color-disabled",QColor(50,50,50));
-        mInstance->setDefaultOption( "color-active", QColor("white"));
-        mInstance->setDefaultOption( "color-selected", QColor("white"));
+        QPalette palette = QApplication::palette();
+
+
+        mInstance->setDefaultOption( "color", palette.color(        QPalette::Normal,   QPalette::Foreground));
+        mInstance->setDefaultOption( "color-disabled",palette.color(QPalette::Disabled, QPalette::Background));
+        mInstance->setDefaultOption( "color-active", palette.color( QPalette::Active,   QPalette::Foreground));
+        mInstance->setDefaultOption( "color-selected",palette.color(QPalette::Active,   QPalette::Foreground));
 
     }
     return mInstance;
