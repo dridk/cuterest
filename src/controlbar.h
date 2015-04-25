@@ -76,6 +76,13 @@ private:
     QToolButton * mSettingButton;
     QAction * mRefreshAction;
     QWidget * mMainWidget;
+    QMenu   * mSettingMenu;
+
+
+    QAction * mToogleHistAction;
+    QAction * mToogleFavAction;
+    QAction * mToogleConsAction;
+
     Request mRequest;
     QCompleter * mCompleter;
     bool mIsLoading;

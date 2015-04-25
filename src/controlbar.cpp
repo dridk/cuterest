@@ -74,36 +74,36 @@ ControlBar::ControlBar(QWidget * parent):
     mSettingButton->setAutoRaise(true);
     mFavButton->setAutoRaise(true);
 
-    QMenu   * settingMenu  = new QMenu;
-    QAction * exportAction = settingMenu->addAction(QtAwesome::instance()->icon(0xf093),tr("Export favorite"));
-    QAction * importAction = settingMenu->addAction(QtAwesome::instance()->icon(0xf019),tr("Import favorite"));
+    mSettingMenu  = new QMenu;
+    QAction * exportAction = mSettingMenu->addAction(QtAwesome::instance()->icon(0xf093),tr("Export favorite"));
+    QAction * importAction = mSettingMenu->addAction(QtAwesome::instance()->icon(0xf019),tr("Import favorite"));
 
-    settingMenu->addSeparator();
+    mSettingMenu->addSeparator();
 
-    QAction * toogleHistAction  = settingMenu->addAction(QtAwesome::instance()->icon(0xf1da),tr("Histoy"));
-    QAction * toogleFavAction   = settingMenu->addAction(QtAwesome::instance()->icon(0xf02e),tr("Favorite"));
-    QAction * toogleConsAction  = settingMenu->addAction(QtAwesome::instance()->icon(0xf120),tr("Console"));
-
-
-    settingMenu->addSeparator();
-
-    QAction * proxyAction = settingMenu->addAction(QtAwesome::instance()->icon(0xf0ad),tr("Settings"));
-    QAction * aboutAction = settingMenu->addAction(QtAwesome::instance()->icon(0xf129),tr("About CuteRest"));
+    mToogleHistAction  = mSettingMenu->addAction(QtAwesome::instance()->icon(0xf1da),tr("Histoy"));
+    mToogleFavAction   = mSettingMenu->addAction(QtAwesome::instance()->icon(0xf02e),tr("Favorite"));
+    mToogleConsAction  = mSettingMenu->addAction(QtAwesome::instance()->icon(0xf120),tr("Console"));
 
 
-   exportAction->setShortcut(QKeySequence("Ctrl+S"));
-   importAction->setShortcut(QKeySequence("Ctrl+O"));
+    mSettingMenu->addSeparator();
 
-   toogleHistAction->setCheckable(true);
-   toogleFavAction->setCheckable(true);
-   toogleConsAction->setCheckable(true);
-
-   toogleHistAction->setShortcut(QKeySequence("Ctrl+Shift+H"));
-   toogleFavAction->setShortcut(QKeySequence("Ctrl+Shift+F"));
-   toogleConsAction->setShortcut(QKeySequence("Ctrl+Shift+C"));
+    QAction * proxyAction = mSettingMenu->addAction(QtAwesome::instance()->icon(0xf0ad),tr("Settings"));
+    QAction * aboutAction = mSettingMenu->addAction(QtAwesome::instance()->icon(0xf129),tr("About CuteRest"));
 
 
-    mSettingButton->setMenu(settingMenu);
+    exportAction->setShortcut(QKeySequence("Ctrl+S"));
+    importAction->setShortcut(QKeySequence("Ctrl+O"));
+
+    mToogleHistAction->setCheckable(true);
+    mToogleFavAction->setCheckable(true);
+    mToogleConsAction->setCheckable(true);
+
+    mToogleHistAction->setShortcut(QKeySequence("Ctrl+Shift+H"));
+    mToogleFavAction->setShortcut(QKeySequence("Ctrl+Shift+F"));
+    mToogleConsAction->setShortcut(QKeySequence("Ctrl+Shift+C"));
+
+
+    mSettingButton->setMenu(mSettingMenu);
     mSettingButton->setPopupMode(QToolButton::InstantPopup);
 
     QAction * optionAction =  mLineEdit->addAction(QtAwesome::instance()->icon("cog"),QLineEdit::LeadingPosition);
@@ -127,9 +127,9 @@ ControlBar::ControlBar(QWidget * parent):
     connect(aboutAction,SIGNAL(triggered()),this,SIGNAL(aboutTrigger()));
     connect(proxyAction,SIGNAL(triggered()),this,SIGNAL(proxyTrigger()));
 
-    connect(toogleHistAction,SIGNAL(triggered(bool)),this,SIGNAL(historyClicked(bool)));
-    connect(toogleFavAction,SIGNAL(triggered(bool)),this,SIGNAL(favoriteClicked(bool)));
-    connect(toogleConsAction,SIGNAL(triggered(bool)),this,SIGNAL(consoleClicked(bool)));
+    connect(mToogleHistAction,SIGNAL(triggered(bool)),this,SIGNAL(historyClicked(bool)));
+    connect(mToogleFavAction,SIGNAL(triggered(bool)),this,SIGNAL(favoriteClicked(bool)));
+    connect(mToogleConsAction,SIGNAL(triggered(bool)),this,SIGNAL(consoleClicked(bool)));
 
 }
 
@@ -213,6 +213,11 @@ void ControlBar::sendFavorite()
     Request r = createRequest();
     r.setName(r.url().path());
     emit favoriteTrigger(r);
+
+    mToogleFavAction->setChecked(true);
+    emit favoriteClicked(true);
+
+
 }
 
 void ControlBar::showRequestDialog()
