@@ -70,6 +70,8 @@ void InfoResponseWidget::setResponse(const Response &rep)
 
         mTableWidget->addTopLevelItem(item);
     }
+
+    setEnabled(true);
 }
 
 void InfoResponseWidget::setListFromIndex(const QModelIndex &index)

@@ -50,6 +50,8 @@ void WebResponseWidget::setResponse(const Response &rep)
 //    mTreeWidget->clear();
 //    QWebElement document = mWebView->page()->mainFrame()->documentElement();
 //    examineChildElements(document, mTreeWidget->invisibleRootItem());
+
+    setEnabled(true);
 }
 
 void WebResponseWidget::elementClicked(const QModelIndex &index)

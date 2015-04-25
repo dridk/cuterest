@@ -64,7 +64,6 @@ TextResponseWidget::TextResponseWidget(QWidget * parent)
 
 
 
-
 }
 
 TextResponseWidget::~TextResponseWidget()
@@ -86,6 +85,8 @@ void TextResponseWidget::setResponse(const Response &rep)
 
    if (rep.rawHeader("Content-Type").contains("xml"))
        setSyntaxHighlighter("xml");
+
+   setEnabled(true);
 
 
 }
