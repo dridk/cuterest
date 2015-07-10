@@ -1,5 +1,6 @@
 # CuteRest
-CuteRest is a REST client tool dedicated for JSON... and also for XML 
+CuteRest is a REST client tool dedicated for JSON... and also for XML. 
+Website avaible at http://dridk.github.io/cuterest/
 
 ![CuteRest under linux](https://raw.githubusercontent.com/dridk/cuterest/master/screenshot.png "cuterest")
 
