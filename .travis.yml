@@ -4,7 +4,19 @@ install:
  - sudo apt-get install qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libsqlite3-dev
  - sudo apt-get install qt5-default qttools5-dev-tools
 
-
 script:
-  - qmake cuterest.pro
-  - make
+  - qmake PREFIX=/usr cuterest.pro
+  - make -j4
+  - sudo apt-get -y install checkinstall
+  - sudo checkinstall --pkgname=app --pkgversion="1" --pkgrelease="1" --backup=no --fstrans=no --default --deldoc 
+  - mkdir appdir ; cd appdir
+  - dpkg -x ../app_1-1_amd64.deb . ; find .
+  - cp ../cuterest.desktop .
+  - cp ../src/icons/logo_256.png cuterest.png
+  - cd .. 
+  - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/3/linuxdeployqt-3-x86_64.AppImage" 
+  - chmod a+x linuxdeployqt*.AppImage
+  - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
+  - ./linuxdeployqt*.AppImage ./appdir/usr/bin/* -bundle-non-qt-libs
+  - ./linuxdeployqt*.AppImage ./appdir/usr/bin/* -appimage 
+  - curl --upload-file ./CuteRest*.AppImage https://transfer.sh/CuteRest-git.$(git rev-parse --short HEAD)-x86_64.AppImage
