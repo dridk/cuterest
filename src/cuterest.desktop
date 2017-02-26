@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CuteRest
+Comment=a REST client tool dedicated for JSON
+Exec=CuteRest %F
+Icon=cuterest
+Terminal=false
+Categories=Utility;WebBrowser;Qt;

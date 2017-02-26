@@ -22,6 +22,13 @@ RC_ICONS = icons/cuterest.ico
 }
 
 
+# Installation
+target.path  = /usr/local/bin
+desktop.path = /usr/share/applications
+desktop.files += cuterest.desktop
+icons.path  = /usr/share/icons/hicolor/48x48/apps
+icons.files += cuterest.png
+INSTALLS += target desktop icons
 
 SOURCES += main.cpp\
         mainwindow.cpp \
