@@ -1,5 +1,5 @@
 install:
- - sudo add-apt-repository --yes ppa:beineri/opt-qt56-precise
+ - sudo add-apt-repository --yes ppa:beineri/opt-qt562
  - sudo apt-get update -qq
  - sudo apt-get install  qt56base qt56declarative qt56webengine libsqlite3-dev
  - source /opt/qt*/bin/qt*-env.sh
