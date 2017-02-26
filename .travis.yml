@@ -6,7 +6,7 @@ dist: trusty
 install:
  - sudo add-apt-repository ppa:beineri/opt-qt551-trusty -y
  - sudo apt-get update -qq
- - sudo apt-get install  qt55base qt55declarative libsqlite3-dev qt55webengine
+ - sudo apt-get install  qt55base qt55declarative libsqlite3-dev qt55webkit-examples 
  - source /opt/qt*/bin/qt*-env.sh
 
 script:
