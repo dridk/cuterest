@@ -12,12 +12,9 @@ install:
 script:
   - qmake PREFIX=/usr cuterest.pro
   - make -j4
-  - sudo make install
   - find . # It did not install to /usr - let's see what's going on
-  - sudo apt-get -y install checkinstall
-  - sudo checkinstall --pkgname=app --pkgversion="1" --pkgrelease="1" --backup=no --fstrans=no --default --deldoc 
-  - mkdir appdir ; cd appdir
-  - dpkg -x ../app_1-1_amd64.deb . ; find .
+  - mkdir appdir/usr/bin ; cd appdir
+  - cp ../src/CuteRest usr/bin
   - cp ../cuterest.desktop .
   - cp ../src/icons/logo_256.png cuterest.png
   - cd .. 
