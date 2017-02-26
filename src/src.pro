@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network webkitwidgets xml
+QT       += core gui network webenginewidgets webenginecore xml
 QT       -= qml quick
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
