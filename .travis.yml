@@ -13,9 +13,9 @@ script:
   - qmake PREFIX=/usr cuterest.pro
   - make -j4
   - find . # It did not install to /usr - let's see what's going on
-  - mkdir appdir/usr/bin ; cd appdir
+  - mkdir -p appdir/usr/bin ; cd appdir
   - cp ../src/CuteRest usr/bin
-  - cp ../cuterest.desktop .
+  - cp ../src/cuterest.desktop .
   - cp ../src/icons/logo_256.png cuterest.png
   - cd .. 
   - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/3/linuxdeployqt-3-x86_64.AppImage" 
