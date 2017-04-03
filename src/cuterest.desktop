@@ -1,8 +1,11 @@
 [Desktop Entry]
-Type=Application
 Name=CuteRest
-Comment=a REST client tool dedicated for JSON
-Exec=CuteRest %F
+GenericName=CuteRest REST client tool
+Comment=Communicate with REST servers and manage JSON requests
 Icon=cuterest
+Type=Application
+Categories=Network;
+Exec=cuterest
+StartupNotify=false
 Terminal=false
-Categories=Utility;WebBrowser;Qt;
+
