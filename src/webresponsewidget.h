@@ -20,9 +20,7 @@
 #define WEBRESPONSEWIDGET_H
 
 #include <QtWidgets>
-#include <QWebView>
-#include <QWebFrame>
-#include <QWebElement>
+#include <QtWebEngineWidgets>
 #include "abstractresponsewidget.h"
 
 class WebResponseWidget : public AbstractResponseWidget
@@ -33,18 +31,17 @@ public:
     ~WebResponseWidget();
 
   protected:
-    void examineChildElements(const QWebElement &parentElement,
-                                      QTreeWidgetItem *parentItem);
+//    void examineChildElements(const QWebElement &parentElement,
+//                                      QTreeWidgetItem *parentItem);
 
 public slots:
     virtual void setResponse(const Response& rep) ;
-    void elementClicked(const QModelIndex& index);
 
 
 
 
 private:
-    QWebView * mWebView;
+    QWebEngineView  * mWebView;
     QTreeWidget * mTreeWidget;
 
 };

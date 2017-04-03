@@ -20,60 +20,51 @@
 WebResponseWidget::WebResponseWidget(QWidget * parent)
     :AbstractResponseWidget(parent)
 {
-    mWebView = new QWebView;
-    mTreeWidget = new QTreeWidget;
+    mWebView = new QWebEngineView;
 
-//    QSplitter * splitter = new QSplitter(Qt::Horizontal);
+    //    QSplitter * splitter = new QSplitter(Qt::Horizontal);
 
     //Disable html tree for now ..
 
-//    splitter->addWidget(mTreeWidget);
-//    splitter->addWidget(mWebView);
+    //    splitter->addWidget(mTreeWidget);
+    //    splitter->addWidget(mWebView);
     setWidget(mWebView);
 
     setWindowTitle("Web");
 
 
 
-//    connect(mTreeWidget,SIGNAL(clicked(QModelIndex)),this,SLOT(elementClicked(QModelIndex)));
+    //    connect(mTreeWidget,SIGNAL(clicked(QModelIndex)),this,SLOT(elementClicked(QModelIndex)));
 }
 
 WebResponseWidget::~WebResponseWidget()
 {
     delete mWebView;
-    delete mTreeWidget;
 }
 
 void WebResponseWidget::setResponse(const Response &rep)
 {
     mWebView->setUrl(rep.request().url());
-//    mTreeWidget->clear();
-//    QWebElement document = mWebView->page()->mainFrame()->documentElement();
-//    examineChildElements(document, mTreeWidget->invisibleRootItem());
+    //    mTreeWidget->clear();
+    //    QWebElement document = mWebView->page()->mainFrame()->documentElement();
+    //    examineChildElements(document, mTreeWidget->invisibleRootItem());
 }
 
-void WebResponseWidget::elementClicked(const QModelIndex &index)
-{
-    Q_UNUSED(index);
+
+//void WebResponseWidget::examineChildElements(const QWebElement &parentElement,
+//                                             QTreeWidgetItem *parentItem)
+//{
+//    QWebElement element = parentElement.firstChild();
+//    while (!element.isNull()) {
+
+//        QTreeWidgetItem *item = new QTreeWidgetItem();
+//        item->setText(0, element.tagName());
 
 
+//        parentItem->addChild(item);
 
-}
+//        examineChildElements(element, item);
 
-void WebResponseWidget::examineChildElements(const QWebElement &parentElement,
-                                             QTreeWidgetItem *parentItem)
-{
-    QWebElement element = parentElement.firstChild();
-    while (!element.isNull()) {
-
-        QTreeWidgetItem *item = new QTreeWidgetItem();
-        item->setText(0, element.tagName());
-
-
-        parentItem->addChild(item);
-
-        examineChildElements(element, item);
-
-        element = element.nextSibling();
-    }
-}
+//        element = element.nextSibling();
+//    }
+//}

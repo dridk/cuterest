@@ -8,3 +8,4 @@ Categories=Network;
 Exec=cuterest
 StartupNotify=false
 Terminal=false
+
